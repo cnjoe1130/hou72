@@ -1,0 +1,1727 @@
+{
+ "_meta": {
+  "title": "七十二候结构化数据 final（简体 motif 词表 + 家族拆分）",
+  "classic_source": "《月令七十二候集解》元·吴澄，简体文本取自古文岛（原古诗文网）逐章正文",
+  "classic_source_root": "https://www.gushiwen.cn/guwen/book_d70ee77db44e.aspx",
+  "hou_numbering": "立春一候=1 … 大寒三候=72（立春起顺序编号）",
+  "modern_note": "modern 为原创改写，非古籍原文",
+  "motif_vocab": [
+   "日",
+   "月",
+   "星",
+   "虹",
+   "云",
+   "雨雪",
+   "冰",
+   "水泉",
+   "泽",
+   "土",
+   "雷",
+   "风",
+   "鹰隼",
+   "鸟类",
+   "雁",
+   "燕",
+   "鸡鸣",
+   "鹿",
+   "马",
+   "蛰虫",
+   "蚯蚓",
+   "蝉",
+   "狐",
+   "花",
+   "木",
+   "禾",
+   "草",
+   "鱼",
+   "露",
+   "电",
+   "天地",
+   "走兽",
+   "虫",
+   "鸠",
+   "鹊",
+   "雉",
+   "黄鹂",
+   "鹌鹑",
+   "戴胜",
+   "伯劳",
+   "乌鸫",
+   "雀",
+   "鹖鴠"
+  ],
+  "motif_vocab_draft": [
+   "日",
+   "月",
+   "星",
+   "虹",
+   "雲",
+   "雨雪",
+   "冰",
+   "水泉",
+   "泽",
+   "土",
+   "雷",
+   "風",
+   "鷹隼",
+   "鸟类",
+   "鴈",
+   "燕",
+   "鷄鸣",
+   "鹿",
+   "馬",
+   "蟄虫",
+   "蚯蚓",
+   "蝉",
+   "狐",
+   "草木花"
+  ],
+  "motif_vocab_proposed": [
+   "魚",
+   "露",
+   "電",
+   "天地",
+   "走獸",
+   "蟲"
+  ],
+  "motif_vocab_unused": [
+   "月",
+   "星",
+   "云",
+   "马",
+   "狐"
+  ],
+  "aliases_note": "name/classic 保持源文写法；name_modern 与 aliases 供展示与检索",
+  "hou_hook_note": "发布文案用，不进卡片",
+  "motif_vocab_note": "标签与词表已归一简体；classic 原文保持源文写法未转。花/木/禾/草 由 草木花 拆出，鸠/鹊/雉 由 鸟类 拆出。",
+  "motif_split_note": {
+   "鸟类": "20 候全部原样保留 鸟类 于 all（二级）；物种可判者主标签改为物种",
+   "草木花": "14 候拆为 花/木/禾/草，草木花 不再出现",
+   "policy": "dual：主标签维持 鸟类，通行简体物种名追加进 all（二级意象，不参与同象聚合）"
+  },
+  "motif_vocab_extended": [
+   "黄鹂",
+   "鹌鹑",
+   "戴胜",
+   "伯劳",
+   "乌鸫",
+   "雀",
+   "鹖鴠"
+  ],
+  "motif_vocab_extended_note": "7 个物种名只作二级意象，用于意象行与检索；同象聚合按主标签（鸟类）走，不改变分组。"
+ },
+ "jieqi24": [
+  {
+   "jieqi": "立春",
+   "index": 1,
+   "classic": "立春，正月节。立，建始也。五行之气往者过来者续于此。而春木之气始至，故谓之立也。立夏、秋、冬同。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_89c9c9b99074.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "雨水",
+   "index": 2,
+   "classic": "雨水，正月中。天一生水，春始属木，然生木者，必水也，故立春后继之雨水，且东风既解冻，则散而为雨水矣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_6941d792b5b9.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "惊蛰",
+   "index": 3,
+   "classic": "惊蛰，二月节。​《夏小正》曰：正月启蛰，言发蛰也。万物出乎震，震为雷，故曰惊蛰。是蛰虫惊而出走矣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_12ba543e2f40.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "春分",
+   "index": 4,
+   "classic": "春分，二月中。分者，半也。此当九十日之半，故谓之分。秋同义。夏、冬不言分者，盖天地闲二气而已。方氏曰：阳生于子，终于午，至卯而中分，故春为阳中，而仲月之节为春分，正阴阳适中，故昼夜无长短云。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_fc423ac0a58b.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "清明",
+   "index": 5,
+   "classic": "清明，三月节。按《国语》曰：时有八风。历独指清明风为三月节，此风属巽故也。万物齐乎巽，物至此时皆以洁齐而清明矣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_662d27f30a71.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "谷雨",
+   "index": 6,
+   "classic": "谷雨，三月中。自雨水后，土膏脉动，今又雨其谷于水也。雨读作去声，如‘雨我公田’之雨，盖谷以此时播种自上而下也。故《说文》云雨本去声，今风雨之雨在上声，雨下之雨在去声也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_f5401581fcbf.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "立夏",
+   "index": 7,
+   "classic": "立夏，四月节。立字解见春。夏，假也。物至此时皆假大也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_b594ded11996.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "小满",
+   "index": 8,
+   "classic": "小满，四月中。小满者，物至于此小得盈满。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_7aeb590193ba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "芒种",
+   "index": 9,
+   "classic": "芒种，五月节。谓有芒之种谷可稼种矣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_a596ae9208a4.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "夏至",
+   "index": 10,
+   "classic": "夏至，五月中。​《韵会》曰：夏，假也。至，极也。万物于此皆假大而至极也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_e1bef5b5193f.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "小暑",
+   "index": 11,
+   "classic": "小暑，六月节。​《说文》曰：暑，热也。就热之中，分为大小，月初为小，月中为大，今则热气犹小也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_48d5c2b6db89.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "大暑",
+   "index": 12,
+   "classic": "大暑，六月中。解见小暑。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_29785edbc5ad.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "立秋",
+   "index": 13,
+   "classic": "立秋，七月节。立字解见春。秋，揫也。物于此而揫敛也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2254ef144659.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "处暑",
+   "index": 14,
+   "classic": "处暑，七月中。处，止也。暑气至此而止矣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_66a8f0f4ceda.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "白露",
+   "index": 15,
+   "classic": "白露，八月节。秋属金，金色白，阴气渐重，露凝而白也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_282c93fa7af9.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "秋分",
+   "index": 16,
+   "classic": "秋分，八月中。解见春分。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_7c51ed4088b2.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "寒露",
+   "index": 17,
+   "classic": "寒露，九月节。露气寒冷，将凝结也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_5f3cd17177ba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "霜降",
+   "index": 18,
+   "classic": "霜降，九月中。气肃而凝露结为霜矣。​《周语》曰：驷见而陨霜。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_e3ee5808bc1e.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "立冬",
+   "index": 19,
+   "classic": "立冬，十月节。立字解见前。冬，终也，万物收藏也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2680163dc456.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "小雪",
+   "index": 20,
+   "classic": "小雪，十月中。雨下而为寒气所薄，故凝而为雪。小者，未盛之辞。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_9330a943715c.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "大雪",
+   "index": 21,
+   "classic": "大雪，十一月节。大者，盛也。至此而雪盛矣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_21f4c4b1ea57.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "冬至",
+   "index": 22,
+   "classic": "冬至，十一月中。终藏之气至此而极也。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_fdffca3103a0.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "小寒",
+   "index": 23,
+   "classic": "小寒，十二月节。月初寒尚小，故云。月半则大矣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_99766775521c.aspx",
+   "confidence": "verified"
+  },
+  {
+   "jieqi": "大寒",
+   "index": 24,
+   "classic": "大寒，十二月中。解见前。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2c21407c7dba.aspx",
+   "confidence": "verified"
+  }
+ ],
+ "hou72": [
+  {
+   "hou": 1,
+   "jieqi": "立春",
+   "order": 1,
+   "name": "东风解冻",
+   "name_modern": "东风解冻",
+   "aliases": [],
+   "hou_hook": "蹲一个东风解冻出生的人",
+   "motif": {
+    "primary": "风",
+    "all": [
+     "风",
+     "冰"
+    ]
+   },
+   "classic": "东风解冻。冻结于冬，遇春风而解散。不曰春而曰东者，​《吕氏春秋》曰：东方属木，木，火母也。然气温，故解冻。",
+   "modern": "冰面从冬天的封冻里松开，风先转成温的。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_89c9c9b99074.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 2,
+   "jieqi": "立春",
+   "order": 2,
+   "name": "蛰虫始振",
+   "name_modern": "蛰虫始振",
+   "aliases": [],
+   "hou_hook": "蹲一个蛰虫始振出生的人",
+   "motif": {
+    "primary": "蛰虫",
+    "all": [
+     "蛰虫",
+     "土"
+    ]
+   },
+   "classic": "蛰虫始振。蛰，藏也。振，动也。密藏之虫，因气至，而皆苏动之矣。鲍氏曰：动而未出，至二月，乃大惊而走也。",
+   "modern": "藏在土里过冬的虫子在穴中松动身体，还没有爬出来。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_89c9c9b99074.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 3,
+   "jieqi": "立春",
+   "order": 3,
+   "name": "鱼陟负冰",
+   "name_modern": "鱼陟负冰",
+   "aliases": [],
+   "hou_hook": "蹲一个鱼陟负冰出生的人",
+   "motif": {
+    "primary": "鱼",
+    "all": [
+     "鱼",
+     "冰"
+    ]
+   },
+   "classic": "鱼陟负冰。陟，升也。鱼当盛寒伏水底而遂暖，至正月阳气至，则上游而近冰，故曰负。",
+   "modern": "鱼上浮到接近水面处，背脊贴着尚未融尽的薄冰。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_89c9c9b99074.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 4,
+   "jieqi": "雨水",
+   "order": 1,
+   "name": "獭祭鱼",
+   "name_modern": "獭祭鱼",
+   "aliases": [],
+   "hou_hook": "蹲一个獭祭鱼出生的人",
+   "motif": {
+    "primary": "鱼",
+    "all": [
+     "鱼"
+    ]
+   },
+   "classic": "獭祭鱼。獭，一名水狗，贼鱼者也。祭鱼，取鱼以祭天也。所谓豺獭知报本，岁始而鱼上游，则獭初取以祭。徐氏曰：獭祭圆铺，圆者，水象也。豺祭方铺，方者，金象也。",
+   "modern": "水獭把捕到的鱼摆在岸上，像排开的一张供桌。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_6941d792b5b9.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 5,
+   "jieqi": "雨水",
+   "order": 2,
+   "name": "候鴈北",
+   "name_modern": "候雁北",
+   "aliases": [
+    "候雁北"
+   ],
+   "hou_hook": "蹲一个候雁北出生的人",
+   "motif": {
+    "primary": "雁",
+    "all": [
+     "雁",
+     "鸟类"
+    ]
+   },
+   "classic": "候鴈北。鴈，知时之鸟。热归塞北，寒来江南，沙漠乃其居也。孟春阳气既达，候鴈自彭蠡而北矣。",
+   "modern": "大雁从南方水泽启程，向北飞回繁殖地。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_6941d792b5b9.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 6,
+   "jieqi": "雨水",
+   "order": 3,
+   "name": "草木萌动",
+   "name_modern": "草木萌动",
+   "aliases": [],
+   "hou_hook": "蹲一个草木萌动出生的人",
+   "motif": {
+    "primary": "草",
+    "all": [
+     "草",
+     "土",
+     "木"
+    ]
+   },
+   "classic": "草木萌动。天地之气交而为泰，故草木萌生发动矣。",
+   "modern": "地气回暖，草木的芽在土里开始顶动。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_6941d792b5b9.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 7,
+   "jieqi": "惊蛰",
+   "order": 1,
+   "name": "桃始华",
+   "name_modern": "桃始华",
+   "aliases": [],
+   "hou_hook": "蹲一个桃始华出生的人",
+   "motif": {
+    "primary": "花",
+    "all": [
+     "花",
+     "木"
+    ]
+   },
+   "classic": "桃始华。桃，果名，花色红，是月始开。",
+   "modern": "桃树开出第一批花，粉白先于叶子出现。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_12ba543e2f40.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 8,
+   "jieqi": "惊蛰",
+   "order": 2,
+   "name": "仓庚鸣",
+   "name_modern": "仓庚鸣",
+   "aliases": [],
+   "hou_hook": "蹲一个仓庚鸣出生的人",
+   "motif": {
+    "primary": "鸟类",
+    "all": [
+     "鸟类",
+     "黄鹂"
+    ]
+   },
+   "classic": "仓庚鸣，庚亦作鹒，黄鹂也。诗所谓‘有鸣仓庚’是也。​《章龟经》曰：仓，清也。庚，新也。感春阳清新之气而初出，故名。其名最多，​《诗》曰黄鸟，齐人谓之搏黍，又谓之黄袍，僧家谓之金衣公子，其色鵹黑而黄，又名鵹黄。谚曰黄栗留、黄莺莺儿，皆一种也。",
+   "modern": "黄鹂在枝头开始鸣叫，声音先于满树新叶。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_12ba543e2f40.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 9,
+   "jieqi": "惊蛰",
+   "order": 3,
+   "name": "鹰化为鸠",
+   "name_modern": "鹰化为鸠",
+   "aliases": [],
+   "hou_hook": "蹲一个鹰化为鸠出生的人",
+   "motif": {
+    "primary": "鹰隼",
+    "all": [
+     "鹰隼",
+     "鸠",
+     "鸟类"
+    ]
+   },
+   "classic": "鹰化为鸠。鹰，鸷鸟也，鹞鹯之属。鸠，即今之布谷，​《章龟经》曰：仲春之时，林木茂盛，口啄尚柔，不能捕鸟，瞪目忍饥如痴而化，故名曰鸤鸠。​《王制》曰鸠化为鹰，秋时也。此言鹰化为鸠，春时也。以生育肃杀气盛，故鸷鸟感之而变耳。孔氏曰：化者，反归旧形之谓。故鹰化为鸠，鸠复化为鹰，如田鼠化为鴽，则鴽又化为田鼠。若腐草为萤，鴙为蜃，爵为蛤，皆不言化，是不再复本形者也。",
+   "modern": "猛禽少见，布谷鸟出现，古人以为是鹰换了形。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_12ba543e2f40.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 10,
+   "jieqi": "春分",
+   "order": 1,
+   "name": "元鸟至",
+   "name_modern": "玄鸟至",
+   "aliases": [
+    "玄鸟至"
+   ],
+   "hou_hook": "蹲一个玄鸟至出生的人",
+   "motif": {
+    "primary": "燕",
+    "all": [
+     "燕",
+     "鸟类"
+    ]
+   },
+   "classic": "元鸟至。元鸟，燕也。高诱曰：春分而来，秋分而去也。",
+   "modern": "燕子从南方回来，在屋檐下找回旧巢。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_fc423ac0a58b.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 11,
+   "jieqi": "春分",
+   "order": 2,
+   "name": "雷乃发声",
+   "name_modern": "雷乃发声",
+   "aliases": [],
+   "hou_hook": "蹲一个雷乃发声出生的人",
+   "motif": {
+    "primary": "雷",
+    "all": [
+     "雷"
+    ]
+   },
+   "classic": "雷乃发声。阴阳相薄为雷，至此，四阳渐盛，犹有阴焉，则相薄乃发声矣。乃者，​《韵会》曰：象气出之难也。注疏曰：发，犹出也。",
+   "modern": "天空第一次响雷，阴阳两股气撞在一起。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_fc423ac0a58b.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 12,
+   "jieqi": "春分",
+   "order": 3,
+   "name": "始电",
+   "name_modern": "始电",
+   "aliases": [],
+   "hou_hook": "蹲一个始电出生的人",
+   "motif": {
+    "primary": "电",
+    "all": [
+     "电",
+     "雷"
+    ]
+   },
+   "classic": "始电。电，阳光也，四阳盛长，值气泄时而光生焉，故《历解》曰：凡声阳也，光亦阳也。​《易》曰：雷电合而章。​《公羊传》曰：电者，雷光是也。​《徐氏》曰：雷阳阴电，非也。盖盛夏无雷之时，电亦有之，可见矣。",
+   "modern": "雷声之后有闪电，光先被看见，又立刻消失。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_fc423ac0a58b.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 13,
+   "jieqi": "清明",
+   "order": 1,
+   "name": "桐始华",
+   "name_modern": "桐始华",
+   "aliases": [],
+   "hou_hook": "蹲一个桐始华出生的人",
+   "motif": {
+    "primary": "花",
+    "all": [
+     "花",
+     "木"
+    ]
+   },
+   "classic": "桐始华。桐，木名。有三种：华而不实者曰白桐，​《尔雅》所谓荣桐木是也。皮青而结实者曰梧桐，一曰青桐，​《淮南子》曰梧桐断角是也。生于山冈、子大而有油者曰油桐，毛诗所谓梧桐不生山冈者是也。今始华者，乃白桐耳。按《埤雅》​：桐木知日月、闰年，每一枝生十二叶，闰则十三叶，与天地合气者也。今造琴瑟者，以花桐木，是知桐为白桐也。",
+   "modern": "白桐开花，一树淡色先挂上枝头。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_662d27f30a71.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 14,
+   "jieqi": "清明",
+   "order": 2,
+   "name": "田鼠化为鴽",
+   "name_modern": "田鼠化为鴽",
+   "aliases": [],
+   "hou_hook": "蹲一个田鼠化为鴽出生的人",
+   "motif": {
+    "primary": "鸟类",
+    "all": [
+     "鸟类",
+     "走兽",
+     "鹌鹑"
+    ]
+   },
+   "classic": "田鼠化为鴽。按《尔雅》注曰：鼫鼠，形大如鼠，头似兔，尾有毛，青黄色，好在田中食粟豆，谓之田鼠。​《本草》​《素问》曰：鴽，鹑也，似鸽而小。​《尔雅释鸟》​：鴽，鴾母。郭注：䳺也，青州人呼为鴾母。鲍氏曰：鼠，阴类。鴽，阳类。阳气盛故化为鴽，盖阴为阳所化也。",
+   "modern": "田间的鼠隐去，鹌鹑一类的小鸟出现在同一片地里。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_662d27f30a71.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 15,
+   "jieqi": "清明",
+   "order": 3,
+   "name": "虹始见",
+   "name_modern": "虹始见",
+   "aliases": [],
+   "hou_hook": "蹲一个虹始见出生的人",
+   "motif": {
+    "primary": "虹",
+    "all": [
+     "虹",
+     "雨雪"
+    ]
+   },
+   "classic": "虹始见。虹，虹蜺也，诗所谓螮蝀，俗读去声也。注疏曰：是阴阳交会之气，故先儒以为云薄漏日，日照雨滴则虹生焉，今以水噀日，自剑视之则晕为虹。朱子曰：日与雨交，倏然成质，阴阳不当交而交者，天地淫气也。虹为雄，色赤白，蜺为雌，色青白，然二字皆从虫。​《说文》曰：似螮蝀状。诸书又云：尝见虹入溪饮水，其首如驴。恐天地闲亦有此种物也，但虹气似之借名也。",
+   "modern": "雨后天空出现虹，水汽把光分成七色。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_662d27f30a71.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 16,
+   "jieqi": "谷雨",
+   "order": 1,
+   "name": "萍始生",
+   "name_modern": "萍始生",
+   "aliases": [],
+   "hou_hook": "蹲一个萍始生出生的人",
+   "motif": {
+    "primary": "泽",
+    "all": [
+     "泽",
+     "草"
+    ]
+   },
+   "classic": "萍始生。萍，水草也，与水相平，故曰萍。漂流随风，故又曰漂。​《历解》曰：萍，阳物，静以承阳也。",
+   "modern": "静水面上浮起第一层绿萍。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_f5401581fcbf.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 17,
+   "jieqi": "谷雨",
+   "order": 2,
+   "name": "鸣鸠拂其羽",
+   "name_modern": "鸣鸠拂其羽",
+   "aliases": [],
+   "hou_hook": "蹲一个鸣鸠拂其羽出生的人",
+   "motif": {
+    "primary": "鸠",
+    "all": [
+     "鸠",
+     "鸟类"
+    ]
+   },
+   "classic": "鸣鸠拂其羽。鸠，即鹰所化者，布谷也。拂，过击也。​《本草》云：拂羽飞而翼拍其身，气使然也。盖当三月之时，趋农急矣，鸠乃追逐而鸣，鼓羽直刺上飞，故俗称布谷。",
+   "modern": "布谷鸟边飞边拍打翅膀，鸣声在田上散开。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_f5401581fcbf.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 18,
+   "jieqi": "谷雨",
+   "order": 3,
+   "name": "戴胜降于桑",
+   "name_modern": "戴胜降于桑",
+   "aliases": [],
+   "hou_hook": "蹲一个戴胜降于桑出生的人",
+   "motif": {
+    "primary": "鸟类",
+    "all": [
+     "鸟类",
+     "戴胜",
+     "木"
+    ]
+   },
+   "classic": "戴胜降于桑。戴胜一名戴鵀，​《尔雅注》曰：头上有胜毛。此时恒在于桑，盖蚕将生之候矣。言降者，重之若天而下，亦气使之然也。",
+   "modern": "戴胜鸟落在桑树上，头冠张开像一把小扇。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_f5401581fcbf.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 19,
+   "jieqi": "立夏",
+   "order": 1,
+   "name": "蝼蝈鸣",
+   "name_modern": "蝼蝈鸣",
+   "aliases": [],
+   "hou_hook": "蹲一个蝼蝈鸣出生的人",
+   "motif": {
+    "primary": "虫",
+    "all": [
+     "虫",
+     "土"
+    ]
+   },
+   "classic": "蝼蝈鸣。蝼蝈，小虫，生穴土中，好夜出，今人谓之土狗是也。一名蝼蛄，一名石鼠，一名螜，各地方言之不同也。​《淮南子》曰：蝼蝈鸣，邱螾出，阴气始而二物应之。​《夏小正》​：三月螜则鸣是也。且有五能，不能成一技：飞不能过屋。缘不能穷木。泅不能渡谷。穴不能覆身。走不能先人。故《说文》称鼫为五技之鼠。​《古今注》又以蝼名鼫，鼠可知。​《埤雅》​《本草》俱以为臭虫，陆德明、郑康成以为蛙，皆非也。",
+   "modern": "夜里土中的蝼蛄开始叫，声音从地底传上来。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_b594ded11996.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 20,
+   "jieqi": "立夏",
+   "order": 2,
+   "name": "蚯蚓出",
+   "name_modern": "蚯蚓出",
+   "aliases": [],
+   "hou_hook": "蹲一个蚯蚓出出生的人",
+   "motif": {
+    "primary": "蚯蚓",
+    "all": [
+     "蚯蚓",
+     "土"
+    ]
+   },
+   "classic": "蚯蚓出。蚯蚓即地龙也，​《历解》曰：阴而屈者，乘阳而伸见也。",
+   "modern": "蚯蚓从湿润的土里翻出来。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_b594ded11996.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 21,
+   "jieqi": "立夏",
+   "order": 3,
+   "name": "王瓜生",
+   "name_modern": "王瓜生",
+   "aliases": [],
+   "hou_hook": "蹲一个王瓜生出生的人",
+   "motif": {
+    "primary": "草",
+    "all": [
+     "草"
+    ]
+   },
+   "classic": "王瓜生。​《图经》云：王瓜处处有之，生平野、田宅及墙垣，叶似栝楼、乌药，圆无丫缺，有毛如刺，蔓生，五月开黄花，花下结子如弹丸，生青熟赤，根似葛，细而多糁，又名土瓜，一名落鸦瓜，今药中所用也。​《礼记》郑元注曰：即萆挈。​《本草》作菝葜，陶隐居以辨其谬，谓菝葜自有本条，殊不知王瓜亦自有本条，先儒当时如不检书而谩言者，可笑。",
+   "modern": "王瓜的藤蔓攀上墙垣，结出小瓜。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_b594ded11996.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 22,
+   "jieqi": "小满",
+   "order": 1,
+   "name": "苦菜秀",
+   "name_modern": "苦菜秀",
+   "aliases": [],
+   "hou_hook": "蹲一个苦菜秀出生的人",
+   "motif": {
+    "primary": "草",
+    "all": [
+     "草"
+    ]
+   },
+   "classic": "苦菜秀。​《埤雅》以荼为苦菜，​《毛诗》曰：谁谓荼苦。是也。鲍氏曰：感火之气而苦味成。​《尔雅》曰：不荣而实，谓之秀，荣而不实，谓之英。此苦菜宜言英也。蔡邕《月令》以谓苦荬菜，非。",
+   "modern": "苦菜抽苔开花。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_7aeb590193ba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 23,
+   "jieqi": "小满",
+   "order": 2,
+   "name": "靡草死",
+   "name_modern": "靡草死",
+   "aliases": [],
+   "hou_hook": "蹲一个靡草死出生的人",
+   "motif": {
+    "primary": "草",
+    "all": [
+     "草"
+    ]
+   },
+   "classic": "靡草死。郑康成、鲍景翔皆云靡草葶苈之属，​《礼记注》曰：草之枝叶而靡细者。方氏曰：凡物感阳而生者则强而立，感阴而生者则柔而靡，谓之靡草，则至阴之所生也，故不胜至阳而死。",
+   "modern": "枝叶细软的草在烈日下先枯。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_7aeb590193ba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 24,
+   "jieqi": "小满",
+   "order": 3,
+   "name": "麦秋至",
+   "name_modern": "麦秋至",
+   "aliases": [],
+   "hou_hook": "蹲一个麦秋至出生的人",
+   "motif": {
+    "primary": "禾",
+    "all": [
+     "禾"
+    ]
+   },
+   "classic": "麦秋至。秋者，百谷成熟之期，此于时虽夏，于麦则秋，故云麦秋也。",
+   "modern": "麦子到了成熟的时节，田野转成金色。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_7aeb590193ba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 25,
+   "jieqi": "芒种",
+   "order": 1,
+   "name": "螳螂生",
+   "name_modern": "螳螂生",
+   "aliases": [],
+   "hou_hook": "蹲一个螳螂生出生的人",
+   "motif": {
+    "primary": "虫",
+    "all": [
+     "虫"
+    ]
+   },
+   "classic": "螳螂生。螳螂，草虫也，饮风食露，感一阴之气而生，能捕蝉而食，故又名杀虫。曰天马，言其飞捷如马也。曰斧虫，以前二足如斧也，尚名不一，各随其地而称之。深秋生子于林木闲，一壳百子，至此时则破壳而出，药中桑螵蛸是也。",
+   "modern": "去年秋天产下的螳螂卵，在此刻孵出小螳螂。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_a596ae9208a4.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 26,
+   "jieqi": "芒种",
+   "order": 2,
+   "name": "鵙始鸣",
+   "name_modern": "鵙始鸣",
+   "aliases": [],
+   "hou_hook": "蹲一个鵙始鸣出生的人",
+   "motif": {
+    "primary": "鸟类",
+    "all": [
+     "鸟类",
+     "伯劳"
+    ]
+   },
+   "classic": "鵙始鸣。鵙，百劳也，​《本草》作博劳。朱子《孟》注曰：博劳，恶声之鸟，盖枭类也。曹子建《恶鸟论》​：百劳以五月鸣，其声鵙鵙然，故以之立名，似俗称浊温。故《埤雅》禽经注云：伯劳不能翱翔，直飞而已。​《毛诗》曰：七月鸣鵙。盖周七月夏五月也。",
+   "modern": "伯劳在树顶鸣叫，声音急促。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_a596ae9208a4.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 27,
+   "jieqi": "芒种",
+   "order": 3,
+   "name": "反舌无声",
+   "name_modern": "反舌无声",
+   "aliases": [],
+   "hou_hook": "蹲一个反舌无声出生的人",
+   "motif": {
+    "primary": "鸟类",
+    "all": [
+     "鸟类",
+     "乌鸫"
+    ]
+   },
+   "classic": "反舌无声。诸书以为百舌鸟，以其能反复其舌故名，特注疏以为虾蟆，盖蛙属之舌尖向内，故名之。今辨其非者，以其此时正鸣，不知失者也，​《易通卦验》亦名为虾蟆无声，若以五月正鸣，殊不知初旬见形后，形亦藏矣。陈氏曰：螳螂、鵙皆阴类，感微阴而或生或鸣，反舌感阳而发，遇微阴而无声也。",
+   "modern": "会学百鸟叫的反舌鸟忽然安静下来。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_a596ae9208a4.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 28,
+   "jieqi": "夏至",
+   "order": 1,
+   "name": "鹿角解",
+   "name_modern": "鹿角解",
+   "aliases": [],
+   "hou_hook": "蹲一个鹿角解出生的人",
+   "motif": {
+    "primary": "鹿",
+    "all": [
+     "鹿"
+    ]
+   },
+   "classic": "鹿角解。鹿，形小山兽也，属阳，角支向前与黄牛一同。麋，形大泽兽也，属阴，角支向后与水牛一同。夏至一阴生，感阴气而鹿角解。解，角退落也。冬至一阳生，麋感阳气而角解矣，是夏至阳之极，冬至阴之极也。",
+   "modern": "鹿的旧角脱落，新角开始生长。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_e1bef5b5193f.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 29,
+   "jieqi": "夏至",
+   "order": 2,
+   "name": "蜩始鸣",
+   "name_modern": "蜩始鸣",
+   "aliases": [],
+   "hou_hook": "蹲一个蜩始鸣出生的人",
+   "motif": {
+    "primary": "蝉",
+    "all": [
+     "蝉"
+    ]
+   },
+   "classic": "蜩始鸣。蜩，蝉之大而黑色者，蜣螂脱壳而成，雄者能鸣，雌者无声，今俗称知了是也。按蝉乃总名，鸣于夏者曰蜩，即《庄子》云‘蟪蛄不知春秋者’是也。盖蟪蛄夏蝉，故不知春秋。鸣于秋者曰寒蜩，即楚辞所谓寒螀也。故《风土记》曰：蟪蛄鸣朝，寒螀鸣夕。今秋初夕阳之际，小而绿色声急疾者俗称都了是也。故《埤雅》各释其义，然此物生于盛阳，感阴而鸣。",
+   "modern": "蝉在树间第一次长鸣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_e1bef5b5193f.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 30,
+   "jieqi": "夏至",
+   "order": 3,
+   "name": "半夏生",
+   "name_modern": "半夏生",
+   "aliases": [],
+   "hou_hook": "蹲一个半夏生出生的人",
+   "motif": {
+    "primary": "草",
+    "all": [
+     "草",
+     "土"
+    ]
+   },
+   "classic": "半夏生。半夏，药名，居夏之半而生，故名。",
+   "modern": "半夏在阴湿的田埂上长出叶子。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_e1bef5b5193f.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 31,
+   "jieqi": "小暑",
+   "order": 1,
+   "name": "温风至",
+   "name_modern": "温风至",
+   "aliases": [],
+   "hou_hook": "蹲一个温风至出生的人",
+   "motif": {
+    "primary": "风",
+    "all": [
+     "风",
+     "日"
+    ]
+   },
+   "classic": "温风至。至，极也，温热之风至此而极矣。",
+   "modern": "吹来的风变成热的。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_48d5c2b6db89.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 32,
+   "jieqi": "小暑",
+   "order": 2,
+   "name": "蟋蟀居壁",
+   "name_modern": "蟋蟀居壁",
+   "aliases": [],
+   "hou_hook": "蹲一个蟋蟀居壁出生的人",
+   "motif": {
+    "primary": "虫",
+    "all": [
+     "虫",
+     "土"
+    ]
+   },
+   "classic": "蟋蟀居壁。一名蛬，一名蜻蛚，即今之促织也。​《礼记注》曰：生土中。此时羽翼稍成，居穴之壁，至七月则远飞而在野矣。盖肃杀之气初生则在穴，感之深则在野而鬬。",
+   "modern": "蟋蟀移到墙根缝隙里避热。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_48d5c2b6db89.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 33,
+   "jieqi": "小暑",
+   "order": 3,
+   "name": "鹰始击",
+   "name_modern": "鹰始击",
+   "aliases": [
+    "鹰始鸷"
+   ],
+   "hou_hook": "蹲一个鹰始击出生的人",
+   "motif": {
+    "primary": "鹰隼",
+    "all": [
+     "鹰隼"
+    ]
+   },
+   "classic": "鹰始击。击，搏击也。应氏曰：杀气未肃，鸷猛之鸟始习于击，迎杀气也。",
+   "modern": "幼鹰在低空练习扑击。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_48d5c2b6db89.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 34,
+   "jieqi": "大暑",
+   "order": 1,
+   "name": "腐草为萤",
+   "name_modern": "腐草为萤",
+   "aliases": [],
+   "hou_hook": "蹲一个腐草为萤出生的人",
+   "motif": {
+    "primary": "虫",
+    "all": [
+     "虫",
+     "草"
+    ]
+   },
+   "classic": "腐草为萤。曰丹良，曰丹鸟，曰夜光，曰宵烛，皆萤之别名。离明之极，则幽阴至微之物亦化而为明也。​《毛诗》曰：熠耀宵行。另一种也，形如米虫，尾亦有火，不言化者，不复原形，解见前。",
+   "modern": "夜里草间出现萤火，古人以为是腐草化成的光。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_29785edbc5ad.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 35,
+   "jieqi": "大暑",
+   "order": 2,
+   "name": "土润溽暑",
+   "name_modern": "土润溽暑",
+   "aliases": [],
+   "hou_hook": "蹲一个土润溽暑出生的人",
+   "motif": {
+    "primary": "土",
+    "all": [
+     "土",
+     "日"
+    ]
+   },
+   "classic": "土润溽暑。溽，湿也，土之气润，故蒸郁而为湿。暑，俗称龌龊，热是也。",
+   "modern": "土面返潮，空气闷而湿。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_29785edbc5ad.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 36,
+   "jieqi": "大暑",
+   "order": 3,
+   "name": "大雨时行",
+   "name_modern": "大雨时行",
+   "aliases": [],
+   "hou_hook": "蹲一个大雨时行出生的人",
+   "motif": {
+    "primary": "雨雪",
+    "all": [
+     "雨雪",
+     "泽"
+    ]
+   },
+   "classic": "大雨时行。前候湿暑之气蒸郁，今候则大雨时行，以退暑也。",
+   "modern": "午后常有急雨，一场雨压下一层热。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_29785edbc5ad.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 37,
+   "jieqi": "立秋",
+   "order": 1,
+   "name": "凉风至",
+   "name_modern": "凉风至",
+   "aliases": [],
+   "hou_hook": "蹲一个凉风至出生的人",
+   "motif": {
+    "primary": "风",
+    "all": [
+     "风"
+    ]
+   },
+   "classic": "凉风至。西方凄清之风曰凉风，温变而凉气始肃也。​《周语》曰火见而清风戒寒是也。",
+   "modern": "风里第一次带上凉意。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2254ef144659.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 38,
+   "jieqi": "立秋",
+   "order": 2,
+   "name": "白露降",
+   "name_modern": "白露降",
+   "aliases": [],
+   "hou_hook": "蹲一个白露降出生的人",
+   "motif": {
+    "primary": "露",
+    "all": [
+     "露",
+     "风"
+    ]
+   },
+   "classic": "白露降。大雨之后，清凉风来，而天气下降，茫茫而白者，尚未凝珠，故曰白露。降示秋金之白色也。",
+   "modern": "清晨草木上凝出白色水汽，还没有成珠。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2254ef144659.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 39,
+   "jieqi": "立秋",
+   "order": 3,
+   "name": "寒蝉鸣",
+   "name_modern": "寒蝉鸣",
+   "aliases": [],
+   "hou_hook": "蹲一个寒蝉鸣出生的人",
+   "motif": {
+    "primary": "蝉",
+    "all": [
+     "蝉"
+    ]
+   },
+   "classic": "寒蝉鸣。寒蝉，​《尔雅》曰寒螀，蝉小而青紫者。马氏曰：物生于暑者，其声变之矣。",
+   "modern": "蝉声变得低而断续。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2254ef144659.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 40,
+   "jieqi": "处暑",
+   "order": 1,
+   "name": "鹰乃祭鸟",
+   "name_modern": "鹰乃祭鸟",
+   "aliases": [],
+   "hou_hook": "蹲一个鹰乃祭鸟出生的人",
+   "motif": {
+    "primary": "鹰隼",
+    "all": [
+     "鹰隼",
+     "鸟类"
+    ]
+   },
+   "classic": "鹰乃祭鸟，鹰，义禽也。秋令属金，五行为义，金气肃杀，鹰感其气始捕击诸鸟，然必先祭之，犹人饮食祭先代为之者也。不击有胎之禽，故谓之义。",
+   "modern": "鹰捕到鸟先摆开再食，像一场陈列。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_66a8f0f4ceda.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 41,
+   "jieqi": "处暑",
+   "order": 2,
+   "name": "天地始肃",
+   "name_modern": "天地始肃",
+   "aliases": [],
+   "hou_hook": "蹲一个天地始肃出生的人",
+   "motif": {
+    "primary": "天地",
+    "all": [
+     "天地",
+     "土"
+    ]
+   },
+   "classic": "天地始肃秋者，阴之始，故曰天地始肃。",
+   "modern": "天地间的气息转清，草木开始收。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_66a8f0f4ceda.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 42,
+   "jieqi": "处暑",
+   "order": 3,
+   "name": "禾乃登",
+   "name_modern": "禾乃登",
+   "aliases": [],
+   "hou_hook": "蹲一个禾乃登出生的人",
+   "motif": {
+    "primary": "禾",
+    "all": [
+     "禾"
+    ]
+   },
+   "classic": "禾乃登。禾者。谷连藁秸之总名。又，稻秫苽粱之属皆禾也。成热曰登。",
+   "modern": "稻粱成熟，可以收割入仓。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_66a8f0f4ceda.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 43,
+   "jieqi": "白露",
+   "order": 1,
+   "name": "鸿鴈来",
+   "name_modern": "鸿雁来",
+   "aliases": [
+    "鸿雁来"
+   ],
+   "hou_hook": "蹲一个鸿雁来出生的人",
+   "motif": {
+    "primary": "雁",
+    "all": [
+     "雁",
+     "鸟类"
+    ]
+   },
+   "classic": "鸿鴈来。鸿大鴈小，自北而来南也。不谓南乡，非其居耳。详见雨水节下。",
+   "modern": "大雁从北方南来，落在水边。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_282c93fa7af9.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 44,
+   "jieqi": "白露",
+   "order": 2,
+   "name": "元鸟归",
+   "name_modern": "玄鸟归",
+   "aliases": [
+    "玄鸟归"
+   ],
+   "hou_hook": "蹲一个玄鸟归出生的人",
+   "motif": {
+    "primary": "燕",
+    "all": [
+     "燕",
+     "鸟类"
+    ]
+   },
+   "classic": "元鸟归。元鸟，解见前，此时自南而往北也。燕乃北方之鸟，故曰归。",
+   "modern": "燕子离开屋檐，向南去。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_282c93fa7af9.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 45,
+   "jieqi": "白露",
+   "order": 3,
+   "name": "羣鸟养羞",
+   "name_modern": "群鸟养羞",
+   "aliases": [
+    "群鸟养羞"
+   ],
+   "hou_hook": "蹲一个群鸟养羞出生的人",
+   "motif": {
+    "primary": "鸟类",
+    "all": [
+     "鸟类"
+    ]
+   },
+   "classic": "羣鸟养羞。三人以上为众，三兽以上为羣。羣，众也。​《礼记注》曰：羞者，所羹之食。养羞者，藏之以备冬月之养也。",
+   "modern": "各种鸟开始储存食物备冬。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_282c93fa7af9.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 46,
+   "jieqi": "秋分",
+   "order": 1,
+   "name": "雷始收声",
+   "name_modern": "雷始收声",
+   "aliases": [],
+   "hou_hook": "蹲一个雷始收声出生的人",
+   "motif": {
+    "primary": "雷",
+    "all": [
+     "雷",
+     "天地"
+    ]
+   },
+   "classic": "雷始收声。鲍氏曰：雷二月阳中发声，八月阴中收声入地，则万物随入也。",
+   "modern": "雷声不再响起，天安静下来。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_7c51ed4088b2.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 47,
+   "jieqi": "秋分",
+   "order": 2,
+   "name": "蛰虫坏户",
+   "name_modern": "蛰虫坏户",
+   "aliases": [],
+   "hou_hook": "蹲一个蛰虫坏户出生的人",
+   "motif": {
+    "primary": "蛰虫",
+    "all": [
+     "蛰虫",
+     "土"
+    ]
+   },
+   "classic": "蛰虫坏户。淘瓦之泥曰坏，细泥也。按《礼记注》曰：坏益其蛰穴之户，使通明处稍小，至寒甚乃墐塞之也。",
+   "modern": "虫子把洞口封小，准备入土。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_7c51ed4088b2.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 48,
+   "jieqi": "秋分",
+   "order": 3,
+   "name": "水始涸",
+   "name_modern": "水始涸",
+   "aliases": [],
+   "hou_hook": "蹲一个水始涸出生的人",
+   "motif": {
+    "primary": "泽",
+    "all": [
+     "泽"
+    ]
+   },
+   "classic": "水始涸。​《礼记注》曰：水本气之所为，春夏气至故长，秋冬气返故涸也。",
+   "modern": "河湖水位下落，滩涂露出。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_7c51ed4088b2.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 49,
+   "jieqi": "寒露",
+   "order": 1,
+   "name": "鸿鴈来宾",
+   "name_modern": "鸿雁来宾",
+   "aliases": [
+    "鸿雁来宾"
+   ],
+   "hou_hook": "蹲一个鸿雁来宾出生的人",
+   "motif": {
+    "primary": "雁",
+    "all": [
+     "雁",
+     "鸟类"
+    ]
+   },
+   "classic": "鸿鴈来宾。鴈以仲秋先至者为主，季秋后至者为宾。​《通书》作来滨。滨，水际也，亦通。",
+   "modern": "后到的大雁像客人一样停在水边。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_5f3cd17177ba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 50,
+   "jieqi": "寒露",
+   "order": 2,
+   "name": "雀入大水为蛤",
+   "name_modern": "雀入大水为蛤",
+   "aliases": [],
+   "hou_hook": "蹲一个雀入大水为蛤的人",
+   "motif": {
+    "primary": "鸟类",
+    "all": [
+     "鸟类",
+     "泽",
+     "雀"
+    ]
+   },
+   "classic": "雀入大水为蛤。雀，小鸟也，其类不一，此为黄雀。大水，海也，​《国语》云：雀入大海为蛤。盖寒风严肃，多入于海。变之为蛤，此飞物化为潜物也。蛤，蚌属，此小者也。",
+   "modern": "黄雀不见，海边多出蛤蜊，古人以为是雀变的。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_5f3cd17177ba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 51,
+   "jieqi": "寒露",
+   "order": 3,
+   "name": "菊有黄华",
+   "name_modern": "菊有黄华",
+   "aliases": [],
+   "hou_hook": "蹲一个菊有黄华出生的人",
+   "motif": {
+    "primary": "花",
+    "all": [
+     "花"
+    ]
+   },
+   "classic": "菊有黄华。草木皆华于阳，独菊华于阴，故言有桃桐之华皆不言色，而独菊言者，其色正应季秋土旺之时也。",
+   "modern": "菊花开出黄花，草木之中只有它在阴气里开。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_5f3cd17177ba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 52,
+   "jieqi": "霜降",
+   "order": 1,
+   "name": "豺祭兽",
+   "name_modern": "豺祭兽",
+   "aliases": [],
+   "hou_hook": "蹲一个豺祭兽出生的人",
+   "motif": {
+    "primary": "走兽",
+    "all": [
+     "走兽"
+    ]
+   },
+   "classic": "豺祭兽。祭兽，以兽而祭天，报本也。方铺而祭，秋金之义。",
+   "modern": "豺捕到猎物，先摆开再食。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_e3ee5808bc1e.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 53,
+   "jieqi": "霜降",
+   "order": 2,
+   "name": "草木黄落",
+   "name_modern": "草木黄落",
+   "aliases": [],
+   "hou_hook": "蹲一个草木黄落出生的人",
+   "motif": {
+    "primary": "木",
+    "all": [
+     "木",
+     "草"
+    ]
+   },
+   "classic": "草木黄落。色黄而摇落也。",
+   "modern": "叶子转黄，纷纷落下。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_e3ee5808bc1e.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 54,
+   "jieqi": "霜降",
+   "order": 3,
+   "name": "蛰虫咸俯",
+   "name_modern": "蛰虫咸俯",
+   "aliases": [],
+   "hou_hook": "蹲一个蛰虫咸俯出生的人",
+   "motif": {
+    "primary": "蛰虫",
+    "all": [
+     "蛰虫",
+     "土"
+    ]
+   },
+   "classic": "蛰虫咸俯。咸，皆也。俯，垂头也。此时寒气肃凛，虫皆垂头而不食矣。",
+   "modern": "虫都低下头，不再进食。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_e3ee5808bc1e.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 55,
+   "jieqi": "立冬",
+   "order": 1,
+   "name": "水始冰",
+   "name_modern": "水始冰",
+   "aliases": [],
+   "hou_hook": "蹲一个水始冰出生的人",
+   "motif": {
+    "primary": "冰",
+    "all": [
+     "冰",
+     "水泉"
+    ]
+   },
+   "classic": "水始冰。水面初凝，未至于坚也。",
+   "modern": "水面结出第一层薄冰，还不坚硬。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2680163dc456.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 56,
+   "jieqi": "立冬",
+   "order": 2,
+   "name": "地始冻",
+   "name_modern": "地始冻",
+   "aliases": [],
+   "hou_hook": "蹲一个地始冻出生的人",
+   "motif": {
+    "primary": "土",
+    "all": [
+     "土",
+     "冰"
+    ]
+   },
+   "classic": "地始冻。土气凝寒，未至于拆。",
+   "modern": "土面冻结，还没有裂开。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2680163dc456.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 57,
+   "jieqi": "立冬",
+   "order": 3,
+   "name": "雉入大水为蜃",
+   "name_modern": "雉入大水为蜃",
+   "aliases": [],
+   "hou_hook": "蹲一个雉入大水为蜃的人",
+   "motif": {
+    "primary": "雉",
+    "all": [
+     "雉",
+     "泽",
+     "鸟类"
+    ]
+   },
+   "classic": "雉入大水为蜃。雉，野鸡。郑康成、​《淮南子》​、高诱俱注蜃为大蛤。​《玉篇》亦曰：蜃，大蛤也。​《墨子》又曰：蚌，一名蜃，蚌非蛤类乎？​《礼记之注》曰蛟属，​《埤雅》又以蚌、蜃各释，似非蛤类。然按《本草》车螯之条曰：车螯，是大蛤，一名蜃，能吐气为楼台，又尝闻海旁蜃气成楼垣。​《章龟经》曰：蜃大者为车轮岛屿，月闲吐气成楼，与蛟龙同也。则知此为蛤，明矣。况《尔雅翼》引周礼诸家，辩蜃为蛤甚明。​《礼记之注》以谓雉，由于蛇化之说，故以雉子为蜃，​《埤雅》既曰似蛇而大，腹下尽逆鳞，知之悉矣，然复疑之：一曰状似螭龙，有耳，有角，则亦闻而识之，不若《本草》​、​《章龟经》为是，即一物耳。大水，淮也，晋语曰：雉入于淮为蜃。",
+   "modern": "野鸡少见，海边出现大蛤，古人以为是雉变的。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2680163dc456.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 58,
+   "jieqi": "小雪",
+   "order": 1,
+   "name": "虹藏不见",
+   "name_modern": "虹藏不见",
+   "aliases": [],
+   "hou_hook": "蹲一个虹藏不见出生的人",
+   "motif": {
+    "primary": "虹",
+    "all": [
+     "虹",
+     "天地"
+    ]
+   },
+   "classic": "虹藏不见。​《礼记注》曰：阴阳气交而为虹，此时阴阳极乎辨，故虹伏。虹非有质，而曰藏，亦言其气之下伏耳。",
+   "modern": "空气干燥，虹不再出现在天上。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_9330a943715c.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 59,
+   "jieqi": "小雪",
+   "order": 2,
+   "name": "天气上升地气下降",
+   "name_modern": "天气上升地气下降",
+   "aliases": [
+    "天气上升，地气下降"
+   ],
+   "hou_hook": "蹲一个天气上升地气下降的人",
+   "motif": {
+    "primary": "天地",
+    "all": [
+     "天地",
+     "土"
+    ]
+   },
+   "classic": "天气上升，地气下降。",
+   "modern": "天上的气往上走，地的气往下沉，两者不再相接。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_9330a943715c.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 60,
+   "jieqi": "小雪",
+   "order": 3,
+   "name": "闭塞而成冬",
+   "name_modern": "闭塞而成冬",
+   "aliases": [],
+   "hou_hook": "蹲一个闭塞而成冬出生的人",
+   "motif": {
+    "primary": "天地",
+    "all": [
+     "天地",
+     "冰"
+    ]
+   },
+   "classic": "闭塞而成冬。天地变而各正其位，不交则不通，不通则闭塞，而时之所以为冬也。",
+   "modern": "天地各自归位，上下不通，冬天由此成立。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_9330a943715c.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 61,
+   "jieqi": "大雪",
+   "order": 1,
+   "name": "鹖鴠不鸣",
+   "name_modern": "鹖鴠不鸣",
+   "aliases": [],
+   "hou_hook": "蹲一个鹖鴠不鸣出生的人",
+   "motif": {
+    "primary": "鸟类",
+    "all": [
+     "鸟类",
+     "鹖鴠"
+    ]
+   },
+   "classic": "鹖鴠不鸣。​《禽经》曰：鹖，毅鸟也。似雉而大，有毛角，鬬死方休，古人取为勇士，冠名可知矣，​《汉书音义》亦然。​《埤雅》云：黄黑色，故名为鹖。据此，本阳鸟，感六阴之极不鸣矣。若郭璞《方言》​：似鸡，冬无毛，昼夜鸣，即寒号虫。陈澔与方氏亦曰求旦之鸟，皆非也。夜既鸣，何为不鸣耶？​《丹铅余录》作鴈，亦恐不然。​《淮南子》作鳱鴠，​《诗》注作渴旦。",
+   "modern": "爱叫的鹖鴠安静下来。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_21f4c4b1ea57.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 62,
+   "jieqi": "大雪",
+   "order": 2,
+   "name": "虎始交",
+   "name_modern": "虎始交",
+   "aliases": [],
+   "hou_hook": "蹲一个虎始交出生的人",
+   "motif": {
+    "primary": "走兽",
+    "all": [
+     "走兽"
+    ]
+   },
+   "classic": "虎始交。虎，猛兽。故《本草》曰能避恶魅，今感微阳气，益甚也，故相与而交。",
+   "modern": "虎在这时开始求偶。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_21f4c4b1ea57.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 63,
+   "jieqi": "大雪",
+   "order": 3,
+   "name": "荔挺出",
+   "name_modern": "荔挺出",
+   "aliases": [],
+   "hou_hook": "蹲一个荔挺出出生的人",
+   "motif": {
+    "primary": "草",
+    "all": [
+     "草",
+     "冰"
+    ]
+   },
+   "classic": "荔挺出。荔，​《本草》谓之蠡，实即马薤也。郑康成、蔡邕、高诱皆云马薤，况《说文》云：荔似蒲而小，根可为刷，与《本草》同。但陈澔注为香草，附和者即以为零陵香，殊不知零陵香自生于三月也。",
+   "modern": "马薤从冻土里抽出新芽。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_21f4c4b1ea57.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 64,
+   "jieqi": "冬至",
+   "order": 1,
+   "name": "蚯蚓结",
+   "name_modern": "蚯蚓结",
+   "aliases": [],
+   "hou_hook": "蹲一个蚯蚓结出生的人",
+   "motif": {
+    "primary": "蚯蚓",
+    "all": [
+     "蚯蚓"
+    ]
+   },
+   "classic": "蚯蚓结。六阴寒极之时，蚯蚓交相结而如绳也。",
+   "modern": "蚯蚓在土里蜷曲成结。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_fdffca3103a0.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 65,
+   "jieqi": "冬至",
+   "order": 2,
+   "name": "麋角解",
+   "name_modern": "麋角解",
+   "aliases": [],
+   "hou_hook": "蹲一个麋角解出生的人",
+   "motif": {
+    "primary": "鹿",
+    "all": [
+     "鹿"
+    ]
+   },
+   "classic": "麋角解。说见鹿角解下。",
+   "modern": "麋的旧角脱落。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_fdffca3103a0.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 66,
+   "jieqi": "冬至",
+   "order": 3,
+   "name": "水泉动",
+   "name_modern": "水泉动",
+   "aliases": [],
+   "hou_hook": "蹲一个水泉动出生的人",
+   "motif": {
+    "primary": "水泉",
+    "all": [
+     "水泉"
+    ]
+   },
+   "classic": "水泉动。水者，天一之阳所生，阳生而动，今一阳初生故云耳。",
+   "modern": "地下泉水开始流动，一线阳从最深处回来。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_fdffca3103a0.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 67,
+   "jieqi": "小寒",
+   "order": 1,
+   "name": "鴈北乡",
+   "name_modern": "雁北乡",
+   "aliases": [
+    "雁北乡"
+   ],
+   "hou_hook": "蹲一个雁北乡出生的人",
+   "motif": {
+    "primary": "雁",
+    "all": [
+     "雁",
+     "鸟类"
+    ]
+   },
+   "classic": "鴈北乡。乡，向导之义。二阳之候，鴈将避热而回，今则乡北飞之，至立春后皆归矣，禽鸟得气之先故也。",
+   "modern": "大雁调头向北，先头队伍启程。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_99766775521c.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 68,
+   "jieqi": "小寒",
+   "order": 2,
+   "name": "鹊始巢",
+   "name_modern": "鹊始巢",
+   "aliases": [],
+   "hou_hook": "蹲一个鹊始巢出生的人",
+   "motif": {
+    "primary": "鹊",
+    "all": [
+     "鹊",
+     "鸟类"
+    ]
+   },
+   "classic": "鹊始巢。喜鹊也，鹊巢之门每向太岁，冬至天元之始，至后二阳已得来年之节气，鹊遂可为巢，知所向也。",
+   "modern": "喜鹊开始筑巢。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_99766775521c.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 69,
+   "jieqi": "小寒",
+   "order": 3,
+   "name": "雉雊",
+   "name_modern": "雉雊",
+   "aliases": [],
+   "hou_hook": "蹲一个雉雊出生的人",
+   "motif": {
+    "primary": "雉",
+    "all": [
+     "雉",
+     "鸟类"
+    ]
+   },
+   "classic": "雉雊。雉，文明之禽，阳鸟也。雊，雌雄之同鸣也，感于阳而后有声。",
+   "modern": "野鸡雌雄相和而鸣。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_99766775521c.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 70,
+   "jieqi": "大寒",
+   "order": 1,
+   "name": "鸡乳",
+   "name_modern": "鸡乳",
+   "aliases": [],
+   "hou_hook": "蹲一个鸡乳出生的人",
+   "motif": {
+    "primary": "鸡鸣",
+    "all": [
+     "鸡鸣"
+    ]
+   },
+   "classic": "鸡乳。育也，马氏曰：鸡木畜，丽于阳而有形，故乳在立春节也。",
+   "modern": "母鸡开始孵蛋。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2c21407c7dba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 71,
+   "jieqi": "大寒",
+   "order": 2,
+   "name": "征鸟厉疾",
+   "name_modern": "征鸟厉疾",
+   "aliases": [],
+   "hou_hook": "蹲一个征鸟厉疾出生的人",
+   "motif": {
+    "primary": "鹰隼",
+    "all": [
+     "鹰隼"
+    ]
+   },
+   "classic": "征鸟厉疾。征，伐也。杀伐之鸟，乃鹰隼之属。至此而猛厉迅疾也。",
+   "modern": "鹰隼飞得又快又猛。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2c21407c7dba.aspx",
+   "confidence": "verified"
+  },
+  {
+   "hou": 72,
+   "jieqi": "大寒",
+   "order": 3,
+   "name": "水泽腹坚",
+   "name_modern": "水泽腹坚",
+   "aliases": [],
+   "hou_hook": "蹲一个水泽腹坚出生的人",
+   "motif": {
+    "primary": "冰",
+    "all": [
+     "冰",
+     "泽",
+     "水泉"
+    ]
+   },
+   "classic": "水泽腹坚。陈氏曰：冰之初凝，水面而已，至此则彻，上下皆凝。故云腹坚。腹，犹内也。",
+   "modern": "冰从水面一直冻到水底。",
+   "source_url": "https://www.gushiwen.cn/guwen/bookv_2c21407c7dba.aspx",
+   "confidence": "verified"
+  }
+ ]
+}

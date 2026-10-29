@@ -1,0 +1,533 @@
+DONE · 任务 B · 七十二候 Phase 1（数据定稿 + web 工具）
+============================================================
+日期：2026-10-30
+环境：macOS arm64 / Node v24.18.0 / Python 3（output-B/../.venv）/ Playwright Chromium（headless）
+目录：/Users/joe/Desktop/hou72-spike/output-B/
+baseline/ 只读，未改动；hou_calc.py 与 baseline 逐字节一致
+（sha256 d5e42d11cb10f9f37d6f145b984eb204546f5b5bb179a73d115ee0ba43d253c3）。
+
+------------------------------------------------------------
+0. 产物
+------------------------------------------------------------
+output-B/
+  hou72-final.json         55,517 B   72 行，43 词表，简体标签
+  hou_terms.js             52,742 B   152 年组 × 24 气，51.5 KB raw / 13.1 KB gzip
+  DATA-report.md                    第一部分报告
+  APP-report.md                     第二部分报告（架构/偏离/闸门/测试）
+  app/index.html           20,444 B   含开场选纸、整页亮暗、四季、口径、墨/纸
+  app/assets/hou_terms.js  52,742 B
+  app/assets/hou72-data.js 12,591 B
+  app/assets/lookup.js      1,704 B
+  app/assets/capture.js     3,547 B  铺底色改为读卡片 computed 背景
+  app/assets/app.js         9,221 B  含主题、今日、季节、皮肤、口径开关
+  build_final.py / build_terms.py / build_app_data.py
+  build.sh                          全闸门 + 出包
+  ziwei-hou.zip            30,711 B  (30 KB) 7 条目
+  tools/test_lookup.js / test_ui.js / test_zip.js / test_season.js /
+        test_skin.js / test_entry.js
+  tools/shots/*.png                 19 张截图（见 §6）
+
+产物可复现：重跑 build_final.py + build_terms.py 后两个文件 sha256 不变。
+  hou72-final.json  bf8304a7555ceb4d475a691345c1a369b45bfe0388f2353c38fccb7c2a723196
+  hou_terms.js      e015789d64b59920057c5a004dae7327a834534b9e3cf13fbb1f0ff9486834df
+  app/assets/hou_terms.js 与 hou_terms.js 同 hash（构建时直接复制）
+
+------------------------------------------------------------
+1. 命令清单 + exit code
+------------------------------------------------------------
+（全部在 output-B/ 下执行）
+
+  ../.venv/bin/python build_final.py      exit 0   生成 hou72-final.json + 校验
+  ../.venv/bin/python build_terms.py      exit 0   生成 hou_terms.js + 对账
+  ../.venv/bin/python build_app_data.py   exit 0   剥字段生成 app/assets/hou72-data.js
+  node tools/test_lookup.js               exit 0   查表纯函数 32 项
+  node tools/test_ui.js                   exit 0   Playwright 验收 36 项
+  node tools/test_zip.js                  exit 0   解压冒烟 8 项
+  node tools/test_season.js               exit 0   季节色温 28 项
+  node tools/test_skin.js                 exit 0   墨/纸双版 34 项
+  node tools/test_entry.js                exit 0   开场/整页亮暗/今日 31 项
+  ./build.sh                              exit 0   全闸门 + 出 zip（内含 lookup / zip / 季节 / 纸墨 / 开场测试）
+
+注：build.sh 会自己重跑 build_app_data.py 并复制 hou_terms.js，然后跑 9 组 grep 闸门、
+出包，再从解压产物起页冒烟、跑季节 / 纸墨 / 开场测试；任何一步不过都 rm ziwei-hou.zip 并 exit 1。
+
+------------------------------------------------------------
+2. 闸门全量输出（./build.sh，exit 0）
+------------------------------------------------------------
+== 0. 重新生成数据 ==
+/Users/joe/Desktop/hou72-spike/output-B/app/assets/hou72-data.js: 12.3 KB, 72 行
+PASS  hou_terms.js 复制
+
+== 1. 查表逻辑单测 ==
+PASS  test_lookup.js（32 项）
+
+== 2. 文件类型白名单 ==
+PASS  扩展名全部在白名单内（6 个文件）
+PASS  index.html 在包根
+
+== 3. 禁词（全量扫 index.html + assets） ==
+PASS  禁词 0 命中
+
+== 4. 内联 script ==
+PASS  无内联 script
+
+== 5. 网络 / 交互 API ==
+PASS  fetch/XHR/WS/eval/window.open/clipboard/内联事件/iframe = 0
+
+== 6. 外部资源 ==
+PASS  无外部 URL（仅保留 SVG/XHTML 命名空间常量 2 处）
+PASS  命名空间常量恰为 2
+
+== 7. 必带项 ==
+PASS  viewport-fit=cover
+PASS  touch-action:manipulation
+PASS  免责声明逐字
+PASS  口径小字逐字
+
+== 8. 体积 ==
+PASS  app/ 108 KB < 2 MB
+
+== 9. 打包 ==
+PASS  ziwei-hou.zip 32 KB < 2 MB
+PASS  zip 根目录含 index.html
+PASS  zip 内扩展名合规
+
+== zip 清单 ==
+Archive:  ziwei-hou.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    20444  10-30-2026 02:10   index.html
+        0  10-30-2026 02:10   assets/
+     1704  10-30-2026 00:19   assets/lookup.js
+    52742  10-30-2026 02:11   assets/hou_terms.js
+     3547  10-30-2026 01:59   assets/capture.js
+    12591  10-30-2026 02:11   assets/hou72-data.js
+     9221  10-30-2026 02:10   assets/app.js
+---------                     -------
+   100249                     7 files
+
+
+== 10. 解压冒烟（从 zip 解压产物起页） ==
+PASS  test_zip.js（8 项）
+
+== 11. 季节色温 ==
+PASS  test_season.js（28 项）
+
+== 12. 墨 / 纸双版 ==
+PASS  test_skin.js（34 项）
+
+== 13. 开场选纸 / 整页亮暗 / 今日 ==
+PASS  test_entry.js（31 项）
+
+ALL GATES PASS
+
+闸门范围说明：
+- 禁词实际扫 7 个字：吉|凶|运|福|灾|宜|忌（任务书列 6 个，我多收了 运/福/灾，属收紧）。
+- 外部资源只豁免 SVG/XHTML 两个命名空间常量（createElementNS 必需），并断言恰为 2。
+- zip 内扩展名判定先剔除目录项（assets/），否则会被误判成非法扩展名。
+
+------------------------------------------------------------
+3. Playwright 验收全量输出（node tools/test_ui.js，exit 0）
+------------------------------------------------------------
+390×844，deviceScaleFactor 2，file:// 直开。
+
+PASS  1994-11-30 01:50 节气  got="小雪" want="小雪"
+PASS  1994-11-30 01:50 候名  got="天气上升地气下降" want="天气上升地气下降"
+PASS  1994-11-30 01:50 进度  got=true want=true
+PASS  1994-11-30 01:50 节气序号  got=true want=true
+PASS  1994-11-30 01:50 卡片可见  got=true want=true
+PASS  2023-05-28 10:00 节气  got="小满" want="小满"
+PASS  2023-05-28 10:00 候名  got="靡草死" want="靡草死"
+PASS  2023-05-28 10:00 进度  got=true want=true
+PASS  2023-05-28 10:00 节气序号  got=true want=true
+PASS  2023-05-28 10:00 卡片可见  got=true want=true
+PASS  1995-01-06 00:30 节气  got="冬至" want="冬至"
+PASS  1995-01-06 00:30 候名  got="水泉动" want="水泉动"
+PASS  1995-01-06 00:30 进度  got=true want=true
+PASS  1995-01-06 00:30 节气序号  got=true want=true
+PASS  1995-01-06 00:30 卡片可见  got=true want=true
+PASS  390 宽无横向滚动  got=true want=true
+PASS  卡片高度 844  got=844 want=844
+PASS  底部内容不出内框（<=818）  got=true want=true
+PASS  保存后为 PNG dataURL  got=true want=true
+PASS  导出图宽 780  got=780 want=780
+PASS  导出图高 1688  got=1688 want=1688
+PASS  灯箱可关闭  got=true want=true
+PASS  口径面板默认收起  got=true want=true
+PASS  口径面板可展开  got=true want=true
+PASS  aria-expanded 同步  got="true" want="true"
+PASS  口径含黄经  got=true want=true
+PASS  口径含范围  got=true want=true
+PASS  口径含不上传  got=true want=true
+PASS  口径面板可收起  got=true want=true
+PASS  保存失败降级提示  got="当前环境不支持导出图片，请用系统截图" want="当前环境不支持导出图片，请用系统截图"
+PASS  失败时不弹灯箱  got=true want=true
+PASS  1899 走 null 路径（无卡）  got=true want=true
+PASS  1899 提示语  got="表覆盖 1900-2050，其他年份暂不支持" want="表覆盖 1900-2050，其他年份暂不支持"
+PASS  2051 走 null 路径（无卡）  got=true want=true
+PASS  375 宽无横向滚动  got=true want=true
+PASS  375 宽卡片缩放后 <= 375  got=true want=true
+
+JS 错误数：0
+
+RESULT: ALL PASS
+
+（pageerror / console.error / requestfailed 三路监听，计数 0。）
+
+------------------------------------------------------------
+4. 查表单测全量输出（node tools/test_lookup.js，exit 0）
+------------------------------------------------------------
+PASS  1994-11-30 01:50 hou  got=59 want=59
+PASS  1994-11-30 01:50 jieqiIndex  got=20 want=20
+PASS  1994-11-30 01:50 order  got=2 want=2
+PASS  1994-11-30 01:50 name  got=天气上升地气下降 want=天气上升地气下降
+PASS  1994-11-08 10:00 hou  got=55 want=55
+PASS  1994-11-08 10:00 jieqiIndex  got=19 want=19
+PASS  1994-11-08 10:00 order  got=1 want=1
+PASS  1994-11-08 10:00 name  got=水始冰 want=水始冰
+PASS  1994-11-27 19:00 hou  got=58 want=58
+PASS  1994-11-27 19:00 jieqiIndex  got=20 want=20
+PASS  1994-11-27 19:00 order  got=1 want=1
+PASS  1994-11-27 19:00 name  got=虹藏不见 want=虹藏不见
+PASS  1994-11-27 20:00 hou  got=59 want=59
+PASS  1994-11-27 20:00 jieqiIndex  got=20 want=20
+PASS  1994-11-27 20:00 order  got=2 want=2
+PASS  1994-11-27 20:00 name  got=天气上升地气下降 want=天气上升地气下降
+PASS  1995-01-06 00:30 hou  got=66 want=66
+PASS  1995-01-06 00:30 jieqiIndex  got=22 want=22
+PASS  1995-01-06 00:30 order  got=3 want=3
+PASS  1995-01-06 00:30 name  got=水泉动 want=水泉动
+PASS  1995-01-06 10:00 hou  got=67 want=67
+PASS  1995-01-06 10:00 jieqiIndex  got=23 want=23
+PASS  1995-01-06 10:00 order  got=1 want=1
+PASS  1995-01-06 10:00 name  got=雁北乡 want=雁北乡
+PASS  2023-05-28 10:00 -> 小满二候 靡草死  got=靡草死 want=靡草死
+PASS  1900-01-01 00:00 ok  got=true want=true
+PASS  1900-01-01 00:00 hou  got=66 want=66
+PASS  1899-12-31 23:59 越界  got=range want=range
+PASS  2050-12-31 23:59 ok  got=true want=true
+PASS  2051-01-01 00:00 越界  got=range want=range
+PASS  152 年组都存在  got=152 want=152
+PASS  24 项/组  got=true want=true
+
+RESULT: ALL PASS
+
+其中 1994-11-27 19:00→20:00 一对，验证「候界精确到分钟」：19:00 仍是小雪初候，
+20:00 已进入二候（表内小雪起点 11-22T19:20，5 天后 11-27T19:20 换候）。
+
+------------------------------------------------------------
+5. 解压冒烟全量输出（node tools/test_zip.js，exit 0）
+------------------------------------------------------------
+解压清单：
+  assets/app.js
+  assets/capture.js
+  assets/hou72-data.js
+  assets/hou_terms.js
+  assets/lookup.js
+  index.html
+
+PASS  解压后 index.html 在根  got=true want=true
+PASS  文件数 6  got=6 want=6
+PASS  无绝对路径 / 无 ..  got=true want=true
+PASS  解压产物无脚本错误即加载  got=0 want=0
+PASS  解压产物 节气  got="小雪" want="小雪"
+PASS  解压产物 候名  got="天气上升地气下降" want="天气上升地气下降"
+PASS  解压产物 进度  got=true want=true
+PASS  解压产物 保存为 PNG  got=true want=true
+
+JS 错误数：0
+
+RESULT: ALL PASS
+
+------------------------------------------------------------
+5b. 季节色温测试全量输出（node tools/test_season.js，exit 0）
+------------------------------------------------------------
+2023-03-01 12:00 起四例，各查节气名 / season 类 / 三个色值：
+
+PASS  2023-03-01 节气  got="雨水" want="雨水"
+PASS  2023-03-01 季节类  got="card season-spring" want="card season-spring"
+PASS  spring 金丝色  got="150,184,124" want="150,184,124"
+PASS  spring 底色顶  got="#16231A" want="#16231A"
+PASS  spring 节气色  got="#8AA968" want="#8AA968"
+PASS  2023-03-01 无横向滚动  got=true want=true
+PASS  2023-06-01 节气  got="小满" want="小满"
+PASS  2023-06-01 季节类  got="card season-summer" want="card season-summer"
+PASS  summer 金丝色  got="222,146,74" want="222,146,74"
+PASS  summer 底色顶  got="#2A1A11" want="#2A1A11"
+PASS  summer 节气色  got="#B87A42" want="#B87A42"
+PASS  2023-06-01 无横向滚动  got=true want=true
+PASS  2023-09-01 节气  got="处暑" want="处暑"
+PASS  2023-09-01 季节类  got="card season-autumn" want="card season-autumn"
+PASS  autumn 金丝色  got="200,171,104" want="200,171,104"
+PASS  autumn 底色顶  got="#221D16" want="#221D16"
+PASS  autumn 节气色  got="#9C8558" want="#9C8558"
+PASS  2023-09-01 无横向滚动  got=true want=true
+PASS  2023-12-01 节气  got="小雪" want="小雪"
+PASS  2023-12-01 季节类  got="card season-winter" want="card season-winter"
+PASS  winter 金丝色  got="172,186,200" want="172,186,200"
+PASS  winter 底色顶  got="#191E24" want="#191E24"
+PASS  winter 节气色  got="#8796A6" want="#8796A6"
+PASS  2023-12-01 无横向滚动  got=true want=true
+PASS  四季金丝色两两不同  got=4 want=4
+PASS  春季导出 780×1688  got=true want=true
+PASS  冬季导出 780×1688  got=true want=true
+PASS  导出图带季节底色（春≠冬）  got=true want=true
+
+JS 错误数：0
+
+RESULT: ALL PASS
+
+------------------------------------------------------------
+5c. 墨/纸双版测试全量输出（node tools/test_skin.js，exit 0）
+------------------------------------------------------------
+PASS  默认卡片类  got="card season-autumn" want="card season-autumn"
+PASS  默认墨底按下  got="skin-btn is-on|true" want="skin-btn is-on|true"
+PASS  默认宣纸未按  got="skin-btn|false" want="skin-btn|false"
+PASS  默认底色  got="#14120F" want="#14120F"
+PASS  宣纸卡片类  got="card season-autumn skin-paper" want="card season-autumn skin-paper"
+PASS  宣纸按下  got="skin-btn is-on|true" want="skin-btn is-on|true"
+PASS  墨底松开  got="skin-btn|false" want="skin-btn|false"
+PASS  宣纸底色顶  got="#F7F1E2" want="#F7F1E2"
+PASS  宣纸底色底  got="#EBE0C9" want="#EBE0C9"
+PASS  宣纸节气色  got="#8A5A2B" want="#8A5A2B"
+PASS  宣纸无横向滚动  got=true want=true
+PASS  宣纸底 computed  got="rgb(235,224,201)" want="rgb(235,224,201)"
+INFO  宣纸对比度 body=8.63 caliber=4.79 disclaimer=5.8 brand=5.8
+PASS  宣纸正文对比度 ≥4.5  got=true want=true
+PASS  宣纸口径行对比度 ≥4.5  got=true want=true
+PASS  宣纸免责行对比度 ≥4.5  got=true want=true
+PASS  宣纸品牌行对比度 ≥4.5  got=true want=true
+PASS  换日期后仍为宣纸  got="card season-spring skin-paper" want="card season-spring skin-paper"
+PASS  宣纸春色  got="#EDE9D6" want="#EDE9D6"
+PASS  宣纸 spring 节气色  got="#3E6B4E" want="#3E6B4E"
+PASS  宣纸 spring 底色  got="#EDE9D6" want="#EDE9D6"
+PASS  宣纸 summer 节气色  got="#A2452A" want="#A2452A"
+PASS  宣纸 summer 底色  got="#F0E4CE" want="#F0E4CE"
+PASS  宣纸 autumn 节气色  got="#8A5A2B" want="#8A5A2B"
+PASS  宣纸 autumn 底色  got="#EBE0C9" want="#EBE0C9"
+PASS  宣纸 winter 节气色  got="#3B4754" want="#3B4754"
+PASS  宣纸 winter 底色  got="#E9E7DE" want="#E9E7DE"
+PASS  四季纸色两两不同  got=4 want=4
+PASS  四季纸墨节气色两两不同  got=4 want=4
+PASS  宣纸导出 780×1688  got=true want=true
+PASS  宣纸导出为纸色（亮底）  got=true want=true
+PASS  切回墨底类  got="card season-winter" want="card season-winter"
+PASS  切回墨底底色  got="#101215" want="#101215"
+PASS  墨底按下  got="skin-btn is-on|true" want="skin-btn is-on|true"
+PASS  切回墨底导出为暗底  got=true want=true
+
+JS 错误数：0
+
+RESULT: ALL PASS
+
+------------------------------------------------------------
+5d. 开场 / 整页亮暗 / 今日测试全量输出（node tools/test_entry.js，exit 0）
+------------------------------------------------------------
+PASS  开场选纸可见  got=true want=true
+PASS  未选前主内容 inert  got=true want=true
+PASS  未选前无主题  got=null want=null
+PASS  选后进入退场  got=true want=true
+PASS  退场后移除对话框  got=true want=true
+PASS  暗色主题  got="dark" want="dark"
+PASS  暗色页面底色  got="rgb(11,10,8)" want="rgb(11,10,8)"
+PASS  暗色切换键文案  got="宣纸" want="宣纸"
+PASS  主内容解除 inert  got=false want=false
+PASS  暗色卡片无纸类  got="card season-autumn" want="card season-autumn"
+PASS  亮色主题  got="light" want="light"
+PASS  亮色页面底色  got="rgb(243,236,219)" want="rgb(243,236,219)"
+PASS  亮色卡片自动换纸  got="card season-autumn skin-paper" want="card season-autumn skin-paper"
+PASS  亮色切换键文案  got="墨底" want="墨底"
+PASS  亮色切换键 aria  got="切换为墨底" want="切换为墨底"
+PASS  亮色无横向滚动  got=true want=true
+INFO  亮色对比度 lede=5.25
+PASS  亮色 lede 对比度 ≥4.5  got=true want=true
+INFO  亮色对比度 field-label=5.25
+PASS  亮色 field-label 对比度 ≥4.5  got=true want=true
+INFO  亮色对比度 method-dd=5.25
+PASS  亮色 method-dd 对比度 ≥4.5  got=true want=true
+INFO  亮色对比度 footer=6.44
+PASS  亮色 footer 对比度 ≥4.5  got=true want=true
+PASS  亮色导出 780×1688  got=true want=true
+PASS  亮色导出为纸色  got=true want=true
+PASS  今天日期填入  got="2026-10-30" want="2026-10-30"
+PASS  今天时刻填入  got="10:00" want="10:00"
+PASS  今天提示语  got=true want=true
+PASS  今天的候编号  got=true want=true
+PASS  今天卡片日期  got=true want=true
+PASS  今天仍为亮色  got="light" want="light"
+PASS  375 亮色无横向滚动  got=true want=true
+PASS  375 亮色卡片为纸  got=true want=true
+PASS  减少动态时即刻退场  got=true want=true
+
+JS 错误数：0
+
+RESULT: ALL PASS
+
+（“今天”用注入的固定时钟 2026-10-30T02:00:00Z = 北京时间 10:00，只替换 Date，不动 setTimeout。）
+
+------------------------------------------------------------
+6. 第一部分构建输出（exit 0）
+------------------------------------------------------------
+build_final.py：
+写出 /Users/joe/Desktop/hou72-spike/output-B/hou72-final.json
+词表 43 词：日 月 星 虹 云 雨雪 冰 水泉 泽 土 雷 风 鹰隼 鸟类 雁 燕 鸡鸣 鹿 马 蛰虫
+蚯蚓 蝉 狐 花 木 禾 草 鱼 露 电 天地 走兽 虫 鸠 鹊 雉 黄鹂 鹌鹑 戴胜 伯劳 乌鸫 雀 鹖鴠
+零命中：月 星 云 马 狐
+主标签仍为「鸟类」的行：[8, 14, 18, 26, 27, 45, 50, 61]
+残留「草木花」的行：[]
+全部校验通过（字段零改动 / primary∈all / 1-3 标签 / 全部在词表内 / 无繁体标签）
+
+build_terms.py：
+/Users/joe/Desktop/hou72-spike/output-B/hou_terms.js: 51.5 KB raw, 13.1 KB gzip, 152 年 × 24
+表查 1994 立冬: 11-07T21:48 vs 11-07T21:48  PASS
+表查 1994 小雪: 11-22T19:20 vs 11-22T19:20  PASS
+表查 1995 小寒: 01-06T01:52 vs 01-06T01:52  PASS
+表查 1994 大雪: 12-07T14:38 vs 12-07T14:39  参考（历书四舍五入，本表截断，差 1 分钟）
+表查 1994 冬至: 12-22T08:39 vs 12-22T08:40  参考（历书四舍五入，本表截断，差 1 分钟）
+2026 立春: 表 02-04T12:34 vs 现算 02-04T12:34  PASS
+2026 夏至: 表 06-22T01:37 vs 现算 06-22T01:37  PASS
+2026 立秋: 表 08-08T04:56 vs 现算 08-08T04:56  PASS
+2026 冬至: 表 12-22T13:38 vs 现算 12-22T13:38  PASS
+单调性/跨年衔接: PASS
+查表 vs 算法 306 点: PASS
+体积门槛 (raw<=60KB): PASS
+RESULT: ALL PASS
+
+截图（tools/shots/）：
+  anchor_01_xiaoxue.png   1994-11-30 01:50 · 小雪 · 天气上升地气下降
+  anchor_02_xiaoman.png   2023-05-28 10:00 · 小满 · 靡草死
+  anchor_03_dongzhi.png   1995-01-06 00:30 · 冬至 · 水泉动
+  save_lightbox.png       保存后的灯箱
+  export_card.png         导出的 780×1688 PNG 原件
+  page_full.png           整页
+  method_panel.png        口径面板展开态（整页）
+  width_375.png           375 宽缩放态
+  season_spring.png       2023-03-01 · 雨水 · 柳金
+  season_summer.png       2023-06-01 · 小满 · 赤金
+  season_autumn.png       2023-09-01 · 处暑 · 旧金（原版）
+  season_winter.png       2023-12-01 · 小雪 · 银金
+  skin_paper_spring.png   宣纸 · 2023-03-01 · 雨水 · 青
+  skin_paper_summer.png   宣纸 · 2023-06-01 · 小满 · 朱
+  skin_paper_autumn.png   宣纸 · 2023-09-01 · 处暑 · 赭（含按钮组）
+  skin_paper_winter.png   宣纸 · 2023-12-01 · 小雪 · 墨
+  gate.png                开场选纸（暗 / 亮）
+  page_light.png          整页亮色（含出卡与按钮区）
+  today.png               「看看今天是哪一候」出卡态
+
+------------------------------------------------------------
+7. 验收逐条
+------------------------------------------------------------
+[x] 词表简体化后 grep 繁体标签 = 0（classic 除外）
+    独立复核（真正有简繁差异的字：風雲鷹鴈鷄蟄蟲馬魚電獸陽鳩鵲鳥）：
+    motif 标签命中 0。
+    说明：hou72-final.json 里 `name` 字段 4 行、`classic` 字段 5 行仍含「鴈」——
+    前者是候名原文（候鴈北/鸿鴈来/鸿鴈来宾/鴈北乡），后者是红线 1 的原文。
+    卡片只用 `name_modern`（该字段繁体命中 0），页面与 assets 里不出现「鴈」。
+    初次核对时我把「隼」「雉」误当繁体（二字简繁同形），已剔除，非产物问题。
+
+[x] 鸟类/草木拆分覆盖全部旧粗标签
+    旧「鸟类」标签覆盖 20 行，全部按物种拆到 all：雁/燕/鸠/鹊/雉/鹰隼 + 通行名
+    （黄鹂/鹌鹑/戴胜/伯劳/乌鸫/雀/鹖鴠）。其中 8 行 primary 仍为「鸟类」，是你确认的
+    dual 策略（物种通行名进 all，primary 维持现状），不是漏拆；
+    第 45 候「群鸟养羞」本身是集合称名，无单一物种，只有「鸟类」。
+    旧「草木花」残留 0 行；拆为 花/木/禾/草 四词。
+    对照表见 DATA-report.md §3、§4。
+
+[x] hou_terms.js 抽查 2026 年 4 气与 ephem 现算一致；文件体积达标
+    立春 02-04T12:34 / 夏至 06-22T01:37 / 立秋 08-08T04:56 / 冬至 12-22T13:38，全等。
+    51.5 KB raw（门槛 ≤60 KB），gzip 13.1 KB（预估 ≤12 KB，超 1.1 KB，见 §8）。
+    另：1994 立冬/小雪/1995 小寒与 baseline selftest 逐分钟一致；
+    306 个随机时刻「查表结果 = 内核现算」全等；152 年组单调性/跨年衔接通过。
+
+[x] build.sh 全绿 + zip <2MB
+    ALL GATES PASS，exit 0；ziwei-hou.zip 30,711 B（30 KB），index.html 在根，7 条目，
+    扩展名全部合规。并且额外从解压产物起页跑通了锚点与保存（§5）。
+
+[x] Playwright 390×844：3 锚点日期出正确候、pageerror=0、保存按钮路径可达
+    1994-11-30 01:50 → 小雪 二候（59/72，order=2）
+    2023-05-28 10:00 → 小满 二候 靡草死（23/72）
+    1995-01-06 00:30 → 冬至 三候 水泉动（66/72，order=3）
+    JS 错误 0；保存 → 灯箱 → 780×1688 PNG → 可关闭；失败降级提示已测。
+
+[x] 禁词扫描 0 命中；无外链无内联 script
+    7 字（吉凶运福灾宜忌）0 命中；外部 URL 仅 2 个 W3C 命名空间常量；
+    5 个 script 全部带 src。
+
+[x] 超界输入走 null 路径
+    1899-12-31 与 2051-01-01 均不出卡，1899 提示语逐字
+    「表覆盖 1900-2050，其他年份暂不支持」；不外推、不取最近值。
+
+[x] 附加：季节色温（验收后按你要求新增，不属于原验收项）
+    season = ceil(节气序号 / 6)：春 1-6 / 夏 7-12 / 秋 13-18 / 冬 19-24。
+    四季各一组「金丝 / 底色顶 / 节气名」色值，只染卡片、不染表单与按钮；
+    文字明度全部保持原值，四季小字对比度不变；未出卡时默认等于原秋色。
+    test_season.js 28 项通过，含「春/冬导出图左上角像素不同」——色温确实进了 PNG。
+    四张对照图见 §6 season_*.png。
+
+[x] 附加：口径面板「这张卡是怎么算的」（验收后新增，不属于原验收项）
+    卡片下方可展开，四条：时间（黄经 15°/节气、候五天一格、表为预先实算）、
+    边界（分钟截断、与历书可能差 1 分钟、候界差一天属分法不同）、
+    范围（1900-01-01 至 2050-12-31、不外推）、用字（卡面通行字，原文留数据层）；
+    末尾一句「输入只在本机参与查表，不上传、不保存，查表过程不联网」。
+    面板在卡片之外，不进导出图；test_ui.js 新增 7 项（默认收起 / 展开 / aria /
+    三条文案 / 收起）全过。展开态截图见 §6 method_panel.png。
+
+[x] 附加：墨底 / 宣纸双版（验收后按你提的问题新增，不属于原验收项）
+    结果区按钮组顶部加「墨底 / 宣纸」两态开关（role=group + aria-pressed），默认墨底即原设计。
+    纸版不是只换字色：底色三档、框线（金丝→墨线）、七档文字色、节气名、页脚成对换；
+    纸版四季用墨色——春青 #3E6B4E / 夏朱 #A2452A / 秋赭 #8A5A2B / 冬墨 #3B4754。
+    纸色下对比度实算 8.63 / 4.79 / 5.80 / 5.80，均 ≥4.5。
+    capture.js 铺底改为读卡片 computed background-color，纸版导出即纸色（780×1688 已验）。
+    test_skin.js 34 项全过；四张纸版截图见 §6 skin_paper_*.png。
+
+[x] 附加：开场选纸动画 + 整页亮暗（验收后按你要求新增，不属于原验收项）
+    进入即全屏浮层（role=dialog + 主内容 inert + 锁滚动），两选项直接预渲染真实底色；
+    标题/说明/选项按 0.08-0.06s 递进淡入，选中后 380ms 淡出再把焦点交回主内容。
+    prefers-reduced-motion 下动画全关、立即切换。
+    整页 chrome 抽成 --pg-* 变量，html[data-theme="light"] 一组覆盖；亮色 CTA 墨底反白。
+    亮色对比度实算 5.25 / 5.25 / 5.25 / 6.44，全 ≥4.5；导出仍为纸色 780×1688。
+    不写 localStorage：每次进页面重选，和「输入不保存」保持一致。
+
+[x] 附加：今日之候
+    表单下方「看看今天是哪一候」：按 UTC+8 取当下，回填日期/时刻并走与手动提交
+    同一条 showFor()，提示「今天 · YYYY-MM-DD HH:MM · 按北京时间」。
+    测试注入固定时钟（2026-10-30 10:00 北京时间），候编号与 HouLookup.locate 一致。
+    设备时钟错结果就错，提示语把口径写明，不假装服务端时间。
+
+------------------------------------------------------------
+8. 偏离与口径说明（需要你知道的九处）
+------------------------------------------------------------
+1) 保存图片没有 vendor html-to-image，改为自写 app/assets/capture.js。
+   原因：该库 UMD 产物含 2 处 `fetch(`，会触发上架闸门的静态扫描。自写实现走同一路线
+   （SVG foreignObject → Image → 2× canvas → toDataURL），产物零网络 API。
+   这是唯一一处「与任务书指定方案不同」的地方，详见 APP-report.md §5。
+2) gzip 13.1 KB，比任务书预估的 12 KB 高 1.1 KB，raw 51.5 KB 在 60 KB 门槛内。
+3) 1994 大雪/冬至与任务书示例值差 1 分钟（14:38 vs 14:39、08:39 vs 08:40），
+   因为示例是四舍五入、本表按 baseline selftest 要求截断到分。三处必测值（立冬/小雪/小寒）
+   逐分钟一致。
+4) 表多含一个 1899 年组，只服务 1900 年 1 月的跨年查表，不影响 1900-2050 的 152 个年组。
+5) 季节色温是验收后追加的功能：只改卡片色相与底色，不改版式、不加元素；页面 chrome
+   固定暖金。若某个 WebView 在 foreignObject 内不解析 CSS 变量，屏幕正常但导出图会
+   丢季节色——与「保存图片」是同一处未真机验证的风险。
+6) 口径面板同样在卡片之外，**不进导出图**；它是页面上给「较真的人」看的一层，
+   不是分享内容的一部分。隐私句写作「查表过程不联网」，因为页面本身要从宿主
+   加载 JS/CSS，不能宣称整页零请求。
+7) 墨/纸切换只换卡片，页面 chrome（表单、按钮、页脚）始终是深色暖金——分享单元是卡片，
+   把整页翻成宣纸会像换了个产品。纸版对比度是按 WCAG 相对亮度算的，不是肉眼「看着还行」；
+   皮肤类名挂在卡片自身而非 <html>，否则 foreignObject 里没有祖先、导出会丢皮肤。
+   capture.js 的铺底从写死 #14120F 改为读 computed 背景，顺带修掉夏/冬导出图底角偏色。
+8) 主题选择**不记忆**：不写 localStorage / cookie，刷新即回开场。理由同上——它同时是
+   产品仪式与「不保存」口径的一部分；代价是每次多一步。
+9) 「今天」用的是设备时钟换算到 UTC+8，不是服务端时间；设备时间错，结果就错。
+   提示语写「按北京时间」只声明口径，不替设备背锅。
+
+------------------------------------------------------------
+9. 最没把握的一句
+------------------------------------------------------------
+保存图片这条路径——capture.js 是自写的替代实现，我只在 headless Chromium 里验证过
+（780×1688、失败降级都测了），没在 iOS Safari 和微信内置浏览器上真机跑过，
+尤其不确定 foreignObject 在这些 WebView 里对系统衬线字体与渐变底纹的渲染是否一致。
+宣纸版导出走的是同一条路径、同一个风险；它在 Chromium 里出图正确（§5c），
+但纸色在真实屏幕上的观感只经过截图核对，没有第二双眼睛在手机上确认过。
+开场浮层的 `inert` 在 iOS 15.5 以下不生效（浮层仍挡视线、功能不受影响，只是键盘焦点
+理论上能摸到后面）；淡入动画与整页换色的观感，同样只在 Chromium 里看过。

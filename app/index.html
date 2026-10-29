@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>你出生的那一候 · 七十二候历法身份卡</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; border-radius:0; }
+  [hidden] { display:none !important; }
+  :root {
+    --gold-rgb: 200,171,104;
+    --pg-bg:#0B0A08; --pg-text:#E8DFCB; --pg-head:#F0E3C4;
+    --pg-accent:#8C7A55; --pg-muted:#7E7157; --pg-faint:#6E6247;
+    --pg-dim:#4A4331; --pg-input:#E8DFCB; --pg-btn:#E3CE9B;
+    --pg-ghost:#B9A57C; --pg-msg:#B08A5C; --pg-focus:#C8AB68;
+  }
+  html[data-theme="light"] {
+    --gold-rgb: 110,92,66;
+    --pg-bg:#F3ECDB; --pg-text:#2E261A; --pg-head:#2B2318;
+    --pg-accent:#6F5F44; --pg-muted:#6F5F44; --pg-faint:#6B5B42;
+    --pg-dim:#5F5240; --pg-input:#2E261A; --pg-btn:#6F4A22;
+    --pg-ghost:#6F5F44; --pg-msg:#8A4B22; --pg-focus:#6F4A22;
+  }
+  html, body { background:var(--pg-bg); }
+  html, body { transition:background-color .45s ease; }
+  body {
+    min-height:100vh; color:var(--pg-text);
+    font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC","STSong","SimSun",serif;
+    -webkit-font-smoothing:antialiased;
+    touch-action:manipulation;
+    transition:color .45s ease;
+  }
+  body, .top h1, .lede, .field span, .field input, .btn, .msg, .save-hint,
+  .skin-btn, .method-toggle, .method-body dt, .method-body dd, .method-note,
+  .foot-page p, .theme-toggle, .today, .brandline {
+    transition:color .35s ease, background-color .35s ease, border-color .35s ease;
+  }
+  .shell { width:100%; max-width:430px; margin:0 auto; padding:0 0 48px; }
+  .shell:focus { outline:none; }
+
+  .top { padding:44px 24px 0; text-align:center; position:relative; }
+  .brandline { font-size:10px; letter-spacing:.58em; color:var(--pg-accent); text-indent:.58em; }
+  .top h1 { font-size:26px; font-weight:400; letter-spacing:.2em; text-indent:.2em;
+            color:var(--pg-head); margin-top:18px; }
+  .lede { font-size:12px; line-height:1.9; color:var(--pg-muted); letter-spacing:.06em;
+          margin-top:12px; }
+  .theme-toggle { position:absolute; right:20px; top:34px; padding:5px 0;
+                  background:none; border:0; border-bottom:1px solid rgba(var(--gold-rgb),.34);
+                  font-family:inherit; font-size:9px; letter-spacing:.22em; text-indent:.22em;
+                  color:var(--pg-accent); cursor:pointer; -webkit-appearance:none; appearance:none; }
+
+  .form { padding:30px 24px 0; }
+  .fields { display:flex; gap:12px; }
+  .field { display:block; flex:1 1 auto; min-width:0; }
+  .field.narrow { flex:0 0 124px; }
+  .field span { display:block; font-size:10px; letter-spacing:.28em; color:var(--pg-accent);
+                text-indent:.28em; margin-bottom:8px; }
+  .field input {
+    width:100%; min-width:0; height:46px; padding:0 12px;
+    background:rgba(var(--gold-rgb),.04); border:1px solid rgba(var(--gold-rgb),.28);
+    color:var(--pg-input); font-family:inherit; font-size:15px; letter-spacing:.06em;
+    outline:none; -webkit-appearance:none; appearance:none;
+  }
+  .field input:focus { border-color:var(--pg-focus); background:rgba(var(--gold-rgb),.07); }
+  .field input::-webkit-calendar-picker-indicator { filter:invert(.72) sepia(.35) saturate(2); opacity:.8; }
+  html[data-theme="light"] .field input::-webkit-calendar-picker-indicator { filter:none; opacity:.62; }
+
+  .btn { display:block; width:100%; height:48px; font-family:inherit; font-size:14px;
+         letter-spacing:.3em; text-indent:.3em; cursor:pointer; -webkit-appearance:none;
+         appearance:none; transition:opacity .18s ease; }
+  .btn:active { opacity:.72; }
+  .btn.primary { margin-top:20px; background:rgba(var(--gold-rgb),.1);
+                 border:1px solid rgba(var(--gold-rgb),.62); color:var(--pg-btn); }
+  .btn.ghost { background:none; border:1px solid rgba(var(--gold-rgb),.34); color:var(--pg-ghost); }
+  html[data-theme="light"] .btn.primary { background:#2E261A; border-color:#2E261A; color:#F3ECDB; }
+  html[data-theme="light"] .stage .card { box-shadow:0 18px 40px -24px rgba(46,38,26,.45); }
+
+  .today { display:block; width:100%; margin-top:12px; padding:9px 0; background:none;
+           border:0; font-family:inherit; font-size:11px; letter-spacing:.2em;
+           text-indent:.2em; color:var(--pg-accent); cursor:pointer;
+           -webkit-appearance:none; appearance:none; }
+  .today:active { opacity:.7; }
+
+  .msg { min-height:20px; padding:14px 24px 0; text-align:center; font-size:12px;
+         line-height:1.7; letter-spacing:.08em; color:var(--pg-msg); }
+
+  .result { margin-top:10px; }
+  .stage-wrap { width:100%; display:flex; justify-content:center; }
+  .stage { width:390px; max-width:100%; position:relative; }
+  .scaler { width:390px; transform-origin:top left; }
+
+  /* ---------- 身份卡 ---------- */
+  .card {
+    position:relative; width:390px; height:844px; overflow:hidden;
+    --gold-rgb: 200,171,104;
+    --bg-1:#221D16; --bg-mid:#191510; --bg-2:#14120F; --jieqi:#9C8558;
+    --t1:#F0E3C4; --t2:#CFC3A6; --t3:#8C7A55; --t4:#7E7157;
+    --t5:#6E6247; --t6:#5A5138; --t7:#5F5540; --hl:#C8AB68;
+    background:
+      radial-gradient(140% 70% at 50% -10%, var(--bg-1) 0%, var(--bg-mid) 42%, var(--bg-2) 72%),
+      var(--bg-2);
+    color:#E8DFCB; display:flex; flex-direction:column;
+    padding:52px 34px 30px;
+  }
+  .card.season-spring {
+    --gold-rgb: 150,184,124;
+    --bg-1:#16231A; --bg-mid:#131C15; --bg-2:#0F1510; --jieqi:#8AA968;
+  }
+  .card.season-summer {
+    --gold-rgb: 222,146,74;
+    --bg-1:#2A1A11; --bg-mid:#1D130D; --bg-2:#160F0A; --jieqi:#B87A42;
+  }
+  .card.season-autumn {
+    --gold-rgb: 200,171,104;
+    --bg-1:#221D16; --bg-mid:#191510; --bg-2:#14120F; --jieqi:#9C8558;
+  }
+  .card.season-winter {
+    --gold-rgb: 172,186,200;
+    --bg-1:#191E24; --bg-mid:#15181D; --bg-2:#101215; --jieqi:#8796A6;
+  }
+
+  /* ---------- 宣纸版：同一张卡的第二套纸墨 ---------- */
+  .card.skin-paper {
+    --gold-rgb: 110,92,66;
+    --bg-1:#F7F2E4; --bg-mid:#F3ECDA; --bg-2:#EFE6D2; --jieqi:#6E5A3C;
+    --t1:#2E261A; --t2:#43392A; --t3:#6F5F44; --t4:#75664C;
+    --t5:#6E5E44; --t6:#5F5240; --t7:#5F5240; --hl:#87451F;
+    color:#2E261A;
+  }
+  .card.skin-paper.season-spring {
+    --bg-1:#F3F5E6; --bg-mid:#F4F2E4; --bg-2:#EDE9D6; --jieqi:#3E6B4E;
+  }
+  .card.skin-paper.season-summer {
+    --bg-1:#F8F0E0; --bg-mid:#F6EDDD; --bg-2:#F0E4CE; --jieqi:#A2452A;
+  }
+  .card.skin-paper.season-autumn {
+    --bg-1:#F7F1E2; --bg-mid:#F2EAD8; --bg-2:#EBE0C9; --jieqi:#8A5A2B;
+  }
+  .card.skin-paper.season-winter {
+    --bg-1:#F0F2F4; --bg-mid:#F2F1EC; --bg-2:#E9E7DE; --jieqi:#3B4754;
+  }
+
+  .card::before { content:""; position:absolute; inset:20px;
+                  border:1px solid rgba(var(--gold-rgb),.34); pointer-events:none; }
+  .card::after { content:""; position:absolute; inset:26px;
+                 border:1px solid rgba(var(--gold-rgb),.12); pointer-events:none; }
+  .head, .jieqi-wrap, .hou-wrap, .lines, .motif-row, .ladder, .series, .foot {
+    position:relative; z-index:1;
+  }
+  .head { text-align:center; }
+  .eyebrow { font-size:11px; letter-spacing:.52em; color:var(--t3); text-indent:.52em; }
+  .rule { height:1px; margin-top:17px;
+          background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.5),transparent); }
+
+  .jieqi-wrap { text-align:center; margin-top:30px; }
+  .layer-tag { font-size:9px; letter-spacing:.4em; color:var(--t5); text-indent:.4em; }
+  .jieqi { font-size:64px; line-height:1.12; letter-spacing:.14em; text-indent:.14em;
+           color:var(--jieqi); font-weight:400; margin-top:10px; }
+
+  .hou-wrap { margin-top:26px; padding:19px 12px 17px; text-align:center;
+              border-top:1px solid rgba(var(--gold-rgb),.28);
+              border-bottom:1px solid rgba(var(--gold-rgb),.28); }
+  .hou-flag { font-size:10px; letter-spacing:.3em; color:var(--t3); text-indent:.3em; }
+  .hou { font-size:40px; line-height:1.32; letter-spacing:.16em; text-indent:.16em;
+         color:var(--t1); font-weight:400; margin-top:12px; }
+  .kicker { font-size:11px; color:var(--t4); letter-spacing:.12em; margin-top:11px; }
+
+  .lines { margin-top:22px; padding:16px 14px; text-align:center;
+           border:1px solid rgba(var(--gold-rgb),.18); }
+  .lines div { font-size:14px; line-height:2.0; color:var(--t2); letter-spacing:.1em; }
+  .lines div + div { border-top:1px solid rgba(var(--gold-rgb),.1); }
+
+  .motif-row { margin-top:16px; text-align:center; font-size:10px;
+               letter-spacing:.22em; color:var(--t5); text-indent:.22em; }
+  .motif-row .hl { color:var(--hl); }
+
+  .ladder { margin-top:16px; padding-top:10px; }
+  .ladder .cap { font-size:9px; letter-spacing:.36em; color:var(--t5);
+                 text-align:center; text-indent:.36em; margin-bottom:6px; }
+  .ladder .row { display:flex; justify-content:center; gap:14px; font-size:12px;
+                 line-height:1.95; color:var(--t5); letter-spacing:.12em; }
+  .ladder .row.on { color:var(--hl); }
+  .ladder .row .seq { width:34px; text-align:right; opacity:.8; }
+
+  .series { margin-top:14px; text-align:center; font-size:11px; letter-spacing:.16em;
+            color:var(--t3); border-top:1px solid rgba(var(--gold-rgb),.16); padding-top:13px; }
+
+  .foot { margin-top:auto; text-align:center; padding-top:12px; }
+  .brand { font-size:10px; color:var(--t6); letter-spacing:.34em; text-indent:.34em; }
+  .caliber { font-size:8.5px; color:var(--t5); letter-spacing:.04em; margin-top:8px;
+             line-height:1.7; }
+  .disclaimer { font-size:8.5px; color:var(--t7); letter-spacing:.04em; margin-top:3px;
+                line-height:1.7; }
+
+  .actions { padding:22px 24px 0; }
+  .save-hint { text-align:center; font-size:10px; color:var(--pg-faint);
+               letter-spacing:.16em; margin-top:10px; }
+
+  .skin-switch { display:flex; border:1px solid rgba(var(--gold-rgb),.34); margin-bottom:12px; }
+  .skin-btn { flex:1 1 0; height:40px; background:none; border:0; font-family:inherit;
+              font-size:11px; letter-spacing:.26em; text-indent:.26em; color:var(--pg-accent);
+              cursor:pointer; -webkit-appearance:none; appearance:none; }
+  .skin-btn + .skin-btn { border-left:1px solid rgba(var(--gold-rgb),.3); }
+  .skin-btn.is-on { background:rgba(var(--gold-rgb),.12); color:var(--pg-btn); }
+
+  .method { margin:26px 24px 0; border-top:1px solid rgba(var(--gold-rgb),.16); }
+  .method-toggle { display:block; width:100%; padding:16px 0 14px; background:none; border:0;
+                   font-family:inherit; font-size:10px; letter-spacing:.28em; text-indent:.28em;
+                   color:var(--pg-accent); cursor:pointer; -webkit-appearance:none; appearance:none; }
+  .method-toggle .mt-mark { display:inline-block; margin-left:.7em; text-indent:0; color:var(--pg-faint); }
+  .method-body { padding:0 2px 18px; }
+  .method-body .m-item { padding:10px 0 9px; border-top:1px dashed rgba(var(--gold-rgb),.13); }
+  .method-body .m-item:first-child { border-top:0; padding-top:0; }
+  .method-body dt { font-size:10px; letter-spacing:.22em; color:var(--pg-accent); }
+  .method-body dd { margin:5px 0 0; font-size:11.5px; line-height:1.95;
+                    color:var(--pg-muted); letter-spacing:.03em; }
+  .method-note { margin-top:12px; font-size:10.5px; line-height:1.8; color:var(--pg-faint);
+                 letter-spacing:.04em; }
+
+  .foot-page { padding:34px 24px 0; text-align:center; border-top:1px solid rgba(var(--gold-rgb),.12);
+               margin-top:34px; }
+  .foot-page p { font-size:9px; line-height:1.9; letter-spacing:.08em; color:var(--pg-dim); }
+
+  /* ---------- 开场选纸 ---------- */
+  .gate { position:fixed; inset:0; z-index:80; background:#0B0A08;
+          display:flex; align-items:center; justify-content:center; padding:28px 24px;
+          transition:opacity .38s ease, transform .38s ease; }
+  .gate.is-out { opacity:0; transform:scale(1.015); pointer-events:none; }
+  .gate-inner { width:100%; max-width:390px; text-align:center; }
+  .gate-mark { font-size:10px; letter-spacing:.58em; color:#8C7A55; text-indent:.58em;
+               animation:gateRise .5s ease both; }
+  .gate h2 { font-size:24px; font-weight:400; letter-spacing:.2em; text-indent:.2em;
+             color:#F0E3C4; margin-top:20px; animation:gateRise .5s .08s ease both; }
+  .gate-lede { font-size:11px; line-height:1.9; letter-spacing:.06em; color:#7E7157;
+               margin-top:12px; animation:gateRise .5s .16s ease both; }
+  .gate-options { display:flex; gap:12px; margin-top:36px; }
+  .gate-opt { flex:1 1 0; height:176px; display:flex; flex-direction:column;
+              align-items:center; justify-content:center; gap:12px; cursor:pointer;
+              font-family:inherit; -webkit-appearance:none; appearance:none;
+              transition:transform .18s ease, border-color .18s ease; }
+  .gate-opt:active { transform:scale(.982); }
+  .gate-opt:focus-visible { outline:1px solid #C8AB68; outline-offset:3px; }
+  .opt-dark { background:radial-gradient(120% 80% at 50% 0%, #221D16 0%, #14120F 70%);
+              border:1px solid rgba(200,171,104,.5); color:#E3CE9B;
+              animation:gateRise .55s .24s ease both; }
+  .opt-light { background:radial-gradient(120% 80% at 50% 0%, #F7F1E2 0%, #EFE6D2 70%);
+               border:1px solid rgba(110,92,66,.42); color:#4A3B24;
+               animation:gateRise .55s .30s ease both; }
+  .opt-name { font-size:30px; letter-spacing:.12em; text-indent:.12em; font-weight:400; }
+  .opt-desc { font-size:9px; letter-spacing:.24em; text-indent:.24em; opacity:.8; }
+  @keyframes gateRise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .gate, .gate.is-out { transition:none; }
+    .gate-mark, .gate h2, .gate-lede, .gate-opt { animation:none; }
+  }
+
+  .lightbox { position:fixed; inset:0; z-index:50; background:#060504;
+              display:flex; align-items:center; justify-content:center; padding:22px; }
+  .lb-inner { width:100%; max-width:390px; text-align:center; }
+  .lb-inner img { display:block; width:100%; height:auto; max-height:76vh; object-fit:contain;
+                  border:1px solid rgba(var(--gold-rgb),.3); }
+  .lb-hint { font-size:11px; letter-spacing:.2em; color:#8C7A55; margin:14px 0 16px; }
+</style>
+</head>
+<body>
+<main class="shell" id="shell" tabindex="-1">
+  <header class="top">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换为宣纸">宣纸</button>
+    <div class="brandline">七十二候</div>
+    <h1>你出生的那一候</h1>
+    <p class="lede">输入生日与出生时刻，找到你落在七十二候里的那一格。</p>
+  </header>
+
+  <form class="form" id="form" novalidate>
+    <div class="fields">
+      <label class="field">
+        <span>生日</span>
+        <input id="birthDate" type="date" min="1900-01-01" max="2050-12-31" required>
+      </label>
+      <label class="field narrow">
+        <span>出生时刻</span>
+        <input id="birthTime" type="time" value="12:00" step="60" required>
+      </label>
+    </div>
+    <button class="btn primary" type="submit">找到我的候</button>
+    <button class="today" id="todayBtn" type="button">看看今天是哪一候</button>
+  </form>
+
+  <p class="msg" id="msg" role="status" aria-live="polite"></p>
+
+  <section id="result" hidden>
+    <div class="stage-wrap">
+      <div class="stage" id="stage">
+        <div class="scaler" id="scaler">
+          <div class="card" id="card">
+            <div class="head">
+              <div class="eyebrow">你出生的那一候</div>
+              <div class="rule"></div>
+            </div>
+
+            <div class="jieqi-wrap">
+              <div class="layer-tag" id="jieqiTag">节气 · 19 / 24</div>
+              <div class="jieqi" id="jieqiName">小雪</div>
+            </div>
+
+            <div class="hou-wrap">
+              <div class="hou-flag" id="houFlag">你的候 · 58 / 72 · 初候</div>
+              <div class="hou" id="houName">虹藏不见</div>
+              <div class="kicker" id="kicker">1994 年 11 月 30 日 · 01:50</div>
+            </div>
+
+            <div class="lines" id="modern"><div>天与地不再相接的那一段</div></div>
+
+            <div class="motif-row" id="motifRow">意象 · 虹 · 天地</div>
+
+            <div class="ladder" id="ladder">
+              <div class="cap" id="ladderCap">小雪三候</div>
+              <div class="row" data-i="0"><span class="seq">初候</span><span class="nm"></span></div>
+              <div class="row" data-i="1"><span class="seq">二候</span><span class="nm"></span></div>
+              <div class="row" data-i="2"><span class="seq">三候</span><span class="nm"></span></div>
+            </div>
+
+            <div class="series" id="series"></div>
+
+            <div class="foot">
+              <div class="brand">七十二候 · 历法身份卡</div>
+              <div class="caliber">候界按太阳黄经实算，与历书标注相差一天属分法不同</div>
+              <div class="disclaimer">本工具只讲解历法与物候规则，不构成任何建议</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="skin-switch" role="group" aria-label="卡片底色">
+        <button class="skin-btn is-on" id="skinInk" type="button" aria-pressed="true">墨底</button>
+        <button class="skin-btn" id="skinPaper" type="button" aria-pressed="false">宣纸</button>
+      </div>
+      <button class="btn ghost" id="saveBtn" type="button">保存图片</button>
+    </div>
+    <p class="save-hint">点保存后长按图片存到相册</p>
+  </section>
+
+  <section class="method">
+    <button class="method-toggle" id="methodToggle" type="button" aria-expanded="false" aria-controls="methodBody">
+      这张卡是怎么算的<span class="mt-mark" id="methodMark" aria-hidden="true">＋</span>
+    </button>
+    <div class="method-body" id="methodBody" hidden>
+      <dl>
+      <div class="m-item">
+        <dt>时间</dt>
+        <dd>节气按太阳视黄经每 15° 一刻，候是节气内再五天一格。表内每个时刻都由天文内核预先实算，页面只查表，不现场推算。</dd>
+      </div>
+      <div class="m-item">
+        <dt>边界</dt>
+        <dd>表内分钟一律截断、不四舍五入，与历书常见的四舍五入标注可能相差 1 分钟；因此候界与部分黄历差一天，属分法不同。</dd>
+      </div>
+      <div class="m-item">
+        <dt>范围</dt>
+        <dd>表覆盖 1900-01-01 至 2050-12-31。表外不外推、不取最近值，直接说明不支持。</dd>
+      </div>
+      <div class="m-item">
+        <dt>用字</dt>
+        <dd>卡面候名用通行简体；典籍原文与候名原字保留在数据层，不进入卡面。</dd>
+      </div>
+      </dl>
+      <p class="method-note">输入只在本机参与查表，不上传、不保存，查表过程不联网。</p>
+    </div>
+  </section>
+
+  <footer class="foot-page">
+    <p>本工具只讲解历法与物候规则，不构成任何建议</p>
+    <p>候界按太阳黄经实算，与历书标注相差一天属分法不同</p>
+  </footer>
+</main>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-inner">
+    <div class="gate-mark">七十二候</div>
+    <h2 id="gateTitle">先选一张纸</h2>
+    <p class="gate-lede">暗或亮，整页与卡片一起换。选完随时可改。</p>
+    <div class="gate-options">
+      <button class="gate-opt opt-dark" id="pickDark" type="button">
+        <span class="opt-name">暗</span><span class="opt-desc">墨底金线</span>
+      </button>
+      <button class="gate-opt opt-light" id="pickLight" type="button">
+        <span class="opt-name">亮</span><span class="opt-desc">宣纸墨字</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <div class="lb-inner">
+    <img id="lbImg" alt="你的七十二候身份卡">
+    <p class="lb-hint">长按图片保存到相册</p>
+    <button class="btn ghost" id="lbClose" type="button">关闭</button>
+  </div>
+</div>
+
+<script src="assets/hou_terms.js"></script>
+<script src="assets/hou72-data.js"></script>
+<script src="assets/lookup.js"></script>
+<script src="assets/capture.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
