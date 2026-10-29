@@ -6,6 +6,8 @@
 
 纯静态 · 零依赖 · 离线可用 · 无网络请求
 
+**[在线试玩 → cnjoe1130.github.io/hou72](https://cnjoe1130.github.io/hou72/)**
+
 </div>
 
 <table>
