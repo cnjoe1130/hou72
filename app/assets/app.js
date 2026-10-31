@@ -16,7 +16,8 @@
   var form = $('form'), dateEl = $('birthDate'), timeEl = $('birthTime');
   var msgEl = $('msg'), result = $('result'), stage = $('stage'), scaler = $('scaler');
   var card = $('card'), saveBtn = $('saveBtn');
-  var lightbox = $('lightbox'), lbImg = $('lbImg'), lbClose = $('lbClose');
+  var backArea = $('backArea'), backShot = $('backShot');
+  var lightbox = $('lightbox'), lbImg = $('lbImg'), lbClose = $('lbClose'), lbHint = $('lbHint');
 
   function pad(n) { return n < 10 ? '0' + n : String(n); }
 
@@ -99,6 +100,7 @@
   function paintCard() {
     card.className = 'card' + (season ? ' season-' + season : '') +
       (skin === 'paper' ? ' skin-paper' : '');
+    if (window.HouFan) window.HouFan.paint(skin);
   }
 
   function showFor(y, m, d, hh, mi) {
@@ -141,7 +143,24 @@
     renderMotifs(row);
     renderLadder(row, loc);
     renderSeries(row);
+
+    if (window.HouFan) {
+      window.HouFan.show(row, loc,
+        y + ' 年 ' + m + ' 月 ' + d + ' 日 · ' + pad(hh) + ':' + pad(mi));
+      showView('fan');
+    }
   }
+
+  var fanArea = $('fanArea'), singleArea = $('singleArea');
+  function showView(which) {
+    var single = which === 'single';
+    fanArea.hidden = single;
+    singleArea.hidden = !single;
+    if (!single && window.HouFan) window.HouFan.paint(skin);
+    fit();
+  }
+  $('toSingle').addEventListener('click', function () { showView('single'); });
+  $('toFan').addEventListener('click', function () { showView('fan'); });
 
   function showResult() {
     result.hidden = false;
@@ -190,12 +209,68 @@
     }
   });
 
+  /* 背面：克隆当前抽出叶子的 .face.back 到离屏 390×844 容器再截。
+     翻面靠 CSS 3D，克隆体要清掉 rotateY 才是正面朝上；诗/食/印统一补 is-on，
+     免得在翻背动画没走完时点保存截到半张。 */
+  function captureBack(src) {
+    var clone = src.cloneNode(true);
+    var on = clone.querySelectorAll('.bk-poem, .bk-food, .bk-seal, .bk-art');
+    for (var i = 0; i < on.length; i++) on[i].classList.add('is-on');
+    return shotOffscreen(clone);
+  }
+
+  /* 正面：克隆当前选中叶的 .card，扇面滑到邻候后存的就是那一张 */
+  function captureFront(src) {
+    return shotOffscreen(src.cloneNode(true));
+  }
+
+  function shotOffscreen(clone) {
+    backShot.textContent = '';
+    backShot.appendChild(clone);
+    function done(url, err) {
+      backShot.textContent = '';
+      if (err) throw err;
+      return url;
+    }
+    return window.Capture.toPng(backShot, 2).then(function (url) { return done(url); },
+      function (err) { return done(null, err); });
+  }
+
+  /* 正面：单卡视图导单卡；扇面/抽出态导当前选中叶的正面。翻背态改导背面。 */
+  function captureCard() {
+    var art = window.HouFan && window.HouFan.ensureArt
+      ? window.HouFan.ensureArt() : Promise.resolve(null);
+    return art.then(function () {
+      if (window.HouFan && window.HouFan.isFlipped()) {
+        var back = window.HouFan.backNode();
+        if (back) return captureBack(back);
+      }
+      if (!singleArea.hidden) return window.Capture.toPng(card, 2);
+      var front = window.HouFan && window.HouFan.frontNode
+        ? window.HouFan.frontNode() : null;
+      if (front) return captureFront(front);
+      /* 兜底（没有扇面时）：把单卡挪到屏幕外量出尺寸再截，截完复位 */
+      singleArea.hidden = false;
+      singleArea.className = 'single-area is-offscreen';
+      var out = window.Capture.toPng(card, 2);
+      function restore() {
+        singleArea.className = 'single-area';
+        singleArea.hidden = true;
+      }
+      return out.then(function (url) { restore(); return url; },
+        function (err) { restore(); throw err; });
+    });
+  }
+
   saveBtn.addEventListener('click', function () {
     if (saveBtn.disabled) return;
     saveBtn.disabled = true;
     setMsg('');
-    window.Capture.toPng(card, 2).then(function (url) {
+    captureCard().then(function (url) {
       lbImg.src = url;
+      lbHint.textContent = window.Capture.artInlined()
+        ? '长按图片保存到相册'
+        : '长按保存 · 本地直接打开时导出不含插画，用站点地址打开即可';
       lightbox.hidden = false;
       document.body.style.overflow = 'hidden';
     })['catch'](function () {
@@ -208,6 +283,7 @@
   function closeLightbox() {
     lightbox.hidden = true;
     lbImg.removeAttribute('src');
+    lbHint.textContent = '长按图片保存到相册';
     document.body.style.overflow = '';
   }
   lbClose.addEventListener('click', closeLightbox);

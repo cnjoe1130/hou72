@@ -65,6 +65,7 @@ const LIGHT_BG = 'rgb(243,236,219)';
     await page.fill('#birthTime', time);
     await page.click('button[type=submit]');
     await page.waitForSelector('#result:not([hidden])');
+    await page.click('#toSingle');
     await page.waitForTimeout(600);
   }
 

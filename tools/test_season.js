@@ -77,6 +77,8 @@ const CASES = [
     await page.fill('#birthTime', '12:00');
     await page.click('button[type=submit]');
     await page.waitForSelector('#result:not([hidden])');
+    await page.click('#toSingle');
+    await page.waitForTimeout(200);
     const url = await page.evaluate(() => window.Capture.toPng(document.getElementById('card'), 2));
     shots[season] = await page.evaluate(async (u) => {
       const img = new Image();

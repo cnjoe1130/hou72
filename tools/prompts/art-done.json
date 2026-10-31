@@ -1,0 +1,544 @@
+{
+ "note": "已出插图的台账。每次生成后先更新这里，再开始下一批；下一批的候号必须从这里排除。",
+ "spec": {
+  "generate": "768x1024 (3:4)",
+  "ship": "512x683, -blur 0x0.4, cwebp -size 21000",
+  "measured": "约 20KB/张"
+ },
+ "done": [
+  {
+   "hou": 1,
+   "name": "东风解冻",
+   "file": "tools/shots/art-seeds/b1/h01.png",
+   "hue": null,
+   "batch": "b1"
+  },
+  {
+   "hou": 2,
+   "name": "蛰虫始振",
+   "file": "tools/shots/art-seeds/rt/h02.png",
+   "hue": "赭石",
+   "batch": "b2+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 3,
+   "name": "鱼陟负冰",
+   "file": "tools/shots/art-seeds/b3/h03.png",
+   "hue": "花青",
+   "batch": "b3"
+  },
+  {
+   "hou": 4,
+   "name": "獭祭鱼",
+   "file": "tools/shots/art-seeds/rt/h04.png",
+   "hue": "花青",
+   "batch": "b7+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 5,
+   "name": "候雁北",
+   "file": "tools/shots/art-seeds/seed05_B2.png",
+   "hue": null,
+   "batch": "seed"
+  },
+  {
+   "hou": 6,
+   "name": "草木萌动",
+   "file": "tools/shots/art-seeds/rt/h06.png",
+   "hue": "石绿",
+   "batch": "b2+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 7,
+   "name": "桃始华",
+   "file": "tools/shots/art-seeds/b2/h07.png",
+   "hue": "胭脂",
+   "batch": "b2"
+  },
+  {
+   "hou": 8,
+   "name": "仓庚鸣",
+   "file": "tools/shots/art-seeds/b3/h08.png",
+   "hue": "藤黄",
+   "batch": "b3"
+  },
+  {
+   "hou": 9,
+   "name": "鹰化为鸠",
+   "file": "tools/shots/art-seeds/b3/h09.png",
+   "hue": "花青",
+   "batch": "b3"
+  },
+  {
+   "hou": 10,
+   "name": "玄鸟至",
+   "file": "tools/shots/art-seeds/b2/h10.png",
+   "hue": "花青",
+   "batch": "b2"
+  },
+  {
+   "hou": 11,
+   "name": "雷乃发声",
+   "file": "tools/shots/art-seeds/b1/h11c.png",
+   "hue": "花青",
+   "batch": "b1r"
+  },
+  {
+   "hou": 12,
+   "name": "始电",
+   "file": "tools/shots/art-seeds/b1/h12c2.png",
+   "hue": "藤黄(极淡)",
+   "batch": "b1r2"
+  },
+  {
+   "hou": 13,
+   "name": "桐始华",
+   "file": "tools/shots/art-seeds/b2/h13.png",
+   "hue": "淡胭脂",
+   "batch": "b2"
+  },
+  {
+   "hou": 14,
+   "name": "田鼠化为鴽",
+   "file": "tools/shots/art-seeds/rt/h14.png",
+   "hue": "赭石",
+   "batch": "b3+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 15,
+   "name": "虹始见",
+   "file": "tools/shots/art-seeds/b2/h15.png",
+   "hue": "胭脂+花青（唯一双色）",
+   "batch": "b2"
+  },
+  {
+   "hou": 16,
+   "name": "萍始生",
+   "file": "tools/shots/art-seeds/test/t16.png",
+   "hue": "石绿(淡)",
+   "batch": "test"
+  },
+  {
+   "hou": 17,
+   "name": "鸣鸠拂其羽",
+   "file": "tools/shots/art-seeds/b3/h17.png",
+   "hue": "石绿",
+   "batch": "b3"
+  },
+  {
+   "hou": 18,
+   "name": "戴胜降于桑",
+   "file": "tools/shots/art-seeds/b2/h18.png",
+   "hue": "石绿",
+   "batch": "b2"
+  },
+  {
+   "hou": 19,
+   "name": "蝼蝈鸣",
+   "file": "tools/shots/art-seeds/seed19_B2.png",
+   "hue": null,
+   "batch": "seed"
+  },
+  {
+   "hou": 20,
+   "name": "蚯蚓出",
+   "file": "tools/shots/art-seeds/b3/h20.png",
+   "hue": "赭石",
+   "batch": "b3"
+  },
+  {
+   "hou": 21,
+   "name": "王瓜生",
+   "file": "tools/shots/art-seeds/rt/h21.png",
+   "hue": "石绿",
+   "batch": "b2+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 22,
+   "name": "苦菜秀",
+   "file": "tools/shots/art-seeds/b3/h22.png",
+   "hue": "藤黄",
+   "batch": "b3"
+  },
+  {
+   "hou": 23,
+   "name": "靡草死",
+   "file": "tools/shots/art-seeds/rt/h23.png",
+   "hue": "赭石",
+   "batch": "b3+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 24,
+   "name": "麦秋至",
+   "file": "tools/shots/art-seeds/b3/h24.png",
+   "hue": "赭石",
+   "batch": "b3"
+  },
+  {
+   "hou": 25,
+   "name": "螳螂生",
+   "file": "tools/shots/art-seeds/test/t25.png",
+   "hue": null,
+   "batch": "test"
+  },
+  {
+   "hou": 26,
+   "name": "鵙始鸣",
+   "file": "tools/shots/art-seeds/b2/h26.png",
+   "hue": "花青",
+   "batch": "b2"
+  },
+  {
+   "hou": 27,
+   "name": "反舌无声",
+   "file": "tools/shots/art-seeds/b4/h27.png",
+   "hue": "石绿",
+   "batch": "b4"
+  },
+  {
+   "hou": 28,
+   "name": "鹿角解",
+   "file": "tools/shots/art-seeds/b7/h28.png",
+   "hue": "石绿",
+   "batch": "b7"
+  },
+  {
+   "hou": 29,
+   "name": "蜩始鸣",
+   "file": "tools/shots/art-seeds/b4/h29.png",
+   "hue": "赭石",
+   "batch": "b4"
+  },
+  {
+   "hou": 30,
+   "name": "半夏生",
+   "file": "tools/shots/art-seeds/b4/h30.png",
+   "hue": "花青",
+   "batch": "b4",
+   "watch": "与 22 苦菜秀 同为「石缝里一株植物」，牌面撞构图"
+  },
+  {
+   "hou": 31,
+   "name": "温风至",
+   "file": "tools/shots/art-seeds/b1/h31.png",
+   "hue": null,
+   "batch": "b1"
+  },
+  {
+   "hou": 32,
+   "name": "蟋蟀居壁",
+   "file": "tools/shots/art-seeds/rt/h32.png",
+   "hue": "赭石",
+   "batch": "b4+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 33,
+   "name": "鹰始击",
+   "file": "tools/shots/art-seeds/b4/h33.png",
+   "hue": "花青",
+   "batch": "b4"
+  },
+  {
+   "hou": 34,
+   "name": "腐草为萤",
+   "file": "tools/shots/art-seeds/b4/h34.png",
+   "hue": "藤黄",
+   "batch": "b4"
+  },
+  {
+   "hou": 35,
+   "name": "土润溽暑",
+   "file": "tools/shots/art-seeds/b1/h35.png",
+   "hue": null,
+   "batch": "b1"
+  },
+  {
+   "hou": 36,
+   "name": "大雨时行",
+   "file": "tools/shots/art-seeds/b4/h36.png",
+   "hue": "花青",
+   "batch": "b4"
+  },
+  {
+   "hou": 37,
+   "name": "凉风至",
+   "file": "tools/shots/art-seeds/b4/h37.png",
+   "hue": "赭石",
+   "batch": "b4"
+  },
+  {
+   "hou": 38,
+   "name": "白露降",
+   "file": "tools/shots/art-seeds/b4/h38.png",
+   "hue": "石绿",
+   "batch": "b4"
+  },
+  {
+   "hou": 39,
+   "name": "寒蝉鸣",
+   "file": "tools/shots/art-seeds/rt/h39.png",
+   "hue": "花青",
+   "batch": "b5+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 40,
+   "name": "鹰乃祭鸟",
+   "file": "tools/shots/art-seeds/b5/h40.png",
+   "hue": "赭石",
+   "batch": "b5",
+   "watch": "鹰很立得住，坡上的小鸟几乎看不出，「祭鸟」一层没落地"
+  },
+  {
+   "hou": 41,
+   "name": "天地始肃",
+   "file": "tools/shots/art-seeds/b1/h41.png",
+   "hue": null,
+   "batch": "b1"
+  },
+  {
+   "hou": 42,
+   "name": "禾乃登",
+   "file": "tools/shots/art-seeds/b5/h42.png",
+   "hue": "藤黄",
+   "batch": "b5"
+  },
+  {
+   "hou": 43,
+   "name": "鸿雁来",
+   "file": "tools/shots/art-seeds/b5/h43.png",
+   "hue": "花青",
+   "batch": "b5"
+  },
+  {
+   "hou": 44,
+   "name": "玄鸟归",
+   "file": "tools/shots/art-seeds/b5/h44.png",
+   "hue": "石绿",
+   "batch": "b5"
+  },
+  {
+   "hou": 45,
+   "name": "群鸟养羞",
+   "file": "tools/shots/art-seeds/b5/h45.png",
+   "hue": "胭脂",
+   "batch": "b5"
+  },
+  {
+   "hou": 46,
+   "name": "雷始收声",
+   "file": "tools/shots/art-seeds/b1/h46.png",
+   "hue": null,
+   "batch": "b1"
+  },
+  {
+   "hou": 47,
+   "name": "蛰虫坏户",
+   "file": "tools/shots/art-seeds/rt/h47.png",
+   "hue": "花青",
+   "batch": "b5+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 48,
+   "name": "水始涸",
+   "file": "tools/shots/art-seeds/b7/h48.png",
+   "hue": "赭石",
+   "batch": "b7"
+  },
+  {
+   "hou": 49,
+   "name": "鸿雁来宾",
+   "file": "tools/shots/art-seeds/b5/h49.png",
+   "hue": "赭石",
+   "batch": "b5"
+  },
+  {
+   "hou": 50,
+   "name": "雀入大水为蛤",
+   "file": "tools/shots/art-seeds/b5/h50.png",
+   "hue": "石绿",
+   "batch": "b5",
+   "watch": "贝壳太小，第一眼是海边滩涂；但爪印和飞雀都在"
+  },
+  {
+   "hou": 51,
+   "name": "菊有黄华",
+   "file": "tools/shots/art-seeds/test/t51.png",
+   "hue": "赭黄",
+   "batch": "test"
+  },
+  {
+   "hou": 52,
+   "name": "豺祭兽",
+   "file": "tools/shots/art-seeds/b7/h52.png",
+   "hue": "赭石",
+   "batch": "b7"
+  },
+  {
+   "hou": 53,
+   "name": "草木黄落",
+   "file": "tools/shots/art-seeds/seed53_B2.png",
+   "hue": "赭黄(数点)",
+   "batch": "seed"
+  },
+  {
+   "hou": 54,
+   "name": "蛰虫咸俯",
+   "file": "tools/shots/art-seeds/rt/h54.png",
+   "hue": "花青",
+   "batch": "b6+rt",
+   "retaken": "2026-10-31"
+  },
+  {
+   "hou": 55,
+   "name": "水始冰",
+   "file": "tools/shots/art-seeds/b6/h55.png",
+   "hue": "石绿",
+   "batch": "b6"
+  },
+  {
+   "hou": 56,
+   "name": "地始冻",
+   "file": "tools/shots/art-seeds/b6/h56.png",
+   "hue": "赭石",
+   "batch": "b6"
+  },
+  {
+   "hou": 57,
+   "name": "雉入大水为蜃",
+   "file": "tools/shots/art-seeds/b6/h57.png",
+   "hue": "赭石",
+   "batch": "b6",
+   "watch": "海上的幻影像一块淡赭的巨石，蛤形靠猜；但雉与海的并置成立"
+  },
+  {
+   "hou": 58,
+   "name": "虹藏不见",
+   "file": "tools/shots/art-seeds/b6/h58.png",
+   "hue": "花青",
+   "batch": "b6",
+   "watch": "「什么都没有」本就难画，读成雨后旷野可接受"
+  },
+  {
+   "hou": 59,
+   "name": "天气上升地气下降",
+   "file": "tools/shots/art-seeds/b1/h59.png",
+   "hue": null,
+   "batch": "b1"
+  },
+  {
+   "hou": 60,
+   "name": "闭塞而成冬",
+   "file": "tools/shots/art-seeds/b1/h60.png",
+   "hue": null,
+   "batch": "b1"
+  },
+  {
+   "hou": 61,
+   "name": "鹖鴠不鸣",
+   "file": "tools/shots/art-seeds/b6/h61.png",
+   "hue": "赭石",
+   "batch": "b6"
+  },
+  {
+   "hou": 62,
+   "name": "虎始交",
+   "file": "tools/shots/art-seeds/b6/h62.png",
+   "hue": "赭石",
+   "batch": "b6"
+  },
+  {
+   "hou": 63,
+   "name": "荔挺出",
+   "file": "tools/shots/art-seeds/b7/h63.png",
+   "hue": "石绿",
+   "batch": "b7"
+  },
+  {
+   "hou": 64,
+   "name": "蚯蚓结",
+   "file": "tools/shots/art-seeds/b6/h64.png",
+   "hue": "花青",
+   "batch": "b6"
+  },
+  {
+   "hou": 65,
+   "name": "麋角解",
+   "file": "tools/shots/art-seeds/test/t65.png",
+   "hue": null,
+   "batch": "test"
+  },
+  {
+   "hou": 66,
+   "name": "水泉动",
+   "file": "tools/shots/art-seeds/b6/h66.png",
+   "hue": "石绿",
+   "batch": "b6"
+  },
+  {
+   "hou": 67,
+   "name": "雁北乡",
+   "file": "tools/shots/art-seeds/b7/h67.png",
+   "hue": "赭石",
+   "batch": "b7"
+  },
+  {
+   "hou": 68,
+   "name": "鹊始巢",
+   "file": "tools/shots/art-seeds/test/t68.png",
+   "hue": null,
+   "batch": "test"
+  },
+  {
+   "hou": 69,
+   "name": "雉雊",
+   "file": "tools/shots/art-seeds/b7/h69.png",
+   "hue": "胭脂",
+   "batch": "b7"
+  },
+  {
+   "hou": 70,
+   "name": "鸡乳",
+   "file": "tools/shots/art-seeds/b7/h70.png",
+   "hue": "藤黄",
+   "batch": "b7"
+  },
+  {
+   "hou": 71,
+   "name": "征鸟厉疾",
+   "file": "tools/shots/art-seeds/b7/h71.png",
+   "hue": "花青",
+   "batch": "b7"
+  },
+  {
+   "hou": 72,
+   "name": "水泽腹坚",
+   "file": "tools/shots/art-seeds/test/t72.png",
+   "hue": null,
+   "batch": "test"
+  }
+ ],
+ "reserved": [
+  {
+   "hou": 28,
+   "name": "鹿角解",
+   "reason": "与已出的 65 麋角解 同构图（地上横一支角），排到最后单独出，且必须换视角（如只画无角鹿首侧影 + 林间空地），避免牌面撞脸"
+  }
+ ],
+ "composition_watch": {
+  "raptors": "鹰类已有 09 鹰化为鸠（高空俯视 + 地面小鸠）。33 鹰始击、40 鹰乃祭鸟、71 征鸟厉疾 必须三者互不相同：33 收翼俯冲、40 立枝待击、71 雪野低飞追猎。",
+  "birds": "雁类已有 05 候雁北（斜线高空）、43 鸿雁来、49 鸿雁来宾 三张，43/49 需一近一远、一栖一飞。"
+ },
+ "scale_rule": "微小主体（蝉、虫、蟋蟀、蚯蚓、蛤壳）画出来会缩成一个墨点。写提示词时必须给尺寸占比：「主体高度约占画面三分之一，位于画面中部」，否则模型一律画成大风景。39、47、50、32 都是这个病。",
+ "next": [],
+ "retake_queue": [],
+ "retake_note": "2026-10-31 全部补拍完成，10 张均胜过原图；台账 file 已指向 tools/shots/art-seeds/rt/。"
+}

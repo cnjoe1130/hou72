@@ -1,0 +1,1150 @@
+{
+ "_meta": {
+  "title": "七十二候 · 翻背三件套全表(诗/食)",
+  "rule": "诗必须真实可考(朝代·作者·篇名齐全)；查不到=pending或null，禁编造；食俗=节气层民间岁时，兜底句'依地域有异'；最终产品里 status!=confirmed 的条目 poem 字段置 null",
+  "verified_count": 70,
+  "pending_count": 2,
+  "date": "2026-10-30",
+  "built": "2026-10-30"
+ },
+ "rows": [
+  {
+   "hou": 1,
+   "jieqi": "立春",
+   "hou_name": "东风解冻",
+   "poem_text": [
+    "梅英疏淡，",
+    "冰澌溶泄，",
+    "东风暗换年华。"
+   ],
+   "poem_author": "宋·秦观",
+   "poem_title": "望海潮·洛阳怀古",
+   "food_note": "立春 · 咬春（萝卜、春饼）",
+   "food_src": "民间岁时，北方咬春吃萝卜春饼，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_de5c115d791d.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 2,
+   "jieqi": "立春",
+   "hou_name": "蛰虫始振",
+   "poem_text": [
+    "今夜偏知春气暖，",
+    "虫声新透绿窗纱。"
+   ],
+   "poem_author": "唐·刘方平",
+   "poem_title": "月夜",
+   "food_note": "立春 · 咬春（萝卜、春饼）",
+   "food_src": "民间岁时，北方咬春吃萝卜春饼，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_cb396f21ec13.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 3,
+   "jieqi": "立春",
+   "hou_name": "鱼陟负冰",
+   "poem_text": [
+    "间泮游鱼跃，",
+    "和风待柳芳。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·立春正月节",
+   "food_note": "立春 · 咬春（萝卜、春饼）",
+   "food_src": "民间岁时，北方咬春吃萝卜春饼，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_d1c1318de9ed.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 4,
+   "jieqi": "雨水",
+   "hou_name": "獭祭鱼",
+   "poem_text": [
+    "祭鱼盈浦屿，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·雨水正月中",
+   "food_note": "雨水 · 罐罐肉（川西接寿）",
+   "food_src": "川西民俗，雨水日女婿以罐罐肉送岳父母，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_a99c2b8523ba.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 5,
+   "jieqi": "雨水",
+   "hou_name": "候雁北",
+   "poem_text": [
+    "鸿雁于飞，",
+    "肃肃其羽。"
+   ],
+   "poem_author": "先秦 · 《诗经·小雅·鸿雁之什》",
+   "poem_title": "鸿雁",
+   "food_note": "雨水 · 罐罐肉（川西接寿）",
+   "food_src": "川西民俗，雨水日女婿以罐罐肉送岳父母，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_29e8292e57f2.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 6,
+   "jieqi": "雨水",
+   "hou_name": "草木萌动",
+   "poem_text": [
+    "天街小雨润如酥，",
+    "草色遥看近却无。"
+   ],
+   "poem_author": "唐·韩愈",
+   "poem_title": "早春呈水部张十八员外二首",
+   "food_note": "雨水 · 罐罐肉（川西接寿）",
+   "food_src": "川西民俗，雨水日女婿以罐罐肉送岳父母，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_d9b8b714a113.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 7,
+   "jieqi": "惊蛰",
+   "hou_name": "桃始华",
+   "poem_text": [
+    "桃之夭夭，",
+    "灼灼其华。"
+   ],
+   "poem_author": "先秦 · 《诗经·周南·桃夭》",
+   "poem_title": "桃夭",
+   "food_note": "惊蛰 · 吃梨",
+   "food_src": "民间岁时，北方惊蛰吃梨，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_6ba04da3fdc1.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 8,
+   "jieqi": "惊蛰",
+   "hou_name": "仓庚鸣",
+   "poem_text": [
+    "春日载阳，",
+    "有鸣仓庚。"
+   ],
+   "poem_author": "先秦 · 《诗经·国风·豳风》",
+   "poem_title": "七月",
+   "food_note": "惊蛰 · 吃梨",
+   "food_src": "民间岁时，北方惊蛰吃梨，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_5bb99a1c18ba.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 9,
+   "jieqi": "惊蛰",
+   "hou_name": "鹰化为鸠",
+   "poem_text": [
+    "桃花开蜀锦，",
+    "鹰老化春鸠。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·惊蛰二月节",
+   "food_note": "惊蛰 · 吃梨",
+   "food_src": "民间岁时，北方惊蛰吃梨，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_0c367fd935a6.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 10,
+   "jieqi": "春分",
+   "hou_name": "玄鸟至",
+   "poem_text": [
+    "春眠不觉晓，",
+    "处处闻啼鸟。",
+    "夜来风雨声，",
+    "花落知多少。"
+   ],
+   "poem_author": "唐·孟浩然",
+   "poem_title": "春晓",
+   "food_note": "春分 · 立蛋",
+   "food_src": "民间岁时，竖蛋取昼夜平分之意",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/GuShiWen_b3639b3722.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)"
+  },
+  {
+   "hou": 11,
+   "jieqi": "春分",
+   "hou_name": "雷乃发声",
+   "poem_text": [
+    "云过听雷声。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏二十四气诗·春分二月中",
+   "food_note": "春分 · 立蛋",
+   "food_src": "民间岁时，竖蛋取昼夜平分之意",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_2233eeb178fe.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 12,
+   "jieqi": "春分",
+   "hou_name": "始电",
+   "poem_text": [
+    "雨来看电影。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏二十四气诗·春分二月中",
+   "food_note": "春分 · 立蛋",
+   "food_src": "民间岁时，竖蛋取昼夜平分之意",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_2233eeb178fe.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 13,
+   "jieqi": "清明",
+   "hou_name": "桐始华",
+   "poem_text": [
+    "杨柳先飞絮，",
+    "梧桐续放花。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·清明三月节",
+   "food_note": "清明 · 青团（江南）",
+   "food_src": "民间岁时，江南以艾草制青团祭祖，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_0105669f997c.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 14,
+   "jieqi": "清明",
+   "hou_name": "田鼠化为鴽",
+   "poem_text": [
+    "鴽声知化鼠，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·清明三月节",
+   "food_note": "清明 · 青团（江南）",
+   "food_src": "民间岁时，江南以艾草制青团祭祖，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_0105669f997c.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 15,
+   "jieqi": "清明",
+   "hou_name": "虹始见",
+   "poem_text": [
+    "小楼西角断虹明。"
+   ],
+   "poem_author": "宋·欧阳修",
+   "poem_title": "临江仙·柳外轻雷池上雨",
+   "food_note": "清明 · 青团（江南）",
+   "food_src": "民间岁时，江南以艾草制青团祭祖，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_1183b44ed197.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 16,
+   "jieqi": "谷雨",
+   "hou_name": "萍始生",
+   "poem_text": [
+    "泽水长浮萍。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·谷雨三月中",
+   "food_note": "谷雨 · 谷雨茶",
+   "food_src": "民间岁时，谷雨前采茶，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_a99d905f9d84.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 17,
+   "jieqi": "谷雨",
+   "hou_name": "鸣鸠拂其羽",
+   "poem_text": [
+    "鸤鸠在桑，",
+    "其子七兮。"
+   ],
+   "poem_author": "先秦 · 《诗经·国风·曹风》",
+   "poem_title": "鸤鸠",
+   "food_note": "谷雨 · 谷雨茶",
+   "food_src": "民间岁时，谷雨前采茶，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_03a21225b09c.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 18,
+   "jieqi": "谷雨",
+   "hou_name": "戴胜降于桑",
+   "poem_text": [
+    "叶间鸣戴胜，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·谷雨三月中",
+   "food_note": "谷雨 · 谷雨茶",
+   "food_src": "民间岁时，谷雨前采茶，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_a99d905f9d84.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 19,
+   "jieqi": "立夏",
+   "hou_name": "蝼蝈鸣",
+   "poem_text": [
+    "水满有时观下鹭，",
+    "草深无处不鸣蛙。"
+   ],
+   "poem_author": "宋·陆游",
+   "poem_title": "幽居初夏",
+   "food_note": "立夏 · 立夏蛋、称人",
+   "food_src": "民间岁时，立夏称人吃蛋，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_a6fca9da5a46.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 20,
+   "jieqi": "立夏",
+   "hou_name": "蚯蚓出",
+   "poem_text": [
+    "蚯蚓谁教出，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·立夏四月节",
+   "food_note": "立夏 · 立夏蛋、称人",
+   "food_src": "民间岁时，立夏称人吃蛋，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_8447a598ca49.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 21,
+   "jieqi": "立夏",
+   "hou_name": "王瓜生",
+   "poem_text": [
+    "王菰自合生。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·立夏四月节",
+   "food_note": "立夏 · 立夏蛋、称人",
+   "food_src": "民间岁时，立夏称人吃蛋，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_8447a598ca49.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 22,
+   "jieqi": "小满",
+   "hou_name": "苦菜秀",
+   "poem_text": [
+    "向来看苦菜，",
+    "独秀也何为？"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·小满四月中",
+   "food_note": "小满 · 苦菜",
+   "food_src": "民间岁时，小满采苦菜，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_4dbfb37f72db.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 23,
+   "jieqi": "小满",
+   "hou_name": "靡草死",
+   "poem_text": [
+    "小满气全时，",
+    "如何靡草衰。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·小满四月中",
+   "food_note": "小满 · 苦菜",
+   "food_src": "民间岁时，小满采苦菜，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_4dbfb37f72db.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 24,
+   "jieqi": "小满",
+   "hou_name": "麦秋至",
+   "poem_text": [
+    "轻寒微雨麦秋时。"
+   ],
+   "poem_author": "宋·寇准",
+   "poem_title": "夏日",
+   "food_note": "小满 · 苦菜",
+   "food_src": "民间岁时，小满采苦菜，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_c76e258b9737.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 25,
+   "jieqi": "芒种",
+   "hou_name": "螳螂生",
+   "poem_text": [
+    "芒种看今日，",
+    "螳螂应节生。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·芒种五月节",
+   "food_note": "芒种 · 煮梅",
+   "food_src": "民间岁时，芒种青梅煮酒，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_fbeb0e866133.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 26,
+   "jieqi": "芒种",
+   "hou_name": "鵙始鸣",
+   "poem_text": [
+    "七月鸣鵙，",
+    "八月载绩。"
+   ],
+   "poem_author": "先秦 · 《诗经·国风·豳风》",
+   "poem_title": "七月",
+   "food_note": "芒种 · 煮梅",
+   "food_src": "民间岁时，芒种青梅煮酒，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_5bb99a1c18ba.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 27,
+   "jieqi": "芒种",
+   "hou_name": "反舌无声",
+   "poem_text": [
+    "百舌无声燕子忙。"
+   ],
+   "poem_author": "宋·范成大",
+   "poem_title": "初夏",
+   "food_note": "芒种 · 煮梅",
+   "food_src": "民间岁时，芒种青梅煮酒，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_ea8824428a9c.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 28,
+   "jieqi": "夏至",
+   "hou_name": "鹿角解",
+   "poem_text": [
+    "呦呦鹿鸣，",
+    "食野之苹。"
+   ],
+   "poem_author": "先秦 · 《诗经·小雅·鹿鸣之什》",
+   "poem_title": "鹿鸣",
+   "food_note": "夏至 · 夏至面",
+   "food_src": "民间岁时，冬至饺子夏至面，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_8d7a192e8b32.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 29,
+   "jieqi": "夏至",
+   "hou_name": "蜩始鸣",
+   "poem_text": [
+    "处处闻蝉响，",
+    "须知五月中。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏二十四气诗·夏至五月中",
+   "food_note": "夏至 · 夏至面",
+   "food_src": "民间岁时，冬至饺子夏至面，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_c1b302b34338.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 30,
+   "jieqi": "夏至",
+   "hou_name": "半夏生",
+   "poem_text": [
+    "蕤宾移去后，",
+    "二气各西东。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏二十四气诗·夏至五月中",
+   "food_note": "夏至 · 夏至面",
+   "food_src": "民间岁时，冬至饺子夏至面，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_c1b302b34338.aspx",
+   "note": "D-2 兜底：元稹《咏廿四气诗·夏至五月中》「蕤宾移去后，二气各西东。」——蕤宾为五月律、二气各分即夏至一阴生，半夏生于阴气初动之时。原候眼查无诗，故用节气总咏句；选诗理由见 D-report.md"
+  },
+  {
+   "hou": 31,
+   "jieqi": "小暑",
+   "hou_name": "温风至",
+   "poem_text": [
+    "倏忽温风至，",
+    "因循小暑来。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·小暑六月节",
+   "food_note": "小暑 · 食新、黄鳝",
+   "food_src": "民间岁时，小暑尝新米食黄鳝，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_4da8d68cdfe3.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 32,
+   "jieqi": "小暑",
+   "hou_name": "蟋蟀居壁",
+   "poem_text": [
+    "明月皎夜光，",
+    "促织鸣东壁。"
+   ],
+   "poem_author": "汉·佚名",
+   "poem_title": "明月皎夜光",
+   "food_note": "小暑 · 食新、黄鳝",
+   "food_src": "民间岁时，小暑尝新米食黄鳝，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_d15a88583601.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 33,
+   "jieqi": "小暑",
+   "hou_name": "鹰始击",
+   "poem_text": [
+    "鹰鹯新习学，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·小暑六月节",
+   "food_note": "小暑 · 食新、黄鳝",
+   "food_src": "民间岁时，小暑尝新米食黄鳝，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_4da8d68cdfe3.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 34,
+   "jieqi": "大暑",
+   "hou_name": "腐草为萤",
+   "poem_text": [
+    "桂轮开子夜，",
+    "萤火照空时。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·大暑六月中",
+   "food_note": "大暑 · 伏茶、仙草",
+   "food_src": "民间岁时，大暑饮伏茶食仙草，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_618abfd91732.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 35,
+   "jieqi": "大暑",
+   "hou_name": "土润溽暑",
+   "poem_text": [
+    "南州溽暑醉如酒。"
+   ],
+   "poem_author": "唐·柳宗元",
+   "poem_title": "夏昼偶作",
+   "food_note": "大暑 · 伏茶、仙草",
+   "food_src": "民间岁时，大暑饮伏茶食仙草，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_eac864bc362d.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 36,
+   "jieqi": "大暑",
+   "hou_name": "大雨时行",
+   "poem_text": [
+    "黑云翻墨未遮山，",
+    "白雨跳珠乱入船。"
+   ],
+   "poem_author": "宋·苏轼",
+   "poem_title": "六月二十七日望湖楼醉书五首",
+   "food_note": "大暑 · 伏茶、仙草",
+   "food_src": "民间岁时，大暑饮伏茶食仙草，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_20869108a51c.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 37,
+   "jieqi": "立秋",
+   "hou_name": "凉风至",
+   "poem_text": [
+    "离离暑云散，",
+    "袅袅凉风起。"
+   ],
+   "poem_author": "唐·白居易",
+   "poem_title": "早秋曲江感怀",
+   "food_note": "立秋 · 贴秋膘、啃秋",
+   "food_src": "民间岁时，立秋啃西瓜贴秋膘，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_9731ccef97de.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 38,
+   "jieqi": "立秋",
+   "hou_name": "白露降",
+   "poem_text": [
+    "寒声喧耳外，",
+    "白露滴林头。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·立秋七月节",
+   "food_note": "立秋 · 贴秋膘、啃秋",
+   "food_src": "民间岁时，立秋啃西瓜贴秋膘，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_eeb3057e736e.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 39,
+   "jieqi": "立秋",
+   "hou_name": "寒蝉鸣",
+   "poem_text": [
+    "寒蝉聒梧桐，",
+    "日夕长鸣悲。"
+   ],
+   "poem_author": "唐·李白",
+   "poem_title": "代秋情",
+   "food_note": "立秋 · 贴秋膘、啃秋",
+   "food_src": "民间岁时，立秋啃西瓜贴秋膘，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_482b34939f87.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 40,
+   "jieqi": "处暑",
+   "hou_name": "鹰乃祭鸟",
+   "poem_text": [
+    "向来鹰祭鸟，",
+    "渐觉白藏深。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·处暑七月中",
+   "food_note": "处暑 · 吃鸭",
+   "food_src": "民间岁时，处暑食鸭，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_d2575f2eab76.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 41,
+   "jieqi": "处暑",
+   "hou_name": "天地始肃",
+   "poem_text": [
+    "天地肃清堪四望，"
+   ],
+   "poem_author": "唐·刘禹锡",
+   "poem_title": "始闻秋风",
+   "food_note": "处暑 · 吃鸭",
+   "food_src": "民间岁时，处暑食鸭，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_ba7ed45ed4fb.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 42,
+   "jieqi": "处暑",
+   "hou_name": "禾乃登",
+   "poem_text": [
+    "气收禾黍熟，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·处暑七月中",
+   "food_note": "处暑 · 吃鸭",
+   "food_src": "民间岁时，处暑食鸭，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_d2575f2eab76.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 43,
+   "jieqi": "白露",
+   "hou_name": "鸿雁来",
+   "poem_text": [
+    "塞下秋来风景异，",
+    "衡阳雁去无留意。"
+   ],
+   "poem_author": "宋·范仲淹",
+   "poem_title": "渔家傲·秋思",
+   "food_note": "白露 · 收清露(旧时民间取露水)",
+   "food_src": "民间岁时记载，各地不一",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_76a124fc2fb8.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)"
+  },
+  {
+   "hou": 44,
+   "jieqi": "白露",
+   "hou_name": "玄鸟归",
+   "poem_text": [
+    "燕燕于飞，",
+    "差池其羽。"
+   ],
+   "poem_author": "先秦 · 《诗经·国风·邶风》",
+   "poem_title": "燕燕",
+   "food_note": "白露 · 收清露(旧时民间取露水)",
+   "food_src": "民间岁时记载，各地不一",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_8fd09b9d7295.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 45,
+   "jieqi": "白露",
+   "hou_name": "群鸟养羞",
+   "poem_text": [
+    "养羞因野鸟，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·白露八月节",
+   "food_note": "白露 · 收清露(旧时民间取露水)",
+   "food_src": "民间岁时记载，各地不一",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_b6a02ac77f87.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 46,
+   "jieqi": "秋分",
+   "hou_name": "雷始收声",
+   "poem_text": [
+    "云散飘飖影，",
+    "雷收振怒声。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·秋分八月中",
+   "food_note": "秋分 · 吃秋菜",
+   "food_src": "岭南民俗，秋分采秋菜，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_2e1b7fac41c3.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 47,
+   "jieqi": "秋分",
+   "hou_name": "蛰虫坏户",
+   "poem_text": [
+    "乾坤能静肃，",
+    "寒暑喜均平。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·秋分八月中",
+   "food_note": "秋分 · 吃秋菜",
+   "food_src": "岭南民俗，秋分采秋菜，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_2e1b7fac41c3.aspx",
+   "note": "D-2 兜底：元稹《咏廿四气诗·秋分八月中》「乾坤能静肃，寒暑喜均平。」——秋分寒暑均平、天地静肃，与蛰虫坏户（封穴）同向。原候眼无诗；该诗两次配额至此用尽，故第 48 候不再使用"
+  },
+  {
+   "hou": 48,
+   "jieqi": "秋分",
+   "hou_name": "水始涸",
+   "poem_text": null,
+   "poem_author": null,
+   "poem_title": null,
+   "houge_text": "水始涸兮勢向東",
+   "houge_src": "《十二月七十二候歌》",
+   "food_note": "秋分 · 吃秋菜",
+   "food_src": "岭南民俗，秋分采秋菜，依地域有异",
+   "status": "pending_no_source",
+   "poem_url": null,
+   "note": "查不到可靠出处，poem 置 null。查证记录：秋分元稹诗配额已满且余句无水意象；「涸」在库中只有赋句与范成大「寸涸」，不是秋水始涸。宁可留空不凑"
+  },
+  {
+   "hou": 49,
+   "jieqi": "寒露",
+   "hou_name": "鸿雁来宾",
+   "poem_text": [
+    "自古逢秋悲寂寥，",
+    "我言秋日胜春朝。",
+    "晴空一鹤排云上，",
+    "便引诗情到碧霄。"
+   ],
+   "poem_author": "唐·刘禹锡",
+   "poem_title": "秋词",
+   "food_note": "寒露 · 菊花酒",
+   "food_src": "民间岁时，寒露菊开旧俗",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_0bd6e40d1ee5.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)"
+  },
+  {
+   "hou": 50,
+   "jieqi": "寒露",
+   "hou_name": "雀入大水为蛤",
+   "poem_text": [
+    "化蛤悲群鸟，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·寒露九月节",
+   "food_note": "寒露 · 菊花酒",
+   "food_src": "民间岁时，寒露菊开旧俗",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_eea9ed8ccbf9.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 51,
+   "jieqi": "寒露",
+   "hou_name": "菊有黄华",
+   "poem_text": [
+    "寒露惊秋晚，",
+    "朝看菊渐黄。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·寒露九月节",
+   "food_note": "寒露 · 菊花酒",
+   "food_src": "民间岁时，寒露菊开旧俗",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_eea9ed8ccbf9.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 52,
+   "jieqi": "霜降",
+   "hou_name": "豺祭兽",
+   "poem_text": [
+    "野豺先祭月，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·霜降九月中",
+   "food_note": "霜降 · 吃柿子",
+   "food_src": "民间岁时，霜降食柿，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_8f5158299db6.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 53,
+   "jieqi": "霜降",
+   "hou_name": "草木黄落",
+   "poem_text": [
+    "秋风起兮白云飞，",
+    "草木黄落兮雁南归。"
+   ],
+   "poem_author": "汉·刘彻",
+   "poem_title": "秋风辞",
+   "food_note": "霜降 · 吃柿子",
+   "food_src": "民间岁时，霜降食柿，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_515f5c1f245b.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 54,
+   "jieqi": "霜降",
+   "hou_name": "蛰虫咸俯",
+   "poem_text": [
+    "风卷清云尽，",
+    "空天万里霜。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·霜降九月中",
+   "food_note": "霜降 · 吃柿子",
+   "food_src": "民间岁时，霜降食柿，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_8f5158299db6.aspx",
+   "note": "D-2 兜底：元稹《咏廿四气诗·霜降九月中》「风卷清云尽，空天万里霜。」——霜重天寒，蛰虫咸俯之由。原候眼无诗，故用节气气候句；选诗理由见 D-report.md"
+  },
+  {
+   "hou": 55,
+   "jieqi": "立冬",
+   "hou_name": "水始冰",
+   "poem_text": [
+    "霜降向人寒，",
+    "轻冰渌水漫。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·立冬十月节",
+   "food_note": "立冬 · 饺子（北方）",
+   "food_src": "民间岁时，北方立冬吃饺子，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_5dc68e7e5542.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 56,
+   "jieqi": "立冬",
+   "hou_name": "地始冻",
+   "poem_text": [
+    "孟冬十月，",
+    "北风徘徊，",
+    "天气肃清，",
+    "繁霜霏霏。"
+   ],
+   "poem_author": "汉·曹操",
+   "poem_title": "步出夏门行·冬十月",
+   "food_note": "立冬 · 饺子（北方）",
+   "food_src": "民间岁时，北方立冬吃饺子，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_65b0be6fd721.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 57,
+   "jieqi": "立冬",
+   "hou_name": "雉入大水为蜃",
+   "poem_text": [
+    "野鸡投水日，",
+    "化蜃不将难。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·立冬十月节",
+   "food_note": "立冬 · 饺子（北方）",
+   "food_src": "民间岁时，北方立冬吃饺子，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_5dc68e7e5542.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 58,
+   "jieqi": "小雪",
+   "hou_name": "虹藏不见",
+   "poem_text": [
+    "迎冬小雪至，",
+    "应节晚虹藏。"
+   ],
+   "poem_author": "唐·徐敞",
+   "poem_title": "虹藏不见",
+   "food_note": "小雪 · 腌菜、糍粑",
+   "food_src": "民间岁时，小雪腌菜、南方打糍粑，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_87ed22765e07.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 59,
+   "jieqi": "小雪",
+   "hou_name": "天气上升地气下降",
+   "poem_text": [
+    "阴阳依上下，",
+    "寒暑喜分离。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·小雪十月中",
+   "food_note": "小雪 · 腌菜、糍粑",
+   "food_src": "民间岁时，小雪腌菜、南方打糍粑，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_94d79ad2f093.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 60,
+   "jieqi": "小雪",
+   "hou_name": "闭塞而成冬",
+   "poem_text": [
+    "千山鸟飞绝，",
+    "万径人踪灭。"
+   ],
+   "poem_author": "唐·柳宗元",
+   "poem_title": "江雪",
+   "food_note": "小雪 · 腌菜、糍粑",
+   "food_src": "民间岁时，小雪腌菜、南方打糍粑，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_58313be2d918.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 61,
+   "jieqi": "大雪",
+   "hou_name": "鹖鴠不鸣",
+   "poem_text": [
+    "鴳鸟不鸣时，"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·大雪十一月节",
+   "food_note": "大雪 · 腌肉、红薯粥",
+   "food_src": "民间岁时，「小雪腌菜，大雪腌肉」，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_9b414faa479c.aspx",
+   "note": "D-2 兜底：元稹《咏廿四气诗·大雪十一月节》「鴳鸟不鸣时。」——写大雪节候鸟止鸣，与候义同构。注意鴳非鹖鴠（寒号鸟），属节气层兜底而非候眼对位；原候眼零命中"
+  },
+  {
+   "hou": 62,
+   "jieqi": "大雪",
+   "hou_name": "虎始交",
+   "poem_text": [
+    "积阴成大雪，",
+    "看处乱霏霏。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·大雪十一月节",
+   "food_note": "大雪 · 腌肉、红薯粥",
+   "food_src": "民间岁时，「小雪腌菜，大雪腌肉」，依地域有异",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_9b414faa479c.aspx",
+   "note": "D-2 兜底：元稹《咏廿四气诗·大雪十一月节》「积阴成大雪，看处乱霏霏。」——大雪节气气候句。候眼「虎始交」无诗可对，此句不涉虎、属节气层兜底；选诗理由见 D-report.md"
+  },
+  {
+   "hou": 63,
+   "jieqi": "大雪",
+   "hou_name": "荔挺出",
+   "poem_text": null,
+   "poem_author": null,
+   "poem_title": null,
+   "houge_text": "荔挺出時霜滿溪",
+   "houge_src": "《十二月七十二候歌》",
+   "food_note": "大雪 · 腌肉、红薯粥",
+   "food_src": "民间岁时，「小雪腌菜，大雪腌肉」，依地域有异",
+   "status": "pending_no_source",
+   "poem_url": null,
+   "note": "查不到可靠出处，poem 置 null。查证记录：大雪元稹诗配额已满，余句不写草木；「荔」只有薜荔/丹荔，荔挺（马蔺）无诗。宁可留空不凑"
+  },
+  {
+   "hou": 64,
+   "jieqi": "冬至",
+   "hou_name": "蚯蚓结",
+   "poem_text": [
+    "二气俱生处，",
+    "周家正立年。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·冬至十一月中",
+   "food_note": "冬至 · 北饺南圆",
+   "food_src": "民间岁时，北方饺子南方汤圆",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_29607e833c87.aspx",
+   "note": "D-2 兜底：元稹《咏廿四气诗·冬至十一月中》「二气俱生处，周家正立年。」——冬至二气俱生（一阳来复），为蚯蚓结的节气背景。原候眼无诗，故用节气总咏句；选诗理由见 D-report.md"
+  },
+  {
+   "hou": 65,
+   "jieqi": "冬至",
+   "hou_name": "麋角解",
+   "poem_text": [
+    "机心久已忘，",
+    "何事惊麋鹿。"
+   ],
+   "poem_author": "唐·柳宗元",
+   "poem_title": "秋晓行南谷经荒村",
+   "food_note": "冬至 · 北饺南圆",
+   "food_src": "民间岁时，北方饺子南方汤圆",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_17dcdcae915b.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 66,
+   "jieqi": "冬至",
+   "hou_name": "水泉动",
+   "poem_text": [
+    "天时人事日相催，",
+    "冬至阳生春又来。"
+   ],
+   "poem_author": "唐·杜甫",
+   "poem_title": "小至",
+   "food_note": "冬至 · 北饺南圆",
+   "food_src": "民间岁时，北方饺子南方汤圆",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/mingju_1278.aspx",
+   "note": "小至名句页，desktop UA 实测含全诗原文(2026-10-30)"
+  },
+  {
+   "hou": 67,
+   "jieqi": "小寒",
+   "hou_name": "雁北乡",
+   "poem_text": [
+    "乡书何处达，",
+    "归雁洛阳边。"
+   ],
+   "poem_author": "唐·王湾",
+   "poem_title": "次北固山下",
+   "food_note": "小寒 · 腊八粥、糯米饭",
+   "food_src": "民间岁时，小寒逢腊八煮粥，岭南食糯米饭",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_720b46d38537.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 68,
+   "jieqi": "小寒",
+   "hou_name": "鹊始巢",
+   "poem_text": [
+    "小寒连大吕，",
+    "欢鹊垒新巢。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·小寒十二月节",
+   "food_note": "小寒 · 腊八粥、糯米饭",
+   "food_src": "民间岁时，小寒逢腊八煮粥，岭南食糯米饭",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_07cfeb2cb570.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 69,
+   "jieqi": "小寒",
+   "hou_name": "雉雊",
+   "poem_text": [
+    "霜鹰近北首，",
+    "雊雉隐丛茅。"
+   ],
+   "poem_author": "唐·元稹",
+   "poem_title": "咏廿四气诗·小寒十二月节",
+   "food_note": "小寒 · 腊八粥、糯米饭",
+   "food_src": "民间岁时，小寒逢腊八煮粥，岭南食糯米饭",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_07cfeb2cb570.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 70,
+   "jieqi": "大寒",
+   "hou_name": "鸡乳",
+   "poem_text": [
+    "鸡既鸣矣，",
+    "朝既盈矣。"
+   ],
+   "poem_author": "先秦 · 《诗经·国风·齐风》",
+   "poem_title": "鸡鸣",
+   "food_note": "大寒 · 消寒糕、尾牙",
+   "food_src": "民间岁时，北方食消寒糕，闽台做尾牙",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_a9acb0c48ea5.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 71,
+   "jieqi": "大寒",
+   "hou_name": "征鸟厉疾",
+   "poem_text": [
+    "草枯鹰眼疾，",
+    "雪尽马蹄轻。"
+   ],
+   "poem_author": "唐·王维",
+   "poem_title": "观猎",
+   "food_note": "大寒 · 消寒糕、尾牙",
+   "food_src": "民间岁时，北方食消寒糕，闽台做尾牙",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_f4f3de69130c.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  },
+  {
+   "hou": 72,
+   "jieqi": "大寒",
+   "hou_name": "水泽腹坚",
+   "poem_text": [
+    "一方黑照三方紫，",
+    "黄河冰合鱼龙死。"
+   ],
+   "poem_author": "唐·李贺",
+   "poem_title": "北中寒",
+   "food_note": "大寒 · 消寒糕、尾牙",
+   "food_src": "民间岁时，北方食消寒糕，闽台做尾牙",
+   "status": "confirmed",
+   "poem_url": "https://www.gushiwen.cn/shiwenv_e9da3f3c53f6.aspx",
+   "note": "URL已抓取验证含诗句原文(2026-10-30)；选诗理由与放弃记录见 D-report.md"
+  }
+ ]
+}

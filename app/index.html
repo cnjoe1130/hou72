@@ -193,6 +193,129 @@
   .disclaimer { font-size:8.5px; color:var(--t7); letter-spacing:.04em; margin-top:3px;
                 line-height:1.7; }
 
+  /* ---------- 扇面摊牌 ---------- */
+  .fan-area { margin-top:4px; }
+  .fan-status { min-height:17px; padding:6px 24px 0; text-align:center; font-size:10.5px;
+                line-height:1.8; letter-spacing:.1em; color:var(--pg-muted); }
+  .fan-status b { font-weight:400; color:var(--pg-accent); }
+  .fan-stage { position:relative; width:100%; height:270px; margin-top:4px;
+               overflow:hidden; transition:height .35s ease; touch-action:pan-y; }
+  .fan { position:absolute; inset:0; }
+
+  .leaf { position:absolute; left:50%; top:0; width:390px; height:844px;
+          margin-left:-195px; padding:0; border:0; background:none; cursor:pointer;
+          font-family:inherit; color:inherit; text-align:left;
+          transform-origin:50% 90%; -webkit-appearance:none; appearance:none;
+          transition:transform .36s cubic-bezier(.22,.61,.36,1), opacity .3s ease;
+          will-change:transform; }
+  .leaf .card { box-shadow:0 20px 36px -26px rgba(0,0,0,.85); }
+  .leaf.is-dim { opacity:.3; }
+  .leaf.is-zoom { z-index:30; }
+  .leaf:focus-visible { outline:1px solid rgba(var(--gold-rgb),.7); outline-offset:2px; }
+
+  .leaf-3d { position:relative; width:100%; height:100%;
+             transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
+             transition:transform .65s cubic-bezier(.45,0,.2,1); }
+  .leaf.is-flipped .leaf-3d { transform:rotateY(180deg); }
+  /* iOS Safari 与 Chromium 都不拿「父级旋转出来的背面」判断 backface-visibility，
+     翻过去会看到镜像的正面；所以在 325ms（正好转到 90°、两面都侧立看不见）硬切。 */
+  .leaf .face { position:absolute; inset:0;
+                backface-visibility:hidden; -webkit-backface-visibility:hidden;
+                transition:visibility 0s linear .325s; }
+  .leaf .face.back { transform:rotateY(180deg); visibility:hidden; }
+  .leaf.is-flipped .face.front { visibility:hidden; }
+  .leaf.is-flipped .face.back { visibility:visible; }
+
+  .leaf-badge { position:absolute; top:18px; left:18px;
+                padding:2px 7px 3px; border:1.5px solid rgba(200,171,104,.78);
+                background:rgba(11,10,8,.5); color:#D8BE84;
+                font-size:17px; line-height:1; letter-spacing:3px; text-indent:3px;
+                pointer-events:none; opacity:0; transition:opacity .25s ease; }
+  .leaf.is-mine .leaf-badge { opacity:1; }
+  .leaf.is-zoom.is-near .leaf-badge { opacity:.86;
+    border-color:rgba(200,171,104,.36); color:#9B8A64; }
+  .fan-stage.paper .leaf-badge { border-color:rgba(110,92,66,.85);
+    background:rgba(243,236,219,.9); color:#6E5C42; }
+  .leaf.is-flipped .leaf-badge { display:none; }
+
+  /* 背面：宣纸 + 满幅画 + 诗 / 食 / 印（无框线，画片 346×461 顶到 22） */
+  .bk { position:absolute; inset:0; overflow:hidden; color:#2B2620;
+        background:radial-gradient(120% 82% at 50% 6%, #F7F1E2 0%, #EFE6D2 58%, #E4D8BE 100%); }
+  .art-band { position:absolute; left:0; right:0; top:22px; height:461px; }
+  .art-slot { position:relative; width:var(--aw,346px); height:var(--ah,461px);
+              margin:0 auto; overflow:hidden; }
+  /* 画作是满幅 3:4、没有白纸边，整幅入槽不裁（尺寸见 HOU_ART_BOX）。
+     图随翻面自上而下渗出来（水彩不是线稿，用淡入 + 下扫代替「一笔笔画」） */
+  .art-slot img { display:block; position:absolute; object-fit:fill;
+                  width:var(--iw,100%); height:var(--ih,100%);
+                  left:var(--il,0%); top:var(--it,0%);
+                  opacity:0; clip-path:inset(0 0 100% 0); -webkit-clip-path:inset(0 0 100% 0);
+                  transition:opacity .55s ease,
+                             clip-path .95s cubic-bezier(.2,.7,.2,1),
+                             -webkit-clip-path .95s cubic-bezier(.2,.7,.2,1); }
+  .art-slot img.is-on { opacity:1; clip-path:inset(0 0 0 0); -webkit-clip-path:inset(0 0 0 0); }
+  /* 诗块、食俗、印章的位置由 fan.js 的 layoutBack() 按诗行数实时落位：
+     诗块在画片下沿与食俗行之间垂直居中，放不下时连同题注一起缩字号 */
+  .bk-poem { position:absolute; right:52px; top:500px;
+             display:flex; flex-direction:row-reverse; align-items:flex-start; gap:12px; }
+  .bk-poem .ln { writing-mode:vertical-rl; -webkit-writing-mode:vertical-rl;
+                 font-size:21px; line-height:1.7; letter-spacing:.22em; color:#2B2620;
+                 white-space:nowrap; /* 导出时 SVG 渲染器字宽与页面不一致，不禁换行会折成两列挤到卡外 */
+                 opacity:0; transform:translateY(8px);
+                 transition:opacity .5s ease, transform .5s ease; }
+  .bk-poem .src { writing-mode:vertical-rl; -webkit-writing-mode:vertical-rl;
+                  align-self:flex-start; font-size:10.5px; line-height:1.8; letter-spacing:.16em;
+                  color:#8A7A58; opacity:0; transition:opacity .45s ease;
+                  white-space:nowrap; /* 同 .ln：Safari 的 foreignObject 里竖排会按可用高度折列，必须禁换行 */ }
+  .bk-poem.is-on .ln, .bk-poem.is-on .src { opacity:1; transform:none; }
+  /* 候 48 / 63 无可靠出处：诗位说清楚，不拿别候的诗填 */
+  .bk-poem.is-ask { right:56px; top:520px; }
+  .bk-poem.is-ask .ask-cols { display:flex; flex-direction:row-reverse;
+                              align-items:flex-start; gap:12px; }
+  .bk-poem.is-ask .ln { font-size:14px; line-height:1.9; letter-spacing:.2em; color:#8C7C58; }
+  /* 候歌小注：只说这两候的补位层，横排落在共创小字下方，出处用更小字 */
+  .bk-poem.is-ask.has-houge { flex-direction:column; align-items:flex-end; gap:16px; }
+  .bk-poem.is-ask .houge { text-align:right; opacity:0; transform:translateY(6px);
+                           transition:opacity .5s ease, transform .5s ease; }
+  .bk-poem.is-on .houge { opacity:1; transform:none; }
+  .bk-poem.is-ask .hg-t { font-size:15px; line-height:1.6; letter-spacing:.18em;
+                          color:#4A4030; white-space:nowrap; }
+  .bk-poem.is-ask .hg-s { font-size:9.5px; line-height:1.6; letter-spacing:.1em;
+                          color:#8A7A58; margin-top:4px; }
+  .bk-food { position:absolute; left:34px; top:642px; opacity:0;
+             transform:translateY(14px);
+             background:rgba(200,171,104,.16); border:1px solid rgba(122,96,48,.4);
+             padding:9px 13px; transition:opacity .4s ease, transform .4s ease;
+             max-width:236px; box-sizing:border-box; }
+  .bk-food.is-on { opacity:1; transform:none; }
+  .bk-food .t { font-size:13px; color:#5A4A2E; letter-spacing:.14em; }
+  .bk-food .s { font-size:9.5px; color:#8A7A58; margin-top:4px; letter-spacing:.06em; }
+  .bk-seal { position:absolute; right:32px; top:742px; width:72px; height:72px;
+             display:flex; align-items:center; justify-content:center;
+             border:3px solid #B03A2E; border-radius:3px; color:#B03A2E;
+             opacity:0; transform:scale(1.9) rotate(-14deg);
+             transition:opacity .25s ease, transform .42s cubic-bezier(.2,.8,.3,1); }
+  .bk-seal.is-on { opacity:1; transform:scale(1) rotate(0deg); }
+  .seal-grid { display:flex; flex-direction:row-reverse; gap:4px; }
+  .seal-col { display:flex; flex-direction:column; gap:2px; }
+  .seal-col span { display:block; text-align:center; line-height:1;
+                   font-family:"Songti SC","STSong",serif; }
+
+  .fan-links { text-align:center; padding:2px 24px 0; }
+  .fan-link { display:inline-block; padding:10px 4px; background:none; border:0;
+              border-bottom:1px solid rgba(var(--gold-rgb),.28); font-family:inherit;
+              font-size:10.5px; letter-spacing:.2em; text-indent:.2em; color:var(--pg-accent);
+              cursor:pointer; -webkit-appearance:none; appearance:none; }
+  .fan-link:active { opacity:.7; }
+  .fan-hint { text-align:center; font-size:9.5px; letter-spacing:.16em;
+              color:var(--pg-faint); padding:10px 24px 0; }
+  .single-area.is-offscreen { position:fixed; left:-9999px; top:0; width:390px; }
+  /* 离屏位置只挂在 .back-area 上，截的是里层 .back-shot：
+     克隆会带走被截节点自己的样式，离屏偏移若写在它身上，导出就画到画布外了。 */
+  .back-area { position:fixed; left:-9999px; top:0; width:390px; height:844px;
+               overflow:hidden; }
+  .back-shot { position:absolute; inset:0; }
+
   .actions { padding:22px 24px 0; }
   .save-hint { text-align:center; font-size:10px; color:var(--pg-faint);
                letter-spacing:.16em; margin-top:10px; }
@@ -290,6 +413,16 @@
   <p class="msg" id="msg" role="status" aria-live="polite"></p>
 
   <section id="result" hidden>
+    <div class="fan-area" id="fanArea">
+      <p class="fan-status" id="fanStatus"></p>
+      <div class="fan-stage" id="fanStage"><div class="fan" id="fan"></div></div>
+      <p class="fan-hint" id="fanHint">点扇叶抽出 · 左右滑换候 · 再点翻背</p>
+      <div class="fan-links">
+        <button class="fan-link" id="toSingle" type="button">只看我的卡</button>
+      </div>
+    </div>
+
+    <div class="single-area" id="singleArea" hidden>
     <div class="stage-wrap">
       <div class="stage" id="stage">
         <div class="scaler" id="scaler">
@@ -332,6 +465,10 @@
         </div>
       </div>
     </div>
+      <div class="fan-links">
+        <button class="fan-link" id="toFan" type="button">回到扇面</button>
+      </div>
+    </div>
 
     <div class="actions">
       <div class="skin-switch" role="group" aria-label="卡片底色">
@@ -342,6 +479,8 @@
     </div>
     <p class="save-hint">点保存后长按图片存到相册</p>
   </section>
+
+  <div class="back-area" id="backArea" aria-hidden="true"><div class="back-shot" id="backShot"></div></div>
 
   <section class="method">
     <button class="method-toggle" id="methodToggle" type="button" aria-expanded="false" aria-controls="methodBody">
@@ -395,15 +534,19 @@
 <div class="lightbox" id="lightbox" hidden>
   <div class="lb-inner">
     <img id="lbImg" alt="你的七十二候身份卡">
-    <p class="lb-hint">长按图片保存到相册</p>
+    <p class="lb-hint" id="lbHint">长按图片保存到相册</p>
     <button class="btn ghost" id="lbClose" type="button">关闭</button>
   </div>
 </div>
 
 <script src="assets/hou_terms.js"></script>
 <script src="assets/hou72-data.js"></script>
+<script src="assets/hou72-verse.js"></script>
+<script src="assets/art-manifest.js"></script>
+<script src="assets/art.js"></script>
 <script src="assets/lookup.js"></script>
 <script src="assets/capture.js"></script>
+<script src="assets/fan.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

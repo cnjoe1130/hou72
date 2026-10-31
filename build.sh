@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 打包 ziwei-hou.zip；任何一道闸门不过就不出包。
+# 打包 ziwei-hou-v3.zip；任何一道闸门不过就不出包。
 set -uo pipefail
 cd "$(dirname "$0")"
 
@@ -7,7 +7,7 @@ PY=../.venv/bin/python
 if [ ! -x "$PY" ]; then PY=$(command -v python3 || true); fi
 [ -n "$PY" ] || { echo "找不到 python3"; exit 1; }
 APP=app
-ZIP=ziwei-hou.zip
+ZIP=ziwei-hou-v3.zip
 FAILED=0
 
 pass() { printf 'PASS  %s\n' "$1"; }
@@ -15,8 +15,11 @@ fail() { printf 'FAIL  %s\n' "$1"; FAILED=$((FAILED+1)); }
 
 echo "== 0. 重新生成数据 =="
 $PY build_app_data.py || { echo "build_app_data.py 失败"; exit 1; }
+$PY build_verse.py || { echo "build_verse.py 失败"; exit 1; }
+$PY build_art.py || { echo "build_art.py 失败"; exit 1; }
+$PY build_terms.py || { echo "build_terms.py 失败"; exit 1; }
 cp hou_terms.js "$APP/assets/hou_terms.js" || exit 1
-echo "PASS  hou_terms.js 复制"
+echo "PASS  hou_terms.js 生成并复制"
 
 echo
 echo "== 1. 查表逻辑单测 =="
@@ -31,6 +34,30 @@ echo "== 2. 文件类型白名单 =="
 BAD_EXT=$(find "$APP" -type f ! -name '.DS_Store' | sed 's/.*\.//' | sort -u | grep -vE '^(html|css|js|png|svg|woff2|json|jpg|gif|webp)$' || true)
 if [ -z "$BAD_EXT" ]; then pass "扩展名全部在白名单内（$(find "$APP" -type f | wc -l | tr -d ' ') 个文件）"; else fail "非法扩展名: $BAD_EXT"; fi
 if [ -f "$APP/index.html" ]; then pass "index.html 在包根"; else fail "index.html 不在包根"; fi
+
+echo
+echo "== 2b. 图资产（72 张 / 文件名驱动 / 不写死映射） =="
+ART_N=$(find "$APP/assets/art72" -maxdepth 1 -type f -name '*.webp' | wc -l | tr -d ' ')
+[ "$ART_N" = "72" ] && pass "art72/ 72 张" || fail "art72/ $ART_N 张（期望 72）"
+ART_KB=$(du -sk "$APP/assets/art72" | awk '{print $1}')
+# 旧水墨图单张约 13 KB（940 KB / 72）；AI 墨骨淡彩细节多，按目标体积 21 KB 编码，
+# 72 张约 1.42 MB。这条子闸门随之抬到 1600 KB，整体 2 MB 的硬闸门不变。
+[ "$ART_KB" -lt 1600 ] && pass "art72/ ${ART_KB} KB < 1600 KB" || fail "art72/ ${ART_KB} KB 偏大"
+MAP_N=$(grep -c 'assets/art72/' "$APP/assets/art-manifest.js" || true)
+[ "$MAP_N" = "72" ] && pass "art-manifest.js 72 条" || fail "art-manifest.js $MAP_N 条（期望 72）"
+MISS=$(cd "$APP" && grep -o '"assets/art72/[^"]*"' assets/art-manifest.js | tr -d '"' | while read -r p; do [ -f "$p" ] || echo "$p"; done)
+[ -z "$MISS" ] && pass "manifest 每条都能落到文件" || fail "manifest 指向不存在的文件：$MISS"
+HARD=$(grep -RIn 'art72/' "$APP" | grep -v 'art-manifest.js' || true)
+[ -z "$HARD" ] && pass "art72 路径只出现在生成的 manifest 里" || fail "有硬编码图路径："; [ -n "$HARD" ] && echo "$HARD"
+
+echo
+echo "== 2c. 诗数据（72 条 / 2 条 pending 空诗） =="
+V_N=$(node -e "global.window={};require('./app/assets/hou72-verse.js');console.log(Object.keys(window.HOU_VERSE).length)")
+[ "$V_N" = "72" ] && pass "hou72-verse.js 72 条" || fail "hou72-verse.js $V_N 条（期望 72）"
+V_NULL=$(node -e "global.window={};require('./app/assets/hou72-verse.js');const v=window.HOU_VERSE;console.log(Object.keys(v).filter(k=>!v[k].poem_text).sort((a,b)=>a-b).join(','))")
+[ "$V_NULL" = "48,63" ] && pass "唯二空诗 = 候 48 / 63" || fail "空诗候号 $V_NULL（期望 48,63）"
+V_FOOD=$(node -e "global.window={};require('./app/assets/hou72-verse.js');const v=window.HOU_VERSE;console.log(Object.keys(v).filter(k=>!v[k].food_note).length)")
+[ "$V_FOOD" = "0" ] && pass "72 条食俗齐全" || fail "缺食俗 $V_FOOD 条"
 
 echo
 echo "== 3. 禁词（全量扫 index.html + assets） =="
@@ -132,6 +159,39 @@ else
   fail "test_entry.js"; tail -20 /tmp/hou72-entry.log
   rm -f "$ZIP"
   echo "开场/主题测试未过，zip 已撤回。"
+  exit 1
+fi
+
+echo
+echo "== 14. 扇面摊牌 / 抽出 / 翻背 / 跨年环 =="
+if node tools/test_fan.js > /tmp/hou72-fan.log 2>&1; then
+  pass "test_fan.js（$(grep -c '^PASS' /tmp/hou72-fan.log) 项）"
+else
+  fail "test_fan.js"; tail -30 /tmp/hou72-fan.log
+  rm -f "$ZIP"
+  echo "扇面测试未过，zip 已撤回。"
+  exit 1
+fi
+
+echo
+echo "== 15. 卡背图：72 张 / 零预载 / 按候懒加载 =="
+if node tools/test_art.js > /tmp/hou72-art.log 2>&1; then
+  pass "test_art.js（$(grep -c '^PASS' /tmp/hou72-art.log) 项）"
+else
+  fail "test_art.js"; tail -30 /tmp/hou72-art.log
+  rm -f "$ZIP"
+  echo "图资产测试未过，zip 已撤回。"
+  exit 1
+fi
+
+echo
+echo "== 16. 导出带图（本地 http 站 / file:// 降级提示） =="
+if node tools/test_export.js > /tmp/hou72-export.log 2>&1; then
+  pass "test_export.js（$(grep -c '^PASS' /tmp/hou72-export.log) 项）"
+else
+  fail "test_export.js"; tail -30 /tmp/hou72-export.log
+  rm -f "$ZIP"
+  echo "导出带图测试未过，zip 已撤回。"
   exit 1
 fi
 

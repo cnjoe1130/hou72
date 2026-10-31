@@ -48,16 +48,26 @@ const CASES = [
     check(`${c.date} ${c.time} 候名`, await page.textContent('#houName'), c.hou);
     check(`${c.date} ${c.time} 进度`, (await page.textContent('#houFlag')).includes(c.flag), true);
     check(`${c.date} ${c.time} 节气序号`, (await page.textContent('#jieqiTag')).includes(c.idx), true);
-    check(`${c.date} ${c.time} 卡片可见`, await page.isVisible('#card'), true);
+    check(`${c.date} ${c.time} 默认扇面可见`, await page.isVisible('#fanArea'), true);
+    const mid = await page.evaluate(() => {
+      const f = document.querySelector('.leaf.is-mine .face.front');
+      return { hou: f.querySelector('.hou').textContent, flag: f.querySelector('.hou-flag').textContent };
+    });
+    check(`${c.date} ${c.time} 中心卡即该候`, mid.hou, c.hou);
+    check(`${c.date} ${c.time} 中心卡候号`, mid.flag.includes(c.flag) && mid.flag.startsWith('你的候 · '), true);
 
     await page.screenshot({ path: path.join(SHOTS, c.shot), fullPage: false });
   }
 
+  // 切到「只看我的卡」，在有布局的单卡上量尺寸
+  await page.click('#toSingle');
+  await page.waitForTimeout(400);
+
   // 布局：无横向滚动 + 卡片内容不出框
   const layout = await page.evaluate(() => {
     const card = document.getElementById('card');
-    const d = document.querySelector('.disclaimer');
-    const f = document.querySelector('.foot');
+    const d = card.querySelector('.disclaimer');
+    const f = card.querySelector('.foot');
     return {
       scrollWidth: document.documentElement.scrollWidth,
       clientWidth: document.documentElement.clientWidth,
@@ -140,6 +150,8 @@ const CASES = [
   await slim.fill('#birthTime', '08:20');
   await slim.click('button[type=submit]');
   await slim.waitForSelector('#result:not([hidden])');
+  await slim.click('#toSingle');
+  await slim.waitForTimeout(400);
   const slimFit = await slim.evaluate(() => ({
     sw: document.documentElement.scrollWidth,
     cw: document.documentElement.clientWidth,

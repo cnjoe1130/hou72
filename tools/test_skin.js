@@ -41,6 +41,7 @@ const PAPER = {
     await page.fill('#birthTime', '12:00');
     await page.click('button[type=submit]');
     await page.waitForSelector('#result:not([hidden])');
+    await page.click('#toSingle');
     await page.waitForTimeout(600);
   }
 

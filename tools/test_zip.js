@@ -9,7 +9,7 @@ const { execFileSync } = require('child_process');
 const { chromium } = require('playwright');
 
 const ROOT = path.resolve(__dirname, '..');
-const ZIP = path.join(ROOT, 'ziwei-hou.zip');
+const ZIP = path.join(ROOT, 'ziwei-hou-v3.zip');
 
 (async () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'ziwei-hou-'));
@@ -30,7 +30,10 @@ const ZIP = path.join(ROOT, 'ziwei-hou.zip');
 
   console.log('解压清单：\n  ' + files.join('\n  ') + '\n');
   check('解压后 index.html 在根', files.includes('index.html'), true);
-  check('文件数 6', files.length, 6);
+  const appFiles = walk(path.join(ROOT, 'app'), '').sort();
+  check('文件数与 app/ 一致', files.length, appFiles.length);
+  check('逐条对得上 app/', files.join('|') === appFiles.join('|'), true);
+  check('webp 72 张', files.filter((f) => f.endsWith('.webp')).length, 72);
   check('无绝对路径 / 无 ..', files.every((f) => !f.startsWith('/') && !f.includes('..')), true);
 
   const browser = await chromium.launch();
@@ -53,6 +56,8 @@ const ZIP = path.join(ROOT, 'ziwei-hou.zip');
   check('解压产物 节气', await page.textContent('#jieqiName'), '小雪');
   check('解压产物 候名', await page.textContent('#houName'), '天气上升地气下降');
   check('解压产物 进度', (await page.textContent('#houFlag')).includes('59 / 72'), true);
+  check('解压产物 扇面 7 叶', await page.locator('.leaf').count(), 7);
+  check('解压产物 中心是你的候', await page.locator('.leaf.is-mine .leaf-badge').textContent(), '你的候');
 
   await page.click('#saveBtn');
   await page.waitForSelector('#lightbox:not([hidden])', { timeout: 8000 });
