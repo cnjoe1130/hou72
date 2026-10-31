@@ -266,6 +266,7 @@
     if (saveBtn.disabled) return;
     saveBtn.disabled = true;
     setMsg('');
+    playSfx('save');
     captureCard().then(function (url) {
       lbImg.src = url;
       lbHint.textContent = window.Capture.artInlined()
@@ -301,12 +302,213 @@
     skinInk.setAttribute('aria-pressed', ink ? 'true' : 'false');
     skinPaper.setAttribute('aria-pressed', ink ? 'false' : 'true');
   }
-  skinInk.addEventListener('click', function () { setSkin('ink'); });
-  skinPaper.addEventListener('click', function () { setSkin('paper'); });
+  skinInk.addEventListener('click', function () { setSkin('ink'); playSfx('tap'); });
+  skinPaper.addEventListener('click', function () { setSkin('paper'); playSfx('tap'); });
 
   var theme = 'dark';
   var themeBtn = $('themeToggle');
   var gate = $('gate'), pickDark = $('pickDark'), pickLight = $('pickLight');
+
+  /* ---------- 背景乐：开场问一次，页头小喇叭随时改 ---------- */
+  var SOUND_KEY = 'hou72.sound';
+  var VOLUME = 0.45;
+  var TRACKS = { dark: 'assets/audio/ink.m4a', light: 'assets/audio/paper.m4a' };
+  var soundToggle = $('soundToggle');
+  var pickMute = $('pickMute'), pickSound = $('pickSound'), rememberEl = $('rememberSound');
+  var soundWanted = false;   // 用户选的：要不要声
+  var soundOn = false;       // 实际在放没有（被系统拦下会退回 false）
+  var soundKeep = false;     // 记住这个选择
+  var players = {};
+  var hiddenPause = false;
+
+  function playerFor(name) {
+    if (!players[name]) {
+      var a = new Audio(TRACKS[name]);
+      a.loop = true;
+      a.preload = 'auto';
+      a.volume = 0;
+      /* 解码不出来（少数引擎不带 AAC）就别假装在放：图标退回静音 */
+      a.addEventListener('error', function () {
+        if (!soundOn || players[theme] !== a) return;
+        soundOn = false;
+        paintSound();
+      });
+      players[name] = a;
+    }
+    return players[name];
+  }
+
+  function fade(el, to, ms, done) {
+    if (el.fadeTimer) clearInterval(el.fadeTimer);
+    var from = el.volume, t0 = Date.now();
+    el.fadeTimer = setInterval(function () {
+      var p = Math.min(1, (Date.now() - t0) / ms);
+      el.volume = Math.max(0, Math.min(1, from + (to - from) * p));
+      if (p >= 1) {
+        clearInterval(el.fadeTimer);
+        el.fadeTimer = null;
+        if (done) done();
+      }
+    }, 30);
+  }
+
+  function paintSound() {
+    soundToggle.className = 'sound-toggle' + (soundOn ? ' is-on' : '');
+    soundToggle.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    soundToggle.setAttribute('aria-label', soundOn ? '关闭背景乐' : '打开背景乐');
+    pickMute.className = 'gs-opt' + (soundWanted ? '' : ' is-on');
+    pickSound.className = 'gs-opt' + (soundWanted ? ' is-on' : '');
+    pickMute.setAttribute('aria-pressed', soundWanted ? 'false' : 'true');
+    pickSound.setAttribute('aria-pressed', soundWanted ? 'true' : 'false');
+  }
+
+  function writeSoundPref() {
+    try {
+      if (soundKeep) localStorage.setItem(SOUND_KEY, soundWanted ? 'on' : 'off');
+      else localStorage.removeItem(SOUND_KEY);
+    } catch (e) { /* 隐私模式/本地文件可能禁写，忽略 */ }
+  }
+
+  /* 起播必须落在点击手势里（iOS 只认手势力），所以调用点都在 click 里。
+     音量等真的出声（playing）再淡入，免得文件还没缓冲、淡入先跑完，
+     一开声就是满音量的一声硬起。 */
+  function playTrack(name) {
+    var el = playerFor(name);
+    var live = !el.paused && el.readyState >= 3;
+    Object.keys(players).forEach(function (k) {
+      if (k === name) return;
+      var old = players[k];
+      if (old.paused) return;
+      fade(old, 0, 560, function () { old.pause(); old.currentTime = 0; });
+    });
+    if (!live) el.volume = 0;
+    var p = el.play();
+    if (live) {
+      fade(el, VOLUME, 900);
+    } else {
+      var kick = function () {
+        el.removeEventListener('playing', kick);
+        fade(el, VOLUME, 900);
+      };
+      el.addEventListener('playing', kick);
+    }
+    if (p && p['catch']) {
+      p['catch'](function () { soundOn = false; paintSound(); });
+    }
+  }
+
+  function startSound() {
+    if (!soundWanted || soundOn) return;
+    soundOn = true;
+    paintSound();
+    playTrack(theme);
+  }
+
+  function stopSound() {
+    if (!soundOn) return;
+    soundOn = false;
+    paintSound();
+    Object.keys(players).forEach(function (k) {
+      var el = players[k];
+      if (el.paused) return;
+      fade(el, 0, 420, function () { el.pause(); });
+    });
+  }
+
+  /* ---------- 交互音效：纸声家族，跟背景乐一起受同一个静音开关管 ---------- */
+  var SFX = {
+    pick: 'assets/audio/fx-pick.m4a',
+    spread: 'assets/audio/fx-spread.m4a',
+    draw: 'assets/audio/fx-draw.m4a',
+    flip: 'assets/audio/fx-flip.m4a',
+    swipe: 'assets/audio/fx-swipe.m4a',
+    fold: 'assets/audio/fx-fold.m4a',
+    save: 'assets/audio/fx-save.m4a',
+    tap: 'assets/audio/fx-tap.m4a'
+  };
+  var SFX_GAIN = {
+    pick: 0.34, spread: 0.34, draw: 0.36, flip: 0.38,
+    swipe: 0.22, fold: 0.32, save: 0.3, tap: 0.2
+  };
+  var sfxPool = {}, sfxAt = {}, sfxWarm = false;
+
+  function sfxMake(name) {
+    var el = new Audio(SFX[name]);
+    el.preload = 'auto';
+    el.volume = SFX_GAIN[name];
+    return el;
+  }
+
+  /* 进站前一个请求都不发；第一次点按才把 8 个小文件排进下载，等真要点时已在缓存里 */
+  function warmSfx() {
+    if (sfxWarm) return;
+    sfxWarm = true;
+    Object.keys(SFX).forEach(function (k) { sfxPool[k] = [sfxMake(k)]; });
+  }
+
+  /* force：开场点「打开声音」的试听，此时背景乐还没起 */
+  function playSfx(name, force) {
+    if (!SFX[name] || !(soundOn || force)) return;
+    var now = Date.now();
+    if (!force && sfxAt[name] && now - sfxAt[name] < 70) return;
+    sfxAt[name] = now;
+    if (!sfxWarm) warmSfx();
+    var list = sfxPool[name], el = null;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].paused) { el = list[i]; break; }
+    }
+    if (!el) {
+      if (list.length < 2) { el = sfxMake(name); list.push(el); }
+      else { el = list[0]; }
+    }
+    try { el.currentTime = 0; } catch (e) { /* 还没元数据就先放着 */ }
+    el.volume = SFX_GAIN[name];
+    var p = el.play();
+    if (p && p['catch']) p['catch'](function () { /* 被拦就静默跳过 */ });
+  }
+  window.HouSfx = { play: playSfx };
+
+  document.addEventListener('pointerdown', warmSfx, { once: true, passive: true });
+  document.addEventListener('keydown', warmSfx, { once: true });
+
+  pickMute.addEventListener('click', function () { soundWanted = false; paintSound(); });
+  pickSound.addEventListener('click', function () {
+    soundWanted = true;
+    paintSound();
+    playSfx('tap', true);   // 试听一声，确认设备真的出声
+  });
+  rememberEl.addEventListener('change', function () {
+    soundKeep = rememberEl.checked;
+    writeSoundPref();
+  });
+  soundToggle.addEventListener('click', function () {
+    if (soundOn) { soundWanted = false; stopSound(); }
+    else { soundWanted = true; startSound(); playSfx('tap'); }
+    paintSound();
+    writeSoundPref();
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (!soundOn) return;
+    var el = players[theme];
+    if (!el) return;
+    if (document.hidden) {
+      if (!el.paused) { el.pause(); hiddenPause = true; }
+    } else if (hiddenPause) {
+      hiddenPause = false;
+      var p = el.play();
+      if (p && p['catch']) p['catch'](function () { soundOn = false; paintSound(); });
+    }
+  });
+
+  (function initSound() {
+    try {
+      var v = localStorage.getItem(SOUND_KEY);
+      if (v === 'on' || v === 'off') { soundKeep = true; soundWanted = v === 'on'; }
+    } catch (e) { /* 读不到就按默认静音 */ }
+    rememberEl.checked = soundKeep;
+    paintSound();
+  })();
 
   function setTheme(name) {
     theme = name === 'light' ? 'light' : 'dark';
@@ -314,6 +516,7 @@
     setSkin(theme === 'light' ? 'paper' : 'ink');
     themeBtn.textContent = theme === 'light' ? '墨底' : '宣纸';
     themeBtn.setAttribute('aria-label', theme === 'light' ? '切换为墨底' : '切换为宣纸');
+    if (soundOn) playTrack(theme);
   }
 
   var gateBusy = false;
@@ -332,10 +535,20 @@
     }, reduce ? 0 : 380);
   }
 
-  pickDark.addEventListener('click', function () { setTheme('dark'); closeGate(); });
-  pickLight.addEventListener('click', function () { setTheme('light'); closeGate(); });
+  function enterSite(name) {
+    setTheme(name);
+    soundKeep = rememberEl.checked;
+    writeSoundPref();
+    closeGate();
+    startSound();
+    playSfx('pick');
+  }
+
+  pickDark.addEventListener('click', function () { enterSite('dark'); });
+  pickLight.addEventListener('click', function () { enterSite('light'); });
   themeBtn.addEventListener('click', function () {
     setTheme(theme === 'dark' ? 'light' : 'dark');
+    playSfx('tap');
   });
 
   document.body.style.overflow = 'hidden';

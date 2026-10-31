@@ -50,6 +50,30 @@
                   font-family:inherit; font-size:9px; letter-spacing:.22em; text-indent:.22em;
                   color:var(--pg-accent); cursor:pointer; -webkit-appearance:none; appearance:none; }
 
+  /* 页头小喇叭：开声时呼吸式发光，关声时只有一条斜杠 */
+  .sound-toggle { position:absolute; left:20px; top:29px; width:32px; height:30px;
+                  display:flex; align-items:center; justify-content:center; padding:0;
+                  background:none; border:0; color:var(--pg-faint); cursor:pointer;
+                  -webkit-appearance:none; appearance:none;
+                  transition:color .35s ease; }
+  .sound-toggle svg { position:relative; z-index:1; display:block; width:15px; height:15px; }
+  .sound-toggle .wv { display:none; }
+  .sound-toggle.is-on { color:var(--pg-btn); }
+  .sound-toggle.is-on .wv { display:block; }
+  .sound-toggle.is-on .sl { display:none; }
+  .sound-toggle:active { opacity:.7; }
+  .sound-toggle:focus-visible { outline:1px solid rgba(var(--gold-rgb),.7); outline-offset:1px; }
+  .sound-toggle::after { content:''; position:absolute; inset:-7px; pointer-events:none;
+                         background:radial-gradient(circle, rgba(var(--gold-rgb),.55) 0%, rgba(var(--gold-rgb),0) 66%);
+                         opacity:0; transform:scale(.8); transition:opacity .5s ease; }
+  .sound-toggle.is-on::after { opacity:.5; animation:soundGlow 3.4s ease-in-out infinite; }
+  html[data-theme="light"] .sound-toggle.is-on::after {
+    background:radial-gradient(circle, rgba(150,112,58,.5) 0%, rgba(150,112,58,0) 66%); }
+  @keyframes soundGlow {
+    0%, 100% { opacity:.18; transform:scale(.82); }
+    50%      { opacity:.62; transform:scale(1.08); }
+  }
+
   .form { padding:30px 24px 0; }
   .fields { display:flex; gap:12px; }
   .field { display:block; flex:1 1 auto; min-width:0; }
@@ -372,10 +396,29 @@
                animation:gateRise .55s .30s ease both; }
   .opt-name { font-size:30px; letter-spacing:.12em; text-indent:.12em; font-weight:400; }
   .opt-desc { font-size:9px; letter-spacing:.24em; text-indent:.24em; opacity:.8; }
+
+  .gate-sound { margin-top:34px; animation:gateRise .55s .36s ease both; }
+  .gate-sound .gs-label { display:block; font-size:9px; letter-spacing:.4em; text-indent:.4em;
+                          color:#6E6247; }
+  .gs-row { display:flex; justify-content:center; gap:10px; margin-top:12px; }
+  .gs-opt { min-width:104px; height:38px; padding:0 14px; background:none;
+            border:1px solid rgba(200,171,104,.3); color:#8C7A55; font-family:inherit;
+            font-size:11px; letter-spacing:.14em; text-indent:.14em; cursor:pointer;
+            -webkit-appearance:none; appearance:none;
+            transition:border-color .18s ease, color .18s ease, background-color .18s ease; }
+  .gs-opt:active { transform:scale(.985); }
+  .gs-opt:focus-visible { outline:1px solid #C8AB68; outline-offset:2px; }
+  .gs-opt.is-on { border-color:rgba(200,171,104,.78); background:rgba(200,171,104,.1); color:#F0E3C4; }
+  .gs-remember { display:inline-flex; align-items:center; gap:8px; margin-top:16px;
+                 font-size:10px; letter-spacing:.12em; color:#7E7157; cursor:pointer; }
+  .gs-remember input { width:12px; height:12px; margin:0; accent-color:#C8AB68; }
+  .gs-note { margin-top:9px; font-size:9px; line-height:1.8; letter-spacing:.08em; color:#5F5540; }
+
   @keyframes gateRise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
   @media (prefers-reduced-motion: reduce) {
     .gate, .gate.is-out { transition:none; }
-    .gate-mark, .gate h2, .gate-lede, .gate-opt { animation:none; }
+    .gate-mark, .gate h2, .gate-lede, .gate-opt, .gate-sound { animation:none; }
+    .sound-toggle.is-on::after { animation:none; opacity:.4; transform:none; }
   }
 
   .lightbox { position:fixed; inset:0; z-index:50; background:#060504;
@@ -389,6 +432,18 @@
 <body>
 <main class="shell" id="shell" tabindex="-1">
   <header class="top">
+    <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="打开背景乐">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 9.4h3.4L11 5.8v12.4l-4.6-3.6H3z" fill="currentColor"/>
+        <g class="wv" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M14.6 8.6a4.4 4.4 0 0 1 0 6.8"/>
+          <path d="M17.2 6.2a8 8 0 0 1 0 11.6"/>
+        </g>
+        <g class="sl" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M14.6 9.6l4.8 4.8"/><path d="M19.4 9.6l-4.8 4.8"/>
+        </g>
+      </svg>
+    </button>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换为宣纸">宣纸</button>
     <div class="brandline">七十二候</div>
     <h1>你出生的那一候</h1>
@@ -527,6 +582,17 @@
       <button class="gate-opt opt-light" id="pickLight" type="button">
         <span class="opt-name">亮</span><span class="opt-desc">宣纸墨字</span>
       </button>
+    </div>
+    <div class="gate-sound" role="group" aria-labelledby="soundLabel">
+      <span class="gs-label" id="soundLabel">声音</span>
+      <div class="gs-row">
+        <button class="gs-opt is-on" id="pickMute" type="button" aria-pressed="true">静音进入</button>
+        <button class="gs-opt" id="pickSound" type="button" aria-pressed="false">打开声音</button>
+      </div>
+      <label class="gs-remember">
+        <input id="rememberSound" type="checkbox"> 记住这个选择
+      </label>
+      <p class="gs-note">下次打开按这次的选择，不会自动出声</p>
     </div>
   </div>
 </div>

@@ -38,6 +38,8 @@
     return n;
   }
 
+  function sfx(name) { if (root.HouSfx) root.HouSfx.play(name); }
+
   function houJieqi(hou) { return Math.floor((hou - 1) / 3) + 1; }
   function houOrder(hou) { return ((hou - 1) % 3) + 1; }
   function seasonOf(jq) { return SEASONS[Math.min(3, Math.floor((jq - 1) / 6))]; }
@@ -527,17 +529,20 @@
       state.mode = 'zoom';
       resetFlip(leaves[i].el);
       layout();
+      sfx('draw');
       return;
     }
     if (i !== state.sel) {
       resetFlip(leaves[state.sel].el);
       state.sel = i;
       layout();
+      sfx('swipe');
       return;
     }
     state.flipped = !state.flipped;
     if (state.flipped) flip(leaves[i]);
     else resetFlip(leaves[i].el);
+    sfx('flip');
   }
 
   function step(dir) {
@@ -547,6 +552,7 @@
     if (cur) resetFlip(cur.el);
     state.sel = next;
     layout();
+    sfx('swipe');
   }
 
   function collapse() {
@@ -556,6 +562,7 @@
     state.mode = 'fan';
     state.sel = HALF;
     layout();
+    sfx('fold');
   }
 
   stageEl.addEventListener('pointerdown', function (e) {
@@ -590,6 +597,7 @@
     state.flipped = false;
     buildRing(row.hou, dateText);
     layout();
+    sfx('spread');
   }
 
   function paint(name) {
